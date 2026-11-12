@@ -1,0 +1,16 @@
+reference/
+/QUORATE_BUILD_INSTRUCTION.md
+/HACKATHON_WINNING_SYSTEM_V5.md
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+out/
+coverage/
+test-results/
+playwright-report/
+*.log
+.DS_Store
+next-env.d.ts
+*.tsbuildinfo

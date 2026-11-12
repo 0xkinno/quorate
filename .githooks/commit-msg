@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+if grep -Eiq '^(co-authored-by:.*(claude|anthropic)|claude-session:)|generated with.*claude' "$1"; then
+  echo "Commit message carries AI attribution. Remove it."; exit 1; fi
