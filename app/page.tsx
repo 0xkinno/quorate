@@ -54,6 +54,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pb-14" aria-labelledby="quick-h">
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 id="quick-h" className="caps !text-[var(--held)]">Quorate in 30 seconds</h2>
+            <p className="text-sm text-[var(--ink-2)]">Same steps as the live run on the PayPal sandbox</p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <ol className="quick mt-4">
+            {[
+              ["held", "HELD", "Each family approves a PayPal hold", "The most it can ever cost, $88.00. Nothing is charged."],
+              ["review", "QUORUM", "The trip reaches 18 children", "Below that, every hold is released and nobody pays."],
+              ["settled", "SETTLED", "Everyone pays the real share", "$80.00 at 20 children. The rest is released and the vendors are paid in one PayPal payout."],
+            ].flatMap(([tone, stamp, t, d], i) => [
+              ...(i ? [<li key={`a${i}`} aria-hidden className="quick-arrow">&rarr;</li>] : []),
+              <li key={stamp} className="quick-step">
+                <div className="flex items-center justify-between gap-3"><span className="step-no">0{i + 1}</span><span className={`stamp stamp-${tone}`}>{stamp}</span></div>
+                <h3 className="display mt-3 text-[1.25rem] leading-tight">{t}</h3>
+                <p className="mt-1.5 text-[0.93rem] leading-relaxed text-[var(--ink-2)]">{d}</p>
+              </li>,
+            ])}
+          </ol>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <Link href="/judge" className="btn btn-primary">Run it live on the PayPal sandbox</Link>
+            <Link href="/?tour=1" className="btn btn-ghost">Take the one-minute tour</Link>
+          </div>
+        </Reveal>
+      </section>
+
       <div className="marquee border-y rule" aria-label="PayPal features Quorate uses">
         <div className="marquee-track">
           {[...PRIMITIVES, ...PRIMITIVES].map((p, i) => <span key={i} className="marquee-item"><span className="text-[var(--held)]">&#9679;</span>{p}</span>)}

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { LiveRail } from "@/components/LiveRail";
 import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ModuleRegistry, themeQuartz, type ColDef, type ICellRendererParams } from "ag-grid-community";
 import { AgCharts } from "ag-charts-react";
@@ -159,6 +160,11 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
           <Link className="btn btn-ghost !py-2 text-sm" href={`/timeline?pool=${v.pool.id}`}>Honor timeline</Link>
         </div>
       </div>
+
+      {v.pool.kind !== "class" && (
+        <LiveRail poolId={v.pool.id} state={v.pool.state} decline={!!v.pool.decline} total={v.members.length} held={going} minN={v.pool.minN}
+          steps={v.close?.steps ?? []} charged={v.close?.reconciled?.netCharged} vendors={v.close?.reconciled?.vendorsDue} exact={v.close?.reconciled?.exact} note={v.pool.note} />
+      )}
 
       <div className="mt-6 grid gap-3 sm:grid-cols-4">
         {[

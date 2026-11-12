@@ -43,6 +43,7 @@ export default async function Judge() {
             ))}
           </ul>
           <div className="mt-auto pt-6"><RunButtons /></div>
+          <p className="mt-3 text-sm text-[var(--ink-2)]">You land on The Register. A step rail at the top says which PayPal call is running, in plain words, until the close is exact.</p>
         </li>
         <li className="card flex flex-col p-7">
           <span className="step-no">02</span>

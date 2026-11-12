@@ -88,6 +88,25 @@ test("tour: six steps with keyboard, across pages", async ({ page }) => {
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 
+test("tour: the Next button is on top and clickable", async ({ page }) => {
+  await page.goto("/?tour=1");
+  const next = page.getByRole("dialog", { name: "Tour step 1 of 6" }).getByRole("button", { name: "Next" });
+  await next.click({ timeout: 10_000 }); // a covered button fails this click
+  await expect(page.getByRole("dialog", { name: "Tour step 2 of 6" })).toBeVisible();
+});
+
+test("register: the live rail narrates a decline run in plain words", async ({ page, request }) => {
+  const judge = await (await request.get("/judge")).text();
+  const ids = [...new Set([...judge.matchAll(/\/register\?pool=(run-[\w-]+)/g)].map((m) => m[1]))];
+  let id = "";
+  for (const x of ids) { const j = await (await request.get(`/api/pools/${x}`)).json(); if (j.pool.decline && j.pool.state === "CLOSED") { id = x; break; } }
+  test.skip(!id, "no closed decline run recorded");
+  await page.goto(`/register?pool=${id}`);
+  const rail = page.getByRole("region", { name: "What is happening in this run" });
+  await expect(rail).toContainText("exact to the cent");
+  await expect(rail).toContainText("PayPal declined family 7");
+});
+
 test("help desk: the Clerk answers and refuses money; the Reader checks a quote", async ({ page }) => {
   test.setTimeout(120_000);
   await page.goto("/help");
