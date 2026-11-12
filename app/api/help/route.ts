@@ -1,5 +1,7 @@
 import { askClerk } from "@/src/crew/clerk";
 
+const DASHES = new RegExp(`[${String.fromCharCode(0x2013)}${String.fromCharCode(0x2014)}]`, "g");
+
 export const dynamic = "force-dynamic";
 const hits = new Map<string, { n: number; day: string }>();
 const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu;
@@ -16,7 +18,7 @@ export async function POST(req: Request) {
   if (!question || question.length > 500) return Response.json({ error: "Ask a question under 500 characters" }, { status: 400 });
   try {
     const r = await askClerk(question, { token, poolId });
-    return Response.json({ ...r, answer: r.answer.replace(EMOJI, "").replace(/[–—]/g, ",") });
+    return Response.json({ ...r, answer: r.answer.replace(EMOJI, "").replace(DASHES, ",") });
   } catch (e) {
     return Response.json({ error: (e as Error).message.slice(0, 200) }, { status: 502 });
   }

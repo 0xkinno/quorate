@@ -8,6 +8,8 @@ import { getPool, memberByToken } from "../pool/service";
  * (get_order, get_invoice, list_transactions) plus our own pool_status. It holds no tool that
  * creates, captures, refunds, pays or cancels; tests/clerk.test.ts enforces the list.
  */
+const DASHES = new RegExp(`[${String.fromCharCode(0x2013)}${String.fromCharCode(0x2014)}]`, "g");
+
 export const CLERK_ACTIONS = { orders: { get: true }, invoices: { get: true }, transactions: { list: true } } as const;
 export const MONEY_TOOL = /create_order|pay_order|refund|capture|send_invoice|cancel|accept_dispute|subscription|record_payment|create_invoice|delete/;
 
@@ -67,5 +69,5 @@ export async function askClerk(question: string, ref: { token?: string; poolId?:
     prompt: question,
     onStepFinish: (s) => { for (const c of s.toolCalls ?? []) used.push(c.toolName); },
   });
-  return { answer: r.text.replace(/[–—]/g, ","), tools: used, model: MODEL_ID };
+  return { answer: r.text.replace(DASHES, ","), tools: used, model: MODEL_ID };
 }
