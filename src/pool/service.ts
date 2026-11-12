@@ -111,7 +111,7 @@ const today = () => new Date().toISOString().slice(0, 10);
  * The judge's live run: 20 families hold $88.00 each on the PayPal sandbox, then the close runs
  * with PayPal itself declining family 7's capture (sandbox negative testing) when asked.
  */
-export async function startLiveRun(opts: { decline: boolean; n?: number }, s = db()) {
+export async function startLiveRun(opts: { decline: boolean; n?: number; wait?: boolean }, s = db()) {
   if (process.env.QUORATE_LIVE === "off") throw new Error("LIVE_OFF");
   const runs = (await listPools("live-run", s)).filter((p) => p.createdAt.startsWith(today()));
   const max = Number(process.env.LIVE_MAX_CLOSES_PER_DAY ?? 20);
@@ -122,7 +122,8 @@ export async function startLiveRun(opts: { decline: boolean; n?: number }, s = d
   pool.state = "HOLDING";
   if (opts.decline) pool.decline = "m07";
   await savePool(s, pool, members);
-  void runInBackground(pool, members, opts.decline, s);
+  const done = runInBackground(pool, members, opts.decline, s);
+  if (opts.wait) await done;
   return pool;
 }
 
