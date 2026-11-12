@@ -15,19 +15,19 @@ Ticked only when done and verified. Deadline: Thu 12 Nov 2026, 9:00pm WAT (submi
 - [ ] Copy each criterion's full sentence from the Devpost page into `RULES_EXTRACT.md`
 
 ### Phase 1. Deploy empty at the final URL
-- [ ] Next.js skeleton, `/api/live`, `/api/status` (measured), Render Blueprint, Postgres, cron stub
+- [ ] Next.js skeleton, `/api/live`, `/api/status` (measured), Render Blueprint, Postgres, cron stub (code done and builds; ticks after deploy)
 - [ ] Deploy; reachability script passes; commit
 
 ### Phase 2. Probe PayPal (FINDINGS first)
-- [ ] Commit pre-registered `FINDINGS.md` questions P1 to P10
+- [x] Commit pre-registered `FINDINGS.md` questions P1 to P10
 - [ ] `scripts/probe.ts` with SDK + REST; run; save `docs/probe/*.json`; append dated answers
 - [ ] Update guards and scheduler to the observed behaviour
 
 ### Phase 3. The Bursar (no UI yet)
-- [ ] `allocate.ts` + property tests (6 properties)
-- [ ] `renewal.ts` + tests (honor, validity, cannot-reach-close)
-- [ ] `guards.ts` (cap, terms hash) + tests
-- [ ] `close.ts` saga with attempts log, read-back, top-ups, void, cancel path, crash reconcile + tests
+- [x] `allocate.ts` + property tests (6 properties)
+- [x] `renewal.ts` + tests (honor, validity, cannot-reach-close)
+- [x] `guards.ts` (cap, terms hash) + tests
+- [x] `close.ts` saga with attempts log, read-back, top-ups, void, cancel path, crash reconcile + tests
       against the stand-in and a scripted failing PayPal
 - [ ] `payouts.ts` batch + poll
 
