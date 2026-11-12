@@ -47,3 +47,17 @@ describe("the Scribe cannot invent numbers", () => {
     expect(numbersMatch("Only $60.00 today", ["$88.00", "18"])).toBe(false);
   });
 });
+
+import { validate } from "../src/crew/ask";
+describe("Ask the register: the model proposes, code validates the filter", () => {
+  it("keeps known columns, operators and values, and builds an AG Grid filter model", () => {
+    const v = validate([{ column: "status", op: "equals", value: "declined" }, { column: "chargedCents", op: "greaterThan", value: "$8300" }]);
+    expect(v.agModel).toEqual({ status: { filterType: "text", type: "equals", filter: "DECLINED" }, chargedCents: { filterType: "number", type: "greaterThan", filter: 8300 } });
+    expect(v.rejected).toEqual([]);
+  });
+  it("rejects unknown columns, bad operators and invented values", () => {
+    const v = validate([{ column: "payerEmail", op: "equals", value: "x" }, { column: "status", op: "greaterThan", value: "HELD" }, { column: "status", op: "equals", value: "REFUNDED_ALL" }]);
+    expect(v.filters).toHaveLength(0);
+    expect(v.rejected).toHaveLength(3);
+  });
+});

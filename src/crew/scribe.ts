@@ -17,7 +17,7 @@ export async function writeNote(lang: "en" | "es" | "vi", f: SlipFacts) {
   let r;
   try {
   r = await generateText({
-    model: model(),
+    model: model(), maxRetries: 0,
     system: `Write a warm, plain three-sentence note to a parent in ${names[lang]} about a class trip permission slip. Use only these facts and numbers, copied exactly: ${JSON.stringify({ child: f.child, school: f.school, heldToday: `$${toAmount(f.capCents)}`, minimumChildren: f.minN, decisionDate: allowed[2] })}. Say the amount is held on PayPal, not charged; it is charged only if the trip runs, it falls as more children join, and it never goes above the held amount. No other numbers. No emoji.`,
     prompt: "Write the note.",
   });

@@ -30,6 +30,7 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 | Feature | Where | Status |
 |---|---|---|
 | AG Grid Community 36, Theming API | `app/register/RegisterView.tsx` | Live: themed from Quorate's tokens, custom renderers (honor countdown, PayPal id chips, stamps), pinned totals row, cell flash, quick filter tabs, CSV export, row selection |
+| AG Grid filter model from a question ("Ask the register") | `src/crew/ask.ts`, `app/register/RegisterView.tsx` | Live: Gemini proposes, `validate()` keeps only known columns, operators and values; tested |
 | AG Charts Community 14 | `app/register/RegisterView.tsx` | Live: price per child against children going |
 | Bryntum Scheduler 7.3 (trial build, loaded at runtime from the npm CDN) | `app/timeline/HonorTimeline.tsx` | Live: every hold's honor window and scheduled renewal against the close, read-only |
 | Render (web service, cron job, Postgres) | `render.yaml` | Live at https://quorate.onrender.com; measured health at `/api/status` |
@@ -39,7 +40,6 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 - JS SDK v6. The slip uses v5 Buttons with `intent=authorize`, which is documented for authorize-then-capture. v6 was not tried in the time available.
 - Transaction Search. The Clerk reads transactions through the Agent Toolkit's `list_transactions`; Quorate does not call Transaction Search itself.
 - Subscriptions and disputes. Not in this build.
-- The "Ask the register" box that turns a question into an AG Grid filter is not built.
 
 ## Agent access
 | Feature | Where | Status |

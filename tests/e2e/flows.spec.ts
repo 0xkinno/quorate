@@ -120,3 +120,16 @@ test("APIs: status measured, stats from FACTS, MCP door read-only", async ({ req
   expect(slipState.holdAmount).toBe("$88.00");
   expect(JSON.stringify(slipState)).not.toContain("/slip/"); // the door never hands out slip links
 });
+
+test("ask the register: a question becomes a validated AG Grid filter", async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.goto("/register?pool=run-20261112-2f5570");
+  await page.getByRole("textbox", { name: "Ask the register" }).fill("who was declined?");
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await expect(page.getByText("status equals DECLINED")).toBeVisible({ timeout: 60_000 });
+  const grid = page.locator(".ag-root-wrapper");
+  await expect(grid.getByText("Zoe B.", { exact: true })).toBeVisible();
+  await expect(grid.getByText("Maya R.", { exact: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "Clear" }).click();
+  await expect(grid.getByText("Maya R.", { exact: true })).toBeVisible();
+});

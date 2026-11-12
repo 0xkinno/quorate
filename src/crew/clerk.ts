@@ -72,7 +72,7 @@ export async function askClerk(question: string, ref: { token?: string; poolId?:
   let r;
   try {
   r = await generateText({
-    model: model(), tools, stopWhen: stepCountIs(5),
+    model: model(), maxRetries: 0, tools, stopWhen: stepCountIs(5),
     system: "You are the help desk for Quorate, where each family's PayPal holds their child's share of a class trip. Answer in plain, short sentences, in the language of the question. Use pool_status first. You may read PayPal orders, invoices and transactions to explain them. You cannot move money; if asked to charge, refund or change an amount, say the teacher decides that in The Register. Never invent an amount: use only amounts from tool results. No emoji.",
     prompt: question,
     onStepFinish: (s) => { for (const c of s.toolCalls ?? []) used.push(c.toolName); },

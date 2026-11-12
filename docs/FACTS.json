@@ -163,8 +163,8 @@
     "declineCodeUsed": "PAYER_CANNOT_PAY"
   },
   "tests": {
-    "total": 37,
-    "passed": 37
+    "total": 39,
+    "passed": 39
   },
   "counterfactual": {
     "label": "Model of outcomes over 1,000 generated trips (seeded), not a measurement",

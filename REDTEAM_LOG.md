@@ -61,5 +61,5 @@ deployed site, the repository and the submission text. None started a live run.
   every capture, refund and payout id is on the proof pages for anyone to check against PayPal.
 
 ## Re-check after fixes
-37 of 37 unit and property tests, house style clean, FACTS check clean; layout and axe at six viewports and nine
+39 of 39 unit and property tests, house style clean, FACTS check clean; layout and axe at six viewports and ten
 end-to-end flows in Chromium, locally and against the deployed URL.

@@ -59,6 +59,19 @@ function Ids({ value }: ICellRendererParams<Row, string[]>) {
 export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: Record<string, string>; pools: { id: string; title: string; kind: string; createdAt: string }[] }) {
   const [v, setV] = useState<View | null>(null);
   const [tab, setTab] = useState<(typeof TABS)[number]>("All");
+  const [ask, setAsk] = useState("");
+  const [asked, setAsked] = useState<null | { explanation: string; model: string; filters: { column: string; op: string; value: string | number }[]; rejected: string[] }>(null);
+  const [asking, setAsking] = useState(false);
+  async function askRegister(q: string) {
+    setAsking(true);
+    try {
+      const r = await fetch("/api/ask-register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q }) });
+      const j = await r.json();
+      if (j.agModel) { setTab("All"); grid.current?.api.setFilterModel(Object.keys(j.agModel).length ? j.agModel : null); setAsked(j); }
+      else setAsked({ explanation: j.error ?? "Could not read that question", model: "", filters: [], rejected: [] });
+    } finally { setAsking(false); }
+  }
+  function clearAsk() { grid.current?.api.setFilterModel(null); setAsked(null); setAsk(""); }
   const grid = useRef<AgGridReact<Row>>(null);
 
   useEffect(() => {
@@ -111,7 +124,7 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
     { field: "chargedCents", headerName: "Charged", width: 110, valueFormatter: (p) => usd(p.value), cellClass: "mono", enableCellChangeFlash: true, type: "rightAligned" },
     { field: "releasedCents", headerName: "Released", width: 110, valueFormatter: (p) => usd(p.value), cellClass: "mono", enableCellChangeFlash: true, type: "rightAligned" },
     { field: "verdict", headerName: "Verdict", width: 130 },
-    { field: "ids", headerName: "PayPal ids", width: 260, cellRenderer: Ids, sortable: false, filter: false },
+    { field: "ids", headerName: "PayPal ids", width: 260, cellRenderer: Ids, sortable: false, filter: false, valueFormatter: (p) => (p.value ?? []).join(" ") },
     { field: "status", headerName: "Status", width: 140, cellRenderer: (p: ICellRendererParams<Row>) => <Stamp value={p.value} />, enableCellChangeFlash: true },
     ...(Object.keys(slips).length ? [{ headerName: "Slip", width: 110, sortable: false, filter: false, cellRenderer: (p: ICellRendererParams<Row>) => p.data && slips[p.data.id] && p.data.status === "INVITED" ? <Link className="text-[var(--held)] underline" href={`/slip/${slips[p.data.id]}`}>Open slip</Link> : null } as ColDef<Row>] : []),
   ], [slips]);
@@ -158,6 +171,19 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
 
       <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
         <div className="min-w-0">
+          <form className="mb-3 flex flex-wrap items-center gap-2" onSubmit={(e) => { e.preventDefault(); if (ask.trim()) askRegister(ask.trim()); }} aria-label="Ask the register">
+            <label htmlFor="ask" className="sr-only">Ask the register</label>
+            <input id="ask" value={ask} onChange={(e) => setAsk(e.target.value)} placeholder="Ask the register, e.g. who was declined? who paid more than $83?" className="min-w-0 flex-1 rounded-lg border rule bg-white px-3 py-2 text-sm" />
+            <button className="btn btn-primary !py-2 text-sm" disabled={asking}>{asking ? "Reading" : "Ask"}</button>
+            {asked && <button type="button" className="btn btn-ghost !py-2 text-sm" onClick={clearAsk}>Clear</button>}
+          </form>
+          {asked && (
+            <div className="mb-3 flex flex-wrap items-center gap-2 text-xs" aria-live="polite">
+              {asked.filters.map((f, i) => <span key={i} className="pill">{f.column} {f.op} {String(f.value)}</span>)}
+              {asked.rejected.map((r, i) => <span key={`r${i}`} className="pill !text-[#b42318]">rejected: {r}</span>)}
+              <span className="text-[var(--ink-2)]">{asked.explanation}{asked.model ? ` (${asked.model})` : ""}</span>
+            </div>
+          )}
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter rows">
               {TABS.map((t) => <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 text-sm ${tab === t ? "bg-[var(--ink)] text-white" : "border rule bg-white/60"}`}>{t}</button>)}

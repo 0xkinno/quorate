@@ -71,7 +71,7 @@ async function readQuoteLive(text: string) {
     return { quote: q, check: checkQuote(text, q), model: "replay" };
   }
   const r = await generateText({
-    model: model(), output: Output.object({ schema: QuoteSchema }),
+    model: model(), maxRetries: 0, output: Output.object({ schema: QuoteSchema }),
     system: "Read a vendor quote for a school trip. Return every vendor with amounts in integer cents: a fixed amount or a per-child amount. For each, copy the exact words from the quote that state the amount. If unsure, set confidence LOW.",
     prompt: text,
   });
@@ -85,7 +85,7 @@ export async function readReply(text: string, slipCapCents: number) {
     return { reply: r, check: checkReply(text, r, slipCapCents), model: "replay" };
   }
   const out = await generateText({
-    model: model(), output: Output.object({ schema: ReplySchema }),
+    model: model(), maxRetries: 0, output: Output.object({ schema: ReplySchema }),
     system: "Read a parent's reply to a class trip slip. Classify the intent. If they name the most they can pay, put it in capCents. Copy the exact words you relied on into quote.",
     prompt: text,
   });

@@ -17,7 +17,7 @@ async function modelProbe(): Promise<Probe> {
     const r = await generateText({ model: model(), prompt: "Reply with the single word OK.", maxRetries: 0 });
     return `${MODEL_ID} answered "${r.text.trim().slice(0, 12)}"`;
   });
-  modelCache = { probe, until: Date.now() + 10 * 60_000 };
+  modelCache = { probe, until: Date.now() + 6 * 3600_000 };
   return probe;
 }
 
@@ -29,7 +29,7 @@ export async function measure() {
     ? await timed(async () => { const { default: postgres } = await import("postgres"); const sql = postgres(process.env.DATABASE_URL!, { max: 1, connect_timeout: 5 }); try { const r = await sql`select now() as now`; return `postgres ${String(r[0].now)}`; } finally { await sql.end(); } })
     : { ok: false, detail: "no DATABASE_URL", at: new Date().toISOString(), ms: 0 };
   const backend = process.env.LLM_BACKEND ?? "replay";
-  // A real one-word model call, cached for ten minutes so status checks do not spend the quota.
+  // A real one-word model call, cached for six hours so status checks do not spend the daily quota.
   const model: Probe = backend === "replay" || !process.env.GEMINI_API_KEY
     ? { ok: true, detail: "replay: recorded model answers", at: new Date().toISOString(), ms: 0 }
     : await modelProbe();

@@ -14,7 +14,7 @@
 - UI: landing with motion (word reveals, count-ups, close reel, price bars, marquee), judge door with an aligned
   runs table, The Register (AG Grid, AG Charts), slip in three languages, proof ledger, Bryntum honor timeline,
   help desk, guided tour, MCP door.
-- Checks: 37 unit and property tests; six-viewport layout and axe (0 violations); nine end-to-end flows in Chromium.
+- Checks: 39 unit and property tests; six-viewport layout and axe (0 violations); ten end-to-end flows in Chromium.
 - Deployed at https://quorate.onrender.com (web, cron, Postgres from one Blueprint); recorded runs seeded.
 
 ### Waiting on Kinnoski
