@@ -9,7 +9,7 @@ import { requestId, type PayPalPort } from "../paypal/types";
 
 export type Lang = "en" | "es" | "vi";
 export type PoolState = "OPEN" | "HOLDING" | "QUORATE" | "CLOSING" | "CLOSED" | "NEEDS_TEACHER" | "LAPSED" | "FAILED";
-export type HoldSource = "paypal-login" | "sandbox-card" | "stand-in";
+export type HoldSource = "paypal-login" | "saved-wallet" | "sandbox-card" | "stand-in";
 
 export type Pool = PoolTerms & {
   title: string; school: string; teacher: string; template: "class-trip" | "team-bus";
@@ -118,7 +118,7 @@ export async function startLiveRun(opts: { decline: boolean; n?: number }, s = d
   if (runs.length >= max) throw new Error(`DAILY_LIMIT ${max}`);
   const n = Math.min(Math.max(opts.n ?? 20, 18), 26);
   const live = hasPayPalKeys();
-  const { pool, members } = makePool("live-run", `Live run, ${n} families${opts.decline ? ", PayPal declines family 7" : ""}`, n, live ? "sandbox" : "stand-in", live ? "sandbox-card" : "stand-in");
+  const { pool, members } = makePool("live-run", `Live run, ${n} families${opts.decline ? ", PayPal declines family 7" : ""}`, n, live ? "sandbox" : "stand-in", live ? (process.env.PAYPAL_VAULT_ID ? "saved-wallet" : "sandbox-card") : "stand-in");
   pool.state = "HOLDING";
   if (opts.decline) pool.decline = "m07";
   await savePool(s, pool, members);
@@ -138,7 +138,7 @@ async function runInBackground(pool: Pool, members: PoolMember[], decline: boole
         for (let i = 0; i < members.length; i += 5) {
           await Promise.all(members.slice(i, i + 5).map(async (m, j) => {
             const h = await createCardHold({ memberId: m.id, poolId: pool.id, capCents: m.capCents, termsHash: hashFor(pool, m.capCents), requestId: requestId(pool.id, m.id, "hold") });
-            members[i + j] = await recordHold(s, pool, m, { orderId: h.orderId, authId: h.authId, authorizedAt: new Date().toISOString(), source: "sandbox-card", debugId: h.debugId });
+            members[i + j] = await recordHold(s, pool, m, { orderId: h.orderId, authId: h.authId, authorizedAt: new Date().toISOString(), source: pool.holdSource, debugId: h.debugId });
           }));
         }
       } catch (e) {
