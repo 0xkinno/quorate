@@ -112,3 +112,16 @@ describe("the close", () => {
     await expect(attempt(store, { ...meta, payload: { cents: 6_000 } }, async () => 1)).rejects.toThrow(/HELD_FOR_TEACHER/);
   });
 });
+
+describe("cash families", () => {
+  it("L7 a family who paid cash is counted, and the cash due back is recorded, not captured", async () => {
+    const { port, store, members } = setup(20);
+    members[19] = { ...members[19], cash: { invoiceId: "INV2-TEST" } };
+    const refunds: number[] = [];
+    const r = await runClose({ pool, members, port, store, closeAttempt: 1, cashRefund: async (_id, cents) => { refunds.push(cents); return "REF-CASH"; } });
+    expect(r.state).toBe("CLOSED");
+    expect(refunds).toEqual([800]);
+    expect(r.members.find((m) => m.id === "k19")!.chargedCents).toBe(8_000);
+    expect(r.reconciled!.exact).toBe(true);
+  });
+});

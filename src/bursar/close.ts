@@ -14,7 +14,9 @@ import { PayPalError, requestId, toAmount, type MockCode, type PayPalPort, type 
  */
 export type Vendor = { name: string; receiver: string; fixedCents: number; perHeadCents: number };
 export type PoolTerms = { id: string; minN: number; deadline: string; vendors: Vendor[] };
-export type CloseMember = Member & { label: string; authId: string; approvedHash: string };
+export type CloseMember = Member & { label: string; authId: string; approvedHash: string;
+  /** A family that paid cash to the office, recorded on a PayPal invoice instead of a hold. */
+  cash?: { invoiceId: string } };
 
 export type Verdict = "OBSERVED" | "REVIEW" | "NOT OBSERVED";
 export type MemberOut = {
@@ -46,6 +48,8 @@ type Ctx = {
   faults?: Record<string, MockCode>;
   /** Called after each step so the register can show the close as it happens. */
   onStep?: (step: string, all: string[]) => void;
+  /** Records the cash a family gets back on their PayPal invoice (Invoicing record-refund). */
+  cashRefund?: (invoiceId: string, cents: number, requestId: string) => Promise<string>;
 };
 
 const usd = (c: number) => `$${toAmount(c)}`;
@@ -77,6 +81,11 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     out.set(m.id, o);
     try { assertTermsUnchanged(m.approvedHash, memberTerms(pool, m.capCents)); }
     catch (e) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = (e as Error).message; log(`${m.label}: terms changed since approval, held for the teacher`); continue; }
+    if (m.cash) {
+      o.verdict = "OBSERVED"; o.note = `cash recorded on PayPal invoice ${m.cash.invoiceId}`;
+      active.push({ ...m, capEff: m.capCents, captured: m.capCents });
+      continue;
+    }
     try {
       const a = await readBack(port, m.authId);
       o.verdict = "OBSERVED";
@@ -143,6 +152,18 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     const o = out.get(m.id)!;
     const target = p.charges[m.id] ?? 0;
     let over = m.captured - target;
+    if (m.cash) {
+      if (over > 0) {
+        if (!ctx.cashRefund) throw new Error("CASH_REFUND_HANDLER_MISSING");
+        const reqId = rid(m.id, "cash-refund");
+        const refundId = await attempt(store, { poolId: pool.id, memberId: m.id, op: "cash-refund", requestId: reqId, payload: { invoiceId: m.cash.invoiceId, cents: over } },
+          () => ctx.cashRefund!(m.cash!.invoiceId, over, reqId));
+        o.refunds.push({ refundId, cents: over }); m.captured -= over;
+        log(`${m.label}: ${usd(over)} cash back recorded on PayPal invoice ${m.cash.invoiceId}`);
+      }
+      o.chargedCents = m.captured; o.releasedCents = m.capCents - m.captured; o.status = "SETTLED";
+      continue;
+    }
     for (let i = o.captures.length - 1; i >= 0 && over > 0; i--) {
       const take = Math.min(over, o.captures[i].cents);
       const reqId = rid(m.id, "refund");

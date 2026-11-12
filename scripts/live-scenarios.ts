@@ -13,16 +13,18 @@ import { makePool, recordHold, savePool, getPool, type PoolMember } from "../src
 import { cancelClose, hashFor, runClose, type CloseResult } from "../src/bursar/close";
 import { createCardHold } from "../src/paypal/cardhold";
 import { LivePayPal } from "../src/paypal/live";
+import { createCashInvoice, recordCashPayment, recordCashRefund } from "../src/paypal/invoicing";
 import { requestId, type PayPalPort } from "../src/paypal/types";
 
 const s = db();
 mkdirSync("docs/live-runs", { recursive: true });
 
-type Spec = { title: string; n: number; caps?: Record<number, number>; sponsors?: number[]; faults?: Record<string, "PAYER_CANNOT_PAY">; crashAfter?: number; cancel?: boolean; voidAllIfShort?: boolean };
+type Spec = { title: string; n: number; cash?: number[]; caps?: Record<number, number>; sponsors?: number[]; faults?: Record<string, "PAYER_CANNOT_PAY">; crashAfter?: number; cancel?: boolean; voidAllIfShort?: boolean };
 const specs: Record<string, Spec> = {
   L2: { title: "Live run, 15 families, below the minimum of 18", n: 15, voidAllIfShort: true },
   L4: { title: "Live run, 18 families, two low caps, a sponsor covers the gap", n: 18, caps: { 3: 4_000, 9: 4_000 }, sponsors: [20_000] },
   L5: { title: "Live run, 18 families, PayPal refuses family 11, teacher cancels", n: 18, faults: { m11: "PAYER_CANNOT_PAY" }, cancel: true },
+  L7: { title: "Live run, 20 families, one pays cash at the office (PayPal invoice)", n: 20, cash: [19] },
   L6: { title: "Live run, 20 families, process dies after the 9th capture", n: 20, crashAfter: 9 },
 };
 
@@ -52,6 +54,13 @@ async function run(key: string, spec: Spec) {
   await savePool(s, pool, members);
   for (let i = 0; i < members.length; i += 5) {
     await Promise.all(members.slice(i, i + 5).map(async (m, j) => {
+      if (spec.cash?.includes(i + j)) {
+        const inv = await createCashInvoice({ poolId: pool.id, memberId: m.id, child: m.child, cents: m.capCents });
+        const paymentId = await recordCashPayment(inv, m.capCents);
+        members[i + j] = { ...m, state: "HELD", orderId: `invoice ${inv}`, authId: `CASH-${inv}`, source: "paypal-login" as never, approvedHash: hashFor(pool, m.capCents), debugId: paymentId, cashInvoiceId: inv } as PoolMember & { cashInvoiceId: string };
+        await s.put("member", `${pool.id}:${m.id}`, pool.id, members[i + j]);
+        return;
+      }
       const h = await createCardHold({ memberId: m.id, poolId: pool.id, capCents: m.capCents, termsHash: hashFor(pool, m.capCents), requestId: requestId(pool.id, m.id, "hold") });
       members[i + j] = await recordHold(s, pool, m, { orderId: h.orderId, authId: h.authId, source: "saved-wallet", debugId: h.debugId });
     }));
@@ -59,7 +68,8 @@ async function run(key: string, spec: Spec) {
   pool.state = "CLOSING"; await s.put("pool", pool.id, pool.id, pool);
   const port = new Crashy(new LivePayPal(), spec.crashAfter);
   const ctx = { pool, port, store: new LedgerAttempts(s), closeAttempt: 1, faults: spec.faults,
-    members: members.map((m) => ({ id: m.id, label: m.child, role: m.role, seq: m.seq, capCents: m.capCents, authId: m.authId!, approvedHash: m.approvedHash! })) };
+    members: members.map((m) => ({ id: m.id, label: m.child, role: m.role, seq: m.seq, capCents: m.capCents, authId: m.authId!, approvedHash: m.approvedHash!, cash: (m as { cashInvoiceId?: string }).cashInvoiceId ? { invoiceId: (m as { cashInvoiceId?: string }).cashInvoiceId! } : undefined })),
+    cashRefund: recordCashRefund };
   const startedAt = new Date().toISOString();
   let result: CloseResult;
   let crashed = false;
