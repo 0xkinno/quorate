@@ -20,7 +20,9 @@ async function seed(s: Store) {
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json"))) {
     const r = JSON.parse(readFileSync(join(dir, f), "utf8"));
     if (!r.pool || r.pool.port !== "sandbox") continue;
-    if (await s.get("pool", r.pool.id)) continue; // already imported, or created on this deployment
+    const existing = await s.get<{ recorded?: boolean }>("pool", r.pool.id);
+    if (existing && !existing.recorded) continue; // a run made on this deployment: never overwritten
+    // Recorded runs are refreshed from their files, so a later payout status reaches the site.
     const pool = { ...r.pool, recorded: true };
     await s.put("pool", pool.id, pool.id, pool);
     for (const m of r.members) await s.put("member", `${pool.id}:${m.id}`, pool.id, { ...m, token: `recorded-${pool.id}-${m.id}` });
