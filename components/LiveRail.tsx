@@ -51,7 +51,7 @@ export function LiveRail(p: Props) {
       <ol className="rail mt-4">
         {stages.map((s, i) => (
           <li key={s.t} className={`rail-step ${s.bad ? "bad" : s.done ? "done" : i === now ? "now" : ""} ${s.skip ? "skip" : ""}`}>
-            <span className="n">{String(i + 1).padStart(2, "0")}{s.done && !s.bad ? " ✓" : ""}</span>
+            <span className="n">{String(i + 1).padStart(2, "0")}{s.done && !s.bad ? " · done" : i === now ? " · now" : ""}</span>
             <span className="t">{s.t}</span>
           </li>
         ))}
