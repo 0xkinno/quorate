@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f2f0eb;
+  --ink: #16181d;
+  --held: #3355ff;
+  --settled: #10a673;
+  --released: #8a8f98;
+  --review: #e8a33d;
+}
+
+html, body { background: var(--paper); color: var(--ink); }
+body { font-family: ui-sans-serif, system-ui, sans-serif; }
