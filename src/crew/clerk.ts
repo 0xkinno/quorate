@@ -54,8 +54,12 @@ export async function poolFacts(ref: { token?: string; poolId?: string }) {
 
 export async function askClerk(question: string, ref: { token?: string; poolId?: string }) {
   const facts = await poolFacts(ref);
+  const replay = (why: string) => {
+    const a = facts ? `${why} The trip "${facts.trip}" has ${facts.childrenHeld} children held (at least ${facts.minimum} needed). Each family's PayPal holds ${facts.holdAmount}, the most it can ever cost.${facts.sharePerChildNow ? ` If the trip closed now each family would pay ${facts.sharePerChildNow}.` : ""}${facts.close ? ` At the close families were charged ${facts.close.familiesCharged} in total and the vendors were paid ${facts.close.vendorsPaid}${facts.close.exact ? ", exact to the cent" : ""}.` : ""} The rest of every hold is released at the close.` : "I could not find that trip.";
+    return { answer: a, tools: [] as string[], model: "template", usage: undefined };
+  };
   if (backend() === "replay") {
-    const a = facts ? `This is a recorded answer (no model call). The trip "${facts.trip}" has ${facts.childrenHeld} of ${facts.minimum} children held. Each family's PayPal holds ${facts.holdAmount}, the most it can ever cost.${facts.sharePerChildNow ? ` If the trip closed now each family would pay ${facts.sharePerChildNow}.` : ""} The rest of every hold is released at the close.` : "I could not find that trip.";
+    const a = facts ? `This is a recorded answer (no model call). The trip "${facts.trip}" has ${facts.childrenHeld} children held (at least ${facts.minimum} needed). Each family's PayPal holds ${facts.holdAmount}, the most it can ever cost.${facts.sharePerChildNow ? ` If the trip closed now each family would pay ${facts.sharePerChildNow}.` : ""} The rest of every hold is released at the close.` : "I could not find that trip.";
     return { answer: a, tools: [] as string[], model: "replay" };
   }
   const tools: Record<string, Tool> = {
@@ -63,11 +67,17 @@ export async function askClerk(question: string, ref: { token?: string; poolId?:
     pool_status: tool({ description: "Current state of this class trip pool: children held, share per child, the asking family's hold and charge.", inputSchema: z.object({}), execute: async () => facts }),
   };
   const used: string[] = [];
-  const r = await generateText({
+  let r;
+  try {
+  r = await generateText({
     model: model(), tools, stopWhen: stepCountIs(5),
     system: "You are the help desk for Quorate, where each family's PayPal holds their child's share of a class trip. Answer in plain, short sentences, in the language of the question. Use pool_status first. You may read PayPal orders, invoices and transactions to explain them. You cannot move money; if asked to charge, refund or change an amount, say the teacher decides that in The Register. Never invent an amount: use only amounts from tool results. No emoji.",
     prompt: question,
     onStepFinish: (s) => { for (const c of s.toolCalls ?? []) used.push(c.toolName); },
   });
-  return { answer: r.text.replace(DASHES, ","), tools: used, model: MODEL_ID };
+  } catch (e) {
+    if (/quota|429|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(String((e as Error).message))) return replay("The model is busy right now, so this is a template answer from the trip's facts.");
+    throw e;
+  }
+  return { answer: r.text.replace(DASHES, ","), tools: used, model: MODEL_ID, usage: r.totalUsage };
 }

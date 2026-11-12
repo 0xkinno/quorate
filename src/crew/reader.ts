@@ -63,7 +63,7 @@ export async function readQuote(text: string) {
     prompt: text,
   });
   const q = r.output as Quote;
-  return { quote: q, check: checkQuote(text, q), model: MODEL_ID };
+  return { quote: q, check: checkQuote(text, q), model: MODEL_ID, usage: r.usage };
 }
 
 export async function readReply(text: string, slipCapCents: number) {
@@ -77,5 +77,5 @@ export async function readReply(text: string, slipCapCents: number) {
     prompt: text,
   });
   const r = out.output as Reply;
-  return { reply: r, check: checkReply(text, r, slipCapCents), model: MODEL_ID };
+  return { reply: r, check: checkReply(text, r, slipCapCents), model: MODEL_ID, usage: out.usage };
 }
