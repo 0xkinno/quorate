@@ -31,7 +31,7 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 |---|---|---|
 | AG Grid Community 36, Theming API | `app/register/RegisterView.tsx` | Live: themed from Quorate's tokens, custom renderers (honor countdown, PayPal id chips, stamps), pinned totals row, cell flash, quick filter tabs, CSV export, row selection |
 | AG Charts Community 14 | `app/register/RegisterView.tsx` | Live: price per child against children going |
-| Bryntum Scheduler 7.3 (trial build) | `app/timeline/HonorTimeline.tsx` | Live: every hold's honor window and scheduled renewal against the close, read-only |
+| Bryntum Scheduler 7.3 (trial build, loaded at runtime from the npm CDN) | `app/timeline/HonorTimeline.tsx` | Live: every hold's honor window and scheduled renewal against the close, read-only |
 | Render (web service, cron job, Postgres) | `render.yaml` | Live at https://quorate.onrender.com; measured health at `/api/status` |
 | Gemini (`gemini-3-flash-preview`, AI SDK 7) | `src/crew/model.ts` | Live: Reader, Scribe, Clerk (`docs/crew-run.json`) |
 

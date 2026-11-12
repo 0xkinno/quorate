@@ -102,7 +102,7 @@ test("help desk: the Clerk answers and refuses money; the Reader checks a quote"
 
 test("timeline: Bryntum draws every hold's honor window", async ({ page }) => {
   await page.goto("/timeline?pool=run-20261112-2f5570");
-  await expect(page.locator(".b-sch-event").first()).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".b-sch-event").first()).toBeVisible({ timeout: 60_000 });
   expect(await page.locator(".b-sch-event").count()).toBeGreaterThanOrEqual(20);
 });
 
