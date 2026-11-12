@@ -83,7 +83,7 @@ Gemini through the Vercel AI SDK for reading, writing and the help desk; no mode
 tool that moves money.
 
 ## Video
-YouTube link (under 3 minutes): to add.
+YouTube link (2:50, under 3 minutes): https://youtu.be/rTz6NnocEiE
 
 ---
 

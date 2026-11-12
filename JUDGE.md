@@ -1,6 +1,6 @@
 # For judges
 
-Live: **https://quorate.onrender.com** (no login). Everything runs on the PayPal sandbox; no real money moves.
+Live: **https://quorate.onrender.com** (no login). Demo film (2:50): **https://youtu.be/rTz6NnocEiE**. Everything runs on the PayPal sandbox; no real money moves.
 
 ## 60 seconds
 1. Open https://quorate.onrender.com/judge.

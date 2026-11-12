@@ -20,7 +20,7 @@
 ### Waiting on Kinnoski
 - In Render's environment: `GEMINI_API_KEY` (the new key), `PAYPAL_WEBHOOK_ID=0VF35856UV734571V`,
   `PUBLIC_BASE_URL=https://quorate.onrender.com`.
-- Devpost criteria sentences, the demo video link, and the go-ahead to submit.
+- Devpost criteria sentences and the go-ahead to submit. Demo video published: https://youtu.be/rTz6NnocEiE
 
 ### Self-judge (0 to 10)
 | Criterion | Score | Why |

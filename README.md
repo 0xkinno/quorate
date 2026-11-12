@@ -3,6 +3,7 @@
 <p align="center">
   <a href="https://quorate.onrender.com/judge"><img src="https://img.shields.io/badge/live-quorate.onrender.com-3355ff" alt="Live demo"></a>
   <a href="https://github.com/0xkinno/quorate/actions/workflows/ci.yml"><img src="https://github.com/0xkinno/quorate/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://youtu.be/rTz6NnocEiE"><img src="https://img.shields.io/badge/demo%20video-2%3A50-e5484d" alt="Demo video, 2:50"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-16181d" alt="Licence: MIT"></a>
 </p>
 
@@ -15,6 +16,7 @@ A working, non-trivial use of PayPal holds that solves a real problem for a real
 | | |
 |---|---|
 | Live, no login | **https://quorate.onrender.com** |
+| Demo video, 2:50 | **https://youtu.be/rTz6NnocEiE** |
 | For judges, 60 seconds | **https://quorate.onrender.com/judge**: one button holds $88.00 for 20 families on the PayPal sandbox and closes the trip while PayPal declines family 7 |
 | Built with | PayPal Orders v2 (`AUTHORIZE`), Payments v2 (partial capture, void, reauthorize, refund), Vault v3, Payouts, Invoicing, Webhooks, sandbox negative testing, PayPal Server SDK, PayPal Agent Toolkit, JS SDK; Gemini; AG Grid and AG Charts; Bryntum Scheduler; Render |
 | Measured on the PayPal sandbox, 12 Nov 2026 | **13 live runs, 205 real holds, 10 of 10 closes exact and paid out, $15,522.00 settled, 0 cents off, 0 families charged above what they approved** ([docs/FACTS.json](docs/FACTS.json), generated, never typed) |
@@ -26,6 +28,8 @@ A working, non-trivial use of PayPal holds that solves a real problem for a real
 | **The promise**: the family approves the worst case, then pays the real share | **The Register** after a live close: every row a real PayPal authorization |
 | <img src="docs/images/screens/judge-desktop.png" alt="The judge door: run a live close with a PayPal decline, approve a hold, and every recorded run with its proof" width="100%"> | <img src="docs/images/screens/proof-desktop.png" alt="Proof page: the money, the payout, the close step by step, every hold and the attempt log" width="100%"> |
 | **The judge door**: one button for a live close, and every recorded run with its proof | **The proof page**: every PayPal id, and the attempt log written before each call |
+
+<p align="center"><a href="https://youtu.be/rTz6NnocEiE"><img src="docs/images/video-thumb.jpg" alt="Watch the 2:50 demo film on YouTube" width="70%"></a><br><sub>Watch the 2:50 demo film: https://youtu.be/rTz6NnocEiE</sub></p>
 
 ---
 
