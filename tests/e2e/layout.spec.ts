@@ -15,7 +15,7 @@ async function paths(page: Page) {
   const pools = await (await page.request.get("/api/stats")).json();
   const runs = pools.recorded.liveRuns.scenarios as { pool: string; state: string }[];
   const closed = runs.find((r) => r.state === "CLOSED")!.pool;
-  const html = await (await page.request.get("/register?pool=class")).text();
+  const html = await (await page.request.get("/judge")).text();
   const slip = /\/slip\/([A-Za-z0-9_-]{10,})/.exec(html)?.[1];
   return [
     { name: "landing", url: "/" }, { name: "judge", url: "/judge" }, { name: "register", url: `/register?pool=${closed}` },
@@ -33,7 +33,7 @@ for (const vp of VIEWPORTS) {
     page.on("pageerror", (e) => errors.push(e.message));
     for (const p of await paths(page)) {
       await page.goto(p.url, { waitUntil: "load" });
-      await page.waitForTimeout(p.name === "register" ? 2500 : 600);
+      await page.waitForTimeout(p.name === "register" ? 2500 : p.name === "slip" ? 6000 : 600);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow, `${p.name} horizontal scroll`).toBeLessThanOrEqual(1);
       if (p.name === "landing" && vp.width >= 768) {

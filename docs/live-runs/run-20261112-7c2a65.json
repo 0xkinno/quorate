@@ -796,7 +796,7 @@
     "payout": {
       "batchId": "7VN5VTUZ23NRJ",
       "senderBatchId": "pool:run-20261112-7c2a65:close:1",
-      "status": "PENDING",
+      "status": "SUCCESS",
       "items": [
         {
           "receiver": "sb-coachnew@business.example.com",

@@ -66,9 +66,16 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
     let t: ReturnType<typeof setTimeout> | undefined;
     const FINAL = ["CLOSED", "NEEDS_TEACHER", "LAPSED", "FAILED"];
     const load = async () => {
-      const r = await fetch(`/api/pools/${poolId}`, { cache: "no-store" });
-      if (!r.ok || !alive) return;
-      const j: View = await r.json();
+      let j: View;
+      try {
+        const r = await fetch(`/api/pools/${poolId}`, { cache: "no-store" });
+        if (!r.ok) throw new Error(String(r.status));
+        j = await r.json();
+      } catch {
+        if (alive) t = setTimeout(load, 2000); // a failed poll never stops the register
+        return;
+      }
+      if (!alive) return;
       setV(j);
       // Poll fast while a close runs, slowly while families approve slips, and stop once it is final.
       if (!FINAL.includes(j.pool.state)) t = setTimeout(load, j.pool.kind === "class" ? 5000 : 1500);

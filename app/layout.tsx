@@ -29,9 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <div className="flex items-center gap-1 text-sm sm:gap-2">
               <Suspense fallback={null}><Tour /></Suspense>
-              <Link href="/register" className="rounded-md px-2.5 py-1.5 hover:bg-white/70">The Register</Link>
+              <Link href="/register" className="whitespace-nowrap rounded-md px-2 py-1.5 hover:bg-white/70"><span className="hidden sm:inline">The </span>Register</Link>
               <Link href="/help" className="hidden rounded-md px-2.5 py-1.5 hover:bg-white/70 sm:inline">Help desk</Link>
-              <Link href="/judge" className="rounded-md bg-[var(--held)] px-3 py-1.5 text-white shadow-[var(--glow)]">For judges</Link>
+              <Link href="/judge" className="whitespace-nowrap rounded-md bg-[var(--held)] px-3 py-1.5 text-white shadow-[var(--glow)]">For judges</Link>
             </div>
           </nav>
         </header>

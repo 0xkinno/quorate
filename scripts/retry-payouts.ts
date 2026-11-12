@@ -13,7 +13,7 @@ const port = new LivePayPal();
 for (const run of await s.list<{ poolId: string; port: string }>("run")) {
   if (run.port !== "sandbox") continue;
   const c = await s.get<CloseResult & { payoutRetries?: number }>("close", run.poolId);
-  if (!c || c.state !== "CLOSED" || !c.payout || !c.payout.status.startsWith("REFUSED")) continue;
+  if (!c || c.state !== "CLOSED" || !c.payout || !(c.payout.status.startsWith("REFUSED") || c.payout.status === "DENIED")) continue;
   const k = (c.payoutRetries ?? 0) + 1;
   const senderBatchId = `${c.payout.senderBatchId}:retry:${k}`;
   try {

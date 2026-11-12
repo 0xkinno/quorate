@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import type { Attempt, AttemptStore } from "../bursar/attempts";
 
 /**
@@ -23,9 +23,11 @@ class FileStore implements Store {
     if (!existsSync(this.path)) return {};
     try { return JSON.parse(readFileSync(this.path, "utf8")); } catch { return {}; }
   }
-  private save(d: Record<string, Row>) { mkdirSync(".data", { recursive: true }); writeFileSync(this.path, JSON.stringify(d)); }
+  // Atomic replace, so a reader never sees a half-written file.
+  private save(d: Record<string, Row>) { mkdirSync(".data", { recursive: true }); const tmp = `${this.path}.${process.pid}.tmp`; writeFileSync(tmp, JSON.stringify(d)); renameSync(tmp, this.path); }
   async get<T>(kind: string, id: string) { return this.load()[`${kind}:${id}`]?.json as T | undefined; }
   async put(kind: string, id: string, poolId: string | null, json: unknown) {
+    // Synchronous read-modify-write: no await inside, so writes in one process never interleave.
     const d = this.load(); d[`${kind}:${id}`] = { kind, id, poolId, json, updatedAt: new Date().toISOString() }; this.save(d);
   }
   async list<T>(kind: string, poolId?: string) {

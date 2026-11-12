@@ -829,12 +829,13 @@
       "Lily V.: captured $80.00",
       "Jack A.: captured $80.00",
       "Charged $1600.00 against $1600.00 due: exact",
-      "Payout batch LL9VVARMM5GX2: $1440.00 + $160.00"
+      "Payout batch LL9VVARMM5GX2: $1440.00 + $160.00",
+      "Payout retried: batch WZ87UKK4LPZDW"
     ],
     "payout": {
-      "batchId": "LL9VVARMM5GX2",
-      "senderBatchId": "pool:run-20261112-096164:close:1",
-      "status": "PENDING",
+      "batchId": "WZ87UKK4LPZDW",
+      "senderBatchId": "pool:run-20261112-096164:close:1:retry:1",
+      "status": "DENIED",
       "items": [
         {
           "receiver": "sb-coach@personal.example.com",

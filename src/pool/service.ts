@@ -84,8 +84,11 @@ export async function listPools(kind?: Pool["kind"], s = db()) {
 /** The class pool families approve on PayPal. Created once. */
 export async function classPool(s = db()) {
   const pools = await listPools("class", s);
-  if (pools[0]) return pools[0];
+  const open = pools.find((p) => p.state === "OPEN");
+  if (open) return open;
   const { pool, members } = makePool("class", "Grade 4 trip to the science museum", 26, hasPayPalKeys() ? "sandbox" : "stand-in", "paypal-login");
+  // Families approve over several days; holds are renewed by the tick so the honor window covers the close.
+  pool.closeAt = pool.deadline = new Date(Date.now() + 6 * 86400_000).toISOString();
   await savePool(s, pool, members);
   return pool;
 }

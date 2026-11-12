@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { listPools, classPool } from "@/src/pool/service";
+import { listPools, classPool, getPool } from "@/src/pool/service";
 import { measure } from "@/src/status";
 import { RunButtons } from "./RunButtons";
 
@@ -8,6 +8,8 @@ export const dynamic = "force-dynamic";
 export default async function Judge() {
   const [runs, cls, status] = await Promise.all([listPools("live-run"), classPool(), measure()]);
   const buyer = process.env.DEMO_BUYER_EMAIL;
+  const cv = await getPool(cls.id);
+  const freeSlip = cv?.members.find((m) => m.state === "INVITED");
   return (
     <main className="mx-auto max-w-4xl px-4 pt-14">
       <p className="caps">For judges · 60 seconds</p>
@@ -31,7 +33,10 @@ export default async function Judge() {
           {buyer && (
             <p className="mono mt-3 rounded-lg bg-white/70 p-3 text-sm">Sandbox buyer: {buyer}<br />Password: {process.env.DEMO_BUYER_PASSWORD}</p>
           )}
-          <Link href={`/register?pool=${cls.id}`} className="btn btn-ghost mt-4">Open the class register</Link>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {freeSlip && <Link href={`/slip/${freeSlip.token}`} className="btn btn-primary">Open a demo slip ({freeSlip.child})</Link>}
+            <Link href={`/register?pool=${cls.id}`} className="btn btn-ghost">Open the class register</Link>
+          </div>
         </li>
         <li className="card p-6">
           <div className="mono text-sm text-[var(--held)]">03</div>

@@ -16,3 +16,5 @@ next-env.d.ts
 *.tsbuildinfo
 APPROVE_LINK.txt
 .data/
+docs/video/
+.vitest-results.json

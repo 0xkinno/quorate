@@ -836,7 +836,7 @@
     "payout": {
       "batchId": "XBYFL3WZ4KSZ8",
       "senderBatchId": "pool:run-20261112-9122dd:close:1",
-      "status": "PENDING",
+      "status": "SUCCESS",
       "items": [
         {
           "receiver": "sb-coachnew@business.example.com",

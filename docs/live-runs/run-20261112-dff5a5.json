@@ -1,4 +1,5 @@
 {
+  "scenario": "L3",
   "pool": {
     "id": "run-20261112-dff5a5",
     "title": "Live run, 20 families, PayPal declines family 7",
@@ -1256,6 +1257,5 @@
     },
     "sponsorDraw": 0
   },
-  "heldCount": 20,
-  "seconds": 159
+  "heldCount": 20
 }
