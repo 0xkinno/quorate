@@ -50,6 +50,14 @@ type Ctx = {
 
 const usd = (c: number) => `$${toAmount(c)}`;
 
+/** Read back a hold, retrying network blips so a family is never dropped by a transient error. */
+async function readBack(port: PayPalPort, authId: string) {
+  for (let i = 0; ; i++) {
+    try { return await port.getAuthorization(authId); }
+    catch (e) { if (e instanceof PayPalError || i >= 3) throw e; await new Promise((r) => setTimeout(r, 400 * (i + 1))); }
+  }
+}
+
 export async function runClose(ctx: Ctx): Promise<CloseResult> {
   const { pool, port, store, closeAttempt } = ctx;
   const fixed = poolFixed(pool), perHead = poolPerHead(pool);
@@ -70,7 +78,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     try { assertTermsUnchanged(m.approvedHash, memberTerms(pool, m.capCents)); }
     catch (e) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = (e as Error).message; log(`${m.label}: terms changed since approval, held for the teacher`); continue; }
     try {
-      const a = await port.getAuthorization(m.authId);
+      const a = await readBack(port, m.authId);
       o.verdict = "OBSERVED";
       if (a.status !== "CREATED" && a.status !== "PARTIALLY_CAPTURED") { o.status = a.status === "EXPIRED" ? "EXPIRED" : "RELEASED"; o.note = `hold ${a.status}`; log(`${m.label}: hold ${a.status}, drops out`); continue; }
       if (a.amountCents < m.capCents) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = "hold smaller than approved amount"; continue; }
@@ -109,7 +117,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
         m.captured += c.cents; o.captures.push({ captureId: c.captureId, cents: c.cents });
         log(`${m.label}: captured ${usd(c.cents)}${o.captures.length > 1 ? " (top-up)" : ""}`);
       } catch (e) {
-        if (!(e instanceof PayPalError) && !String((e as Error).message).match(/^(capture|INSTRUMENT|AUTHORIZATION|PAYER|MAX)/)) throw e;
+        if (!(e instanceof PayPalError) && !String((e as Error).message).match(/^(capture|INSTRUMENT|AUTHORIZATION|PAYER|MAX|TRANSACTION)/)) throw e;
         const msg = (e as Error).message;
         if (m.captured === 0) {
           active.splice(active.indexOf(m), 1);
@@ -169,9 +177,16 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   const n = kidsActive();
   const items: PayoutItem[] = pool.vendors.map((v, i) => ({ receiver: v.receiver, cents: v.fixedCents + v.perHeadCents * n, senderItemId: `${pool.id}-v${i}-${closeAttempt}`, note: `${v.name}: ${n} children` }));
   const senderBatchId = `pool:${pool.id}:close:${closeAttempt}`;
-  const po = await attempt(store, { poolId: pool.id, memberId: null, op: "payout", requestId: senderBatchId, payload: items },
-    () => port.payout({ senderBatchId, subject: "Class trip payment", items }));
-  log(`Payout batch ${po.batchId}: ${items.map((i) => `${usd(i.cents)}`).join(" + ")}`);
+  let po: { batchId: string; status: string };
+  try {
+    po = await attempt(store, { poolId: pool.id, memberId: null, op: "payout", requestId: senderBatchId, payload: items },
+      () => port.payout({ senderBatchId, subject: "Class trip payment", items }));
+    log(`Payout batch ${po.batchId}: ${items.map((i) => `${usd(i.cents)}`).join(" + ")}`);
+  } catch (e) {
+    // The families' charges stand; the vendors' payout is retried (scripts/retry-payouts.ts and the tick).
+    po = { batchId: "", status: `REFUSED ${(e as Error).message.split(" debug")[0]}` };
+    log(`PayPal refused the payout (${po.status.slice(8)}); charges stand, payout will be retried`);
+  }
 
   return { state: "CLOSED", poolId: pool.id, closeAttempt, port: port.kind, plan: p, members: [...out.values()], steps,
     payout: { batchId: po.batchId, senderBatchId, status: po.status, items }, reconciled: { vendorsDue: items.reduce((s, i) => s + i.cents, 0), netCharged, exact } };

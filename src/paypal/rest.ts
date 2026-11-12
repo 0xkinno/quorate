@@ -19,11 +19,20 @@ export async function token(): Promise<string> {
 }
 
 export async function call<T>(op: string, method: string, path: string, body?: unknown, headers: Record<string, string> = {}): Promise<{ status: number; json: T; debugId?: string }> {
-  const r = await fetch(`${env().base}${path}`, {
-    method,
-    headers: { Authorization: `Bearer ${await token()}`, "Content-Type": "application/json", ...headers },
-    body: body === undefined ? (method === "POST" ? "{}" : undefined) : JSON.stringify(body),
-  });
+  // Network failures are retried with the same PayPal-Request-Id, so PayPal never acts twice.
+  let r: Response | undefined;
+  for (let i = 0; !r; i++) {
+    try {
+      r = await fetch(`${env().base}${path}`, {
+        method,
+        headers: { Authorization: `Bearer ${await token()}`, "Content-Type": "application/json", ...headers },
+        body: body === undefined ? (method === "POST" ? "{}" : undefined) : JSON.stringify(body),
+      });
+    } catch (e) {
+      if (i >= 3 || (method === "POST" && !headers["PayPal-Request-Id"] && !path.includes("payouts"))) throw e;
+      await new Promise((res) => setTimeout(res, 500 * (i + 1)));
+    }
+  }
   const text = await r.text();
   const json = (text ? JSON.parse(text) : {}) as T & { details?: { issue: string }[]; name?: string; debug_id?: string };
   if (!r.ok) throw new PayPalError(op, r.status, json?.details?.[0]?.issue ?? json?.name ?? "UNKNOWN", json?.debug_id ?? r.headers.get("paypal-debug-id") ?? undefined);

@@ -1,0 +1,264 @@
+{
+  "pool": {
+    "id": "run-20261112-99f1e8",
+    "title": "Live run, 20 families, PayPal declines family 7",
+    "school": "Harbor View Elementary (demo)",
+    "teacher": "Ms. Rivera (demo)",
+    "template": "class-trip",
+    "minN": 18,
+    "deadline": "2026-11-13T02:01:26.640Z",
+    "closeAt": "2026-11-13T02:01:26.640Z",
+    "vendors": [
+      {
+        "name": "Bayline Coaches (demo)",
+        "receiver": "sb-coachnew@business.example.com",
+        "fixedCents": 144000,
+        "perHeadCents": 0
+      },
+      {
+        "name": "Harbor Science Museum (demo)",
+        "receiver": "sb-museumnew@business.example.com",
+        "fixedCents": 0,
+        "perHeadCents": 800
+      }
+    ],
+    "state": "FAILED",
+    "createdAt": "2026-11-12T06:01:26.640Z",
+    "kind": "live-run",
+    "port": "sandbox",
+    "holdSource": "saved-wallet",
+    "decline": "m07",
+    "note": "fetch failed"
+  },
+  "members": [
+    {
+      "id": "m01",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Maya R.",
+      "family": "Rojas family",
+      "lang": "es",
+      "role": "child",
+      "seq": 0,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m02",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Liam T.",
+      "family": "Tran family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 1,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m03",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Ava P.",
+      "family": "Patel family",
+      "lang": "en",
+      "role": "child",
+      "seq": 2,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m04",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Noah K.",
+      "family": "Kim family",
+      "lang": "en",
+      "role": "child",
+      "seq": 3,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m05",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Sofia G.",
+      "family": "Garcia family",
+      "lang": "es",
+      "role": "child",
+      "seq": 4,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m06",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Ethan N.",
+      "family": "Nguyen family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 5,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m07",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Zoe B.",
+      "family": "Brown family",
+      "lang": "en",
+      "role": "child",
+      "seq": 6,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m08",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Lucas M.",
+      "family": "Martinez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 7,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m09",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Mia W.",
+      "family": "Williams family",
+      "lang": "en",
+      "role": "child",
+      "seq": 8,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m10",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Daniel L.",
+      "family": "Le family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 9,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m11",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Isabella H.",
+      "family": "Hernandez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 10,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m12",
+      "poolId": "run-20261112-99f1e8",
+      "child": "James O.",
+      "family": "Okafor family",
+      "lang": "en",
+      "role": "child",
+      "seq": 11,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m13",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Chloe D.",
+      "family": "Davis family",
+      "lang": "en",
+      "role": "child",
+      "seq": 12,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m14",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Mateo S.",
+      "family": "Sanchez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 13,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m15",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Emma P.",
+      "family": "Pham family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 14,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m16",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Leo J.",
+      "family": "Johnson family",
+      "lang": "en",
+      "role": "child",
+      "seq": 15,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m17",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Aria C.",
+      "family": "Cruz family",
+      "lang": "es",
+      "role": "child",
+      "seq": 16,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m18",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Henry W.",
+      "family": "Wong family",
+      "lang": "en",
+      "role": "child",
+      "seq": 17,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m19",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Lily V.",
+      "family": "Vo family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 18,
+      "capCents": 8800,
+      "state": "INVITED"
+    },
+    {
+      "id": "m20",
+      "poolId": "run-20261112-99f1e8",
+      "child": "Jack A.",
+      "family": "Ahmed family",
+      "lang": "en",
+      "role": "child",
+      "seq": 19,
+      "capCents": 8800,
+      "state": "INVITED"
+    }
+  ],
+  "attempts": [],
+  "preview": {
+    "ok": false,
+    "reason": "INFEASIBLE",
+    "total": 144000,
+    "shortfallCents": 144000
+  },
+  "heldCount": 0,
+  "seconds": 0
+}

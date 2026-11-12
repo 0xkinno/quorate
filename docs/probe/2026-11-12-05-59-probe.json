@@ -1,0 +1,612 @@
+{
+  "P9": {
+    "created": "2026-11-12T05:58:29.750Z",
+    "authorization": {
+      "id": "7AK885056V797422S",
+      "status": "CREATED",
+      "amount": {
+        "currency_code": "USD",
+        "value": "72.00"
+      },
+      "invoice_id": "probe-probe-e8bc9409",
+      "custom_id": "probe00000000000000000000000000000000000000000000000000000000000",
+      "seller_protection": {
+        "status": "ELIGIBLE",
+        "dispute_categories": [
+          "ITEM_NOT_RECEIVED",
+          "UNAUTHORIZED_TRANSACTION"
+        ]
+      },
+      "supplementary_data": {
+        "related_ids": {
+          "order_id": "0FG516997H0035407"
+        }
+      },
+      "payee": {
+        "email_address": "sb-quoratemerchant@business.example.com",
+        "merchant_id": "WQ64DLXQMK6R8"
+      },
+      "expiration_time": "2026-12-11T05:58:31Z",
+      "create_time": "2026-11-12T05:58:31Z",
+      "update_time": "2026-11-12T05:58:31Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/capture",
+          "rel": "capture",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/void",
+          "rel": "void",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/reauthorize",
+          "rel": "reauthorize",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/0FG516997H0035407",
+          "rel": "up",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "P1": {
+    "first": {
+      "ok": true,
+      "value": {
+        "id": "8JM2556251907053K",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/8JM2556251907053K",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/8JM2556251907053K/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934e3c18d7"
+      }
+    },
+    "second": {
+      "ok": true,
+      "value": {
+        "id": "12U67153SG0967938",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/12U67153SG0967938",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/12U67153SG0967938/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934e47c9ad"
+      }
+    },
+    "after": {
+      "id": "7AK885056V797422S",
+      "status": "PARTIALLY_CAPTURED",
+      "amount": {
+        "currency_code": "USD",
+        "value": "72.00"
+      },
+      "invoice_id": "probe-probe-e8bc9409",
+      "custom_id": "probe00000000000000000000000000000000000000000000000000000000000",
+      "seller_protection": {
+        "status": "ELIGIBLE",
+        "dispute_categories": [
+          "ITEM_NOT_RECEIVED",
+          "UNAUTHORIZED_TRANSACTION"
+        ]
+      },
+      "supplementary_data": {
+        "related_ids": {
+          "order_id": "0FG516997H0035407"
+        }
+      },
+      "payee": {
+        "email_address": "sb-quoratemerchant@business.example.com",
+        "merchant_id": "WQ64DLXQMK6R8"
+      },
+      "expiration_time": "2026-12-11T05:58:31Z",
+      "create_time": "2026-11-12T05:58:31Z",
+      "update_time": "2026-11-12T05:58:36Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/capture",
+          "rel": "capture",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/void",
+          "rel": "void",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/7AK885056V797422S/reauthorize",
+          "rel": "reauthorize",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/0FG516997H0035407",
+          "rel": "up",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "P2": {
+    "capture": {
+      "ok": true,
+      "value": {
+        "id": "0GD222607M047090U",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/0GD222607M047090U",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/0GD222607M047090U/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/1FG09921FG338084A",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934e65cdb5"
+      }
+    },
+    "void": {
+      "ok": true,
+      "value": {
+        "status": 204,
+        "debugId": "ca5934e73e88d"
+      }
+    },
+    "after": {
+      "id": "1FG09921FG338084A",
+      "status": "VOIDED",
+      "amount": {
+        "currency_code": "USD",
+        "value": "72.00"
+      },
+      "invoice_id": "probe-probe-bb1bcf51",
+      "custom_id": "probe00000000000000000000000000000000000000000000000000000000000",
+      "seller_protection": {
+        "status": "ELIGIBLE",
+        "dispute_categories": [
+          "ITEM_NOT_RECEIVED",
+          "UNAUTHORIZED_TRANSACTION"
+        ]
+      },
+      "supplementary_data": {
+        "related_ids": {
+          "order_id": "4U75552865085981S"
+        }
+      },
+      "payee": {
+        "email_address": "sb-quoratemerchant@business.example.com",
+        "merchant_id": "WQ64DLXQMK6R8"
+      },
+      "expiration_time": "2026-12-11T05:58:39Z",
+      "create_time": "2026-11-12T05:58:39Z",
+      "update_time": "2026-11-12T05:58:43Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/1FG09921FG338084A",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/1FG09921FG338084A/capture",
+          "rel": "capture",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/1FG09921FG338084A/void",
+          "rel": "void",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/1FG09921FG338084A/reauthorize",
+          "rel": "reauthorize",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/4U75552865085981S",
+          "rel": "up",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "P3": {
+    "over": {
+      "ok": true,
+      "value": {
+        "id": "45351462PH587380W",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/45351462PH587380W",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/45351462PH587380W/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/03C51214CD653321E",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934e8b4e01"
+      }
+    },
+    "after": {
+      "id": "03C51214CD653321E",
+      "status": "CAPTURED",
+      "amount": {
+        "currency_code": "USD",
+        "value": "72.00"
+      },
+      "invoice_id": "probe-probe-b12f04af",
+      "custom_id": "probe00000000000000000000000000000000000000000000000000000000000",
+      "seller_protection": {
+        "status": "ELIGIBLE",
+        "dispute_categories": [
+          "ITEM_NOT_RECEIVED",
+          "UNAUTHORIZED_TRANSACTION"
+        ]
+      },
+      "supplementary_data": {
+        "related_ids": {
+          "order_id": "4YX4133591550902V"
+        }
+      },
+      "payee": {
+        "email_address": "sb-quoratemerchant@business.example.com",
+        "merchant_id": "WQ64DLXQMK6R8"
+      },
+      "expiration_time": "2026-12-11T05:58:45Z",
+      "create_time": "2026-11-12T05:58:45Z",
+      "update_time": "2026-11-12T05:58:47Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/03C51214CD653321E",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/03C51214CD653321E/capture",
+          "rel": "capture",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/03C51214CD653321E/void",
+          "rel": "void",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/03C51214CD653321E/reauthorize",
+          "rel": "reauthorize",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/4YX4133591550902V",
+          "rel": "up",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "P4": {
+    "reauth": {
+      "ok": false,
+      "status": 422,
+      "issue": "REAUTHORIZATION_TOO_SOON",
+      "debugId": "ca5934eac49e4",
+      "message": "reauth 422 REAUTHORIZATION_TOO_SOON debug ca5934eac49e4"
+    }
+  },
+  "P5": {
+    "INSTRUMENT_DECLINED": {
+      "capture": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ebc5caa",
+        "message": "capture 403 UNKNOWN debug ca5934ebc5caa"
+      },
+      "void": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ebefde7",
+        "message": "void 403 UNKNOWN debug ca5934ebefde7"
+      },
+      "reauth": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ec1e839",
+        "message": "reauth 403 UNKNOWN debug ca5934ec1e839"
+      }
+    },
+    "AUTHORIZATION_EXPIRED": {
+      "capture": {
+        "ok": false,
+        "status": 422,
+        "issue": "AUTHORIZATION_EXPIRED",
+        "debugId": "70c28ae654da",
+        "message": "capture 422 AUTHORIZATION_EXPIRED debug 70c28ae654da"
+      },
+      "void": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ed42e7c",
+        "message": "void 403 UNKNOWN debug ca5934ed42e7c"
+      },
+      "reauth": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ed6c8c9",
+        "message": "reauth 403 UNKNOWN debug ca5934ed6c8c9"
+      }
+    },
+    "AUTHORIZATION_VOIDED": {
+      "capture": {
+        "ok": false,
+        "status": 422,
+        "issue": "AUTHORIZATION_VOIDED",
+        "debugId": "70c28ae654da",
+        "message": "capture 422 AUTHORIZATION_VOIDED debug 70c28ae654da"
+      },
+      "void": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934ee9484a",
+        "message": "void 403 UNKNOWN debug ca5934ee9484a"
+      },
+      "reauth": {
+        "ok": false,
+        "status": 422,
+        "issue": "AUTHORIZATION_VOIDED",
+        "debugId": "70c28ae654da",
+        "message": "reauth 422 AUTHORIZATION_VOIDED debug 70c28ae654da"
+      }
+    },
+    "PAYER_CANNOT_PAY": {
+      "capture": {
+        "ok": false,
+        "status": 422,
+        "issue": "PAYER_CANNOT_PAY",
+        "debugId": "70c28ae654da",
+        "message": "capture 422 PAYER_CANNOT_PAY debug 70c28ae654da"
+      },
+      "void": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934f009c82",
+        "message": "void 403 UNKNOWN debug ca5934f009c82"
+      },
+      "reauth": {
+        "ok": false,
+        "status": 422,
+        "issue": "PAYER_CANNOT_PAY",
+        "debugId": "70c28ae654da",
+        "message": "reauth 422 PAYER_CANNOT_PAY debug 70c28ae654da"
+      }
+    },
+    "MAX_CAPTURE_AMOUNT_EXCEEDED": {
+      "capture": {
+        "ok": false,
+        "status": 422,
+        "issue": "MAX_CAPTURE_AMOUNT_EXCEEDED",
+        "debugId": "70c28ae654da",
+        "message": "capture 422 MAX_CAPTURE_AMOUNT_EXCEEDED debug 70c28ae654da"
+      },
+      "void": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934f153dee",
+        "message": "void 403 UNKNOWN debug ca5934f153dee"
+      },
+      "reauth": {
+        "ok": false,
+        "status": 403,
+        "issue": "UNKNOWN",
+        "debugId": "ca5934f183c65",
+        "message": "reauth 403 UNKNOWN debug ca5934f183c65"
+      }
+    }
+  },
+  "P6": {
+    "first": {
+      "ok": true,
+      "value": {
+        "id": "1EP460215A469024H",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/1EP460215A469024H",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/1EP460215A469024H/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934f283ef6"
+      }
+    },
+    "repeat": {
+      "ok": true,
+      "value": {
+        "id": "1EP460215A469024H",
+        "status": "COMPLETED",
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/1EP460215A469024H",
+            "rel": "self",
+            "method": "GET"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/captures/1EP460215A469024H/refund",
+            "rel": "refund",
+            "method": "POST"
+          },
+          {
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S",
+            "rel": "up",
+            "method": "GET"
+          }
+        ],
+        "debugId": "ca5934f35bffe"
+      }
+    },
+    "after": {
+      "id": "0HN7072956428234S",
+      "status": "PARTIALLY_CAPTURED",
+      "amount": {
+        "currency_code": "USD",
+        "value": "72.00"
+      },
+      "invoice_id": "probe-probe-eb7b4b36",
+      "custom_id": "probe00000000000000000000000000000000000000000000000000000000000",
+      "seller_protection": {
+        "status": "ELIGIBLE",
+        "dispute_categories": [
+          "ITEM_NOT_RECEIVED",
+          "UNAUTHORIZED_TRANSACTION"
+        ]
+      },
+      "supplementary_data": {
+        "related_ids": {
+          "order_id": "5KG96944EW408893L"
+        }
+      },
+      "payee": {
+        "email_address": "sb-quoratemerchant@business.example.com",
+        "merchant_id": "WQ64DLXQMK6R8"
+      },
+      "expiration_time": "2026-12-11T05:59:10Z",
+      "create_time": "2026-11-12T05:59:10Z",
+      "update_time": "2026-11-12T05:59:12Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S/capture",
+          "rel": "capture",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S/void",
+          "rel": "void",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/0HN7072956428234S/reauthorize",
+          "rel": "reauthorize",
+          "method": "POST"
+        },
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/5KG96944EW408893L",
+          "rel": "up",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "P7": {
+    "first": {
+      "ok": true,
+      "value": {
+        "batch_header": {
+          "payout_batch_id": "CUXJNJ2C9Y3ZJ",
+          "batch_status": "PENDING",
+          "sender_batch_header": {
+            "sender_batch_id": "probe-1fe7080a-18b0-45c9-8f72-652f601d9d1a",
+            "email_subject": "Probe payout"
+          }
+        },
+        "links": [
+          {
+            "href": "https://api.sandbox.paypal.com/v1/payments/payouts/CUXJNJ2C9Y3ZJ",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+          }
+        ]
+      }
+    },
+    "repeat": {
+      "ok": false,
+      "status": 400,
+      "issue": "Batch with given sender_batch_id already exists",
+      "debugId": "ca5934f41d8cb",
+      "message": "payout 400 Batch with given sender_batch_id already exists debug ca5934f41d8cb"
+    }
+  },
+  "P8": {
+    "payoutBatch": "CUXJNJ2C9Y3ZJ",
+    "finalStatus": "SUCCESS",
+    "secondsToFinal": 25,
+    "webhook": "measured once the webhook is registered on the deployed URL"
+  }
+}

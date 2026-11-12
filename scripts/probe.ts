@@ -71,6 +71,6 @@ if (first.ok) {
   results.P8 = { payoutBatch: id, finalStatus: status, secondsToFinal: Math.round((Date.now() - t7) / 1000), webhook: "measured once the webhook is registered on the deployed URL" };
 }
 
-writeFileSync(`docs/probe/${day}-probe.json`, JSON.stringify(results, null, 2));
+writeFileSync(`docs/probe/${new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-")}-probe.json`, JSON.stringify(results, null, 2));
 const brief = (x: unknown) => JSON.stringify(x, (k, v) => (k === "links" ? undefined : v)).slice(0, 400);
 for (const [k, v] of Object.entries(results)) console.log(k, brief(v));

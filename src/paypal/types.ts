@@ -27,7 +27,8 @@ export type MockCode =
   | "AUTHORIZATION_EXPIRED"
   | "AUTHORIZATION_VOIDED"
   | "PAYER_CANNOT_PAY"
-  | "MAX_CAPTURE_AMOUNT_EXCEEDED";
+  | "MAX_CAPTURE_AMOUNT_EXCEEDED"
+  | "TRANSACTION_REFUSED";
 
 export const mockHeader = (code: MockCode) => JSON.stringify({ mock_application_codes: code });
 

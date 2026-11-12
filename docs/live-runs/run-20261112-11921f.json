@@ -1,0 +1,1383 @@
+{
+  "scenario": "L5",
+  "pool": {
+    "id": "run-20261112-11921f",
+    "title": "Live run, 18 families, PayPal refuses family 11, teacher cancels",
+    "school": "Harbor View Elementary (demo)",
+    "teacher": "Ms. Rivera (demo)",
+    "template": "class-trip",
+    "minN": 18,
+    "deadline": "2026-11-13T02:04:14.903Z",
+    "closeAt": "2026-11-13T02:04:14.903Z",
+    "vendors": [
+      {
+        "name": "Bayline Coaches (demo)",
+        "receiver": "sb-coachnew@business.example.com",
+        "fixedCents": 144000,
+        "perHeadCents": 0
+      },
+      {
+        "name": "Harbor Science Museum (demo)",
+        "receiver": "sb-museumnew@business.example.com",
+        "fixedCents": 0,
+        "perHeadCents": 800
+      }
+    ],
+    "state": "NEEDS_TEACHER",
+    "createdAt": "2026-11-12T06:04:14.903Z",
+    "kind": "live-run",
+    "port": "sandbox",
+    "holdSource": "saved-wallet",
+    "decline": "m11",
+    "note": "Teacher cancelled after PayPal refused a capture: every capture refunded, every hold released."
+  },
+  "members": [
+    {
+      "id": "m01",
+      "poolId": "run-20261112-11921f",
+      "child": "Maya R.",
+      "family": "Rojas family",
+      "lang": "es",
+      "role": "child",
+      "seq": 0,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "3SK007324M750040L",
+      "authId": "9EU23913DP7071046",
+      "authorizedAt": "2026-11-12T06:04:17.453Z",
+      "honorUntil": "2026-11-15T06:04:17.453Z",
+      "validUntil": "2026-12-11T06:04:17.453Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f637301a6483a"
+    },
+    {
+      "id": "m02",
+      "poolId": "run-20261112-11921f",
+      "child": "Liam T.",
+      "family": "Tran family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 1,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "1RT392121D6991539",
+      "authId": "87P09749HK239452B",
+      "authorizedAt": "2026-11-12T06:04:18.264Z",
+      "honorUntil": "2026-11-15T06:04:18.264Z",
+      "validUntil": "2026-12-11T06:04:18.264Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f637301927bff"
+    },
+    {
+      "id": "m03",
+      "poolId": "run-20261112-11921f",
+      "child": "Ava P.",
+      "family": "Patel family",
+      "lang": "en",
+      "role": "child",
+      "seq": 2,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "6FN44308MW3852626",
+      "authId": "7KP26736EK3307504",
+      "authorizedAt": "2026-11-12T06:04:18.269Z",
+      "honorUntil": "2026-11-15T06:04:18.269Z",
+      "validUntil": "2026-12-11T06:04:18.269Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f63730160aa83"
+    },
+    {
+      "id": "m04",
+      "poolId": "run-20261112-11921f",
+      "child": "Noah K.",
+      "family": "Kim family",
+      "lang": "en",
+      "role": "child",
+      "seq": 3,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "3PK3547681183051D",
+      "authId": "9AD66029B8817562K",
+      "authorizedAt": "2026-11-12T06:04:18.259Z",
+      "honorUntil": "2026-11-15T06:04:18.259Z",
+      "validUntil": "2026-12-11T06:04:18.259Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f637301f515ad"
+    },
+    {
+      "id": "m05",
+      "poolId": "run-20261112-11921f",
+      "child": "Sofia G.",
+      "family": "Garcia family",
+      "lang": "es",
+      "role": "child",
+      "seq": 4,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "65X64446JP2980916",
+      "authId": "3CR1757825474762U",
+      "authorizedAt": "2026-11-12T06:04:18.071Z",
+      "honorUntil": "2026-11-15T06:04:18.071Z",
+      "validUntil": "2026-12-11T06:04:18.071Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f637301e1fb29"
+    },
+    {
+      "id": "m06",
+      "poolId": "run-20261112-11921f",
+      "child": "Ethan N.",
+      "family": "Nguyen family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 5,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "2BR087328P6839504",
+      "authId": "4V272774J1488941K",
+      "authorizedAt": "2026-11-12T06:04:20.934Z",
+      "honorUntil": "2026-11-15T06:04:20.934Z",
+      "validUntil": "2026-12-11T06:04:20.934Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f484089c47d63"
+    },
+    {
+      "id": "m07",
+      "poolId": "run-20261112-11921f",
+      "child": "Zoe B.",
+      "family": "Brown family",
+      "lang": "en",
+      "role": "child",
+      "seq": 6,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "8VS41527RC874740H",
+      "authId": "1K672184RE948132G",
+      "authorizedAt": "2026-11-12T06:04:20.540Z",
+      "honorUntil": "2026-11-15T06:04:20.540Z",
+      "validUntil": "2026-12-11T06:04:20.540Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f48408928b20c"
+    },
+    {
+      "id": "m08",
+      "poolId": "run-20261112-11921f",
+      "child": "Lucas M.",
+      "family": "Martinez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 7,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "7VG89704TJ055764H",
+      "authId": "85U92268C4190234E",
+      "authorizedAt": "2026-11-12T06:04:20.716Z",
+      "honorUntil": "2026-11-15T06:04:20.716Z",
+      "validUntil": "2026-12-11T06:04:20.716Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f484089b78534"
+    },
+    {
+      "id": "m09",
+      "poolId": "run-20261112-11921f",
+      "child": "Mia W.",
+      "family": "Williams family",
+      "lang": "en",
+      "role": "child",
+      "seq": 8,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "4MJ30539P19570832",
+      "authId": "44G997177V214981T",
+      "authorizedAt": "2026-11-12T06:04:20.730Z",
+      "honorUntil": "2026-11-15T06:04:20.730Z",
+      "validUntil": "2026-12-11T06:04:20.730Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f4840893bf625"
+    },
+    {
+      "id": "m10",
+      "poolId": "run-20261112-11921f",
+      "child": "Daniel L.",
+      "family": "Le family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 9,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "61667762LS981270S",
+      "authId": "5JB35915FP7606005",
+      "authorizedAt": "2026-11-12T06:04:20.941Z",
+      "honorUntil": "2026-11-15T06:04:20.941Z",
+      "validUntil": "2026-12-11T06:04:20.941Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f48408902d244"
+    },
+    {
+      "id": "m11",
+      "poolId": "run-20261112-11921f",
+      "child": "Isabella H.",
+      "family": "Hernandez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 10,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "2RM46913X1145503V",
+      "authId": "7X368887CY5512321",
+      "authorizedAt": "2026-11-12T06:04:23.413Z",
+      "honorUntil": "2026-11-15T06:04:23.413Z",
+      "validUntil": "2026-12-11T06:04:23.413Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f797365cf6d03"
+    },
+    {
+      "id": "m12",
+      "poolId": "run-20261112-11921f",
+      "child": "James O.",
+      "family": "Okafor family",
+      "lang": "en",
+      "role": "child",
+      "seq": 11,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "4F130357EW378791J",
+      "authId": "9G809642XP129190M",
+      "authorizedAt": "2026-11-12T06:04:23.409Z",
+      "honorUntil": "2026-11-15T06:04:23.409Z",
+      "validUntil": "2026-12-11T06:04:23.409Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f7973652c5919"
+    },
+    {
+      "id": "m13",
+      "poolId": "run-20261112-11921f",
+      "child": "Chloe D.",
+      "family": "Davis family",
+      "lang": "en",
+      "role": "child",
+      "seq": 12,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "4B9042391L9763137",
+      "authId": "7T3980938D400444T",
+      "authorizedAt": "2026-11-12T06:04:23.604Z",
+      "honorUntil": "2026-11-15T06:04:23.604Z",
+      "validUntil": "2026-12-11T06:04:23.604Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f7973655417e9"
+    },
+    {
+      "id": "m14",
+      "poolId": "run-20261112-11921f",
+      "child": "Mateo S.",
+      "family": "Sanchez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 13,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "5MU020438G540261T",
+      "authId": "66206971GE945745F",
+      "authorizedAt": "2026-11-12T06:04:23.402Z",
+      "honorUntil": "2026-11-15T06:04:23.402Z",
+      "validUntil": "2026-12-11T06:04:23.402Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f7973653ece53"
+    },
+    {
+      "id": "m15",
+      "poolId": "run-20261112-11921f",
+      "child": "Emma P.",
+      "family": "Pham family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 14,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "6WW57223YV268751X",
+      "authId": "6LU35277NF0532201",
+      "authorizedAt": "2026-11-12T06:04:24.205Z",
+      "honorUntil": "2026-11-15T06:04:24.205Z",
+      "validUntil": "2026-12-11T06:04:24.205Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f797365768382"
+    },
+    {
+      "id": "m16",
+      "poolId": "run-20261112-11921f",
+      "child": "Leo J.",
+      "family": "Johnson family",
+      "lang": "en",
+      "role": "child",
+      "seq": 15,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "3TV57214DH423150A",
+      "authId": "8VB36473LM847262S",
+      "authorizedAt": "2026-11-12T06:04:26.498Z",
+      "honorUntil": "2026-11-15T06:04:26.498Z",
+      "validUntil": "2026-12-11T06:04:26.498Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f517346d1beee"
+    },
+    {
+      "id": "m17",
+      "poolId": "run-20261112-11921f",
+      "child": "Aria C.",
+      "family": "Cruz family",
+      "lang": "es",
+      "role": "child",
+      "seq": 16,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "7H021464PY514024S",
+      "authId": "0BR47079PR295005T",
+      "authorizedAt": "2026-11-12T06:04:26.477Z",
+      "honorUntil": "2026-11-15T06:04:26.477Z",
+      "validUntil": "2026-12-11T06:04:26.477Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f5173466353cb"
+    },
+    {
+      "id": "m18",
+      "poolId": "run-20261112-11921f",
+      "child": "Henry W.",
+      "family": "Wong family",
+      "lang": "en",
+      "role": "child",
+      "seq": 17,
+      "capCents": 8800,
+      "state": "RELEASED",
+      "orderId": "2FY01889AR775070Y",
+      "authId": "1K382376BY495461S",
+      "authorizedAt": "2026-11-12T06:04:26.886Z",
+      "honorUntil": "2026-11-15T06:04:26.886Z",
+      "validUntil": "2026-12-11T06:04:26.886Z",
+      "renewAt": null,
+      "approvedHash": "2844572874c989e25395d2a84d412f6b156dfa20817b53c8f48196036a6a137b",
+      "source": "saved-wallet",
+      "debugId": "f51734676b29a"
+    }
+  ],
+  "close": {
+    "state": "NEEDS_TEACHER",
+    "poolId": "run-20261112-11921f",
+    "closeAttempt": 1,
+    "port": "sandbox",
+    "plan": null,
+    "members": [
+      {
+        "id": "m01",
+        "label": "Maya R.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "3UB04961JD370824G",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "7J104632L2093353H",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m02",
+        "label": "Liam T.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "5FY78986WU0891036",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "8BM12787JG0939052",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m03",
+        "label": "Ava P.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "0MT17243R76739249",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "69G14097RB824372G",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m04",
+        "label": "Noah K.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "7TC031820R927215S",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "4S824835YH087632J",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m05",
+        "label": "Sofia G.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "7RM70268TE240015C",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "2PV99092NX017364C",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m06",
+        "label": "Ethan N.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "21572001J8804334U",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "8WA07805PU069450B",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m07",
+        "label": "Zoe B.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "9DJ842585U084292W",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "2TF27000X15414937",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m08",
+        "label": "Lucas M.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "4HY55519EM7769102",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "44A800144V258992L",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m09",
+        "label": "Mia W.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "3BP60288376821732",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "8LJ7297321618974C",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m10",
+        "label": "Daniel L.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [
+          {
+            "captureId": "6GA95575P8437881K",
+            "cents": 8800
+          }
+        ],
+        "refunds": [
+          {
+            "refundId": "08R5530427205394A",
+            "cents": 8800
+          }
+        ]
+      },
+      {
+        "id": "m11",
+        "label": "Isabella H.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": [],
+        "note": "capture 422 PAYER_CANNOT_PAY debug 70c28ae654da"
+      },
+      {
+        "id": "m12",
+        "label": "James O.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m13",
+        "label": "Chloe D.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m14",
+        "label": "Mateo S.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m15",
+        "label": "Emma P.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m16",
+        "label": "Leo J.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m17",
+        "label": "Aria C.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      },
+      {
+        "id": "m18",
+        "label": "Henry W.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "RELEASED",
+        "verdict": "OBSERVED",
+        "chargedCents": 0,
+        "releasedCents": 8800,
+        "captures": [],
+        "refunds": []
+      }
+    ],
+    "steps": [
+      "Read back 18 holds",
+      "Share per child $88.00 for 18 children, total $1584.00",
+      "Maya R.: captured $88.00",
+      "Liam T.: captured $88.00",
+      "Ava P.: captured $88.00",
+      "Noah K.: captured $88.00",
+      "Sofia G.: captured $88.00",
+      "Ethan N.: captured $88.00",
+      "Zoe B.: captured $88.00",
+      "Lucas M.: captured $88.00",
+      "Mia W.: captured $88.00",
+      "Daniel L.: captured $88.00",
+      "Isabella H.: PayPal declined the capture (capture 422 PAYER_CANNOT_PAY); re-sharing among 17 children",
+      "Needs the teacher: 17 children after a decline, 18 needed",
+      "Teacher cancelled the trip",
+      "Maya R.: refunded $88.00",
+      "Liam T.: refunded $88.00",
+      "Ava P.: refunded $88.00",
+      "Noah K.: refunded $88.00",
+      "Sofia G.: refunded $88.00",
+      "Ethan N.: refunded $88.00",
+      "Zoe B.: refunded $88.00",
+      "Lucas M.: refunded $88.00",
+      "Mia W.: refunded $88.00",
+      "Daniel L.: refunded $88.00"
+    ],
+    "options": [
+      {
+        "code": "CANCEL",
+        "text": "Cancelled. Every family refunded and released."
+      }
+    ],
+    "startedAt": "2026-11-12T06:04:26.915Z",
+    "finishedAt": "2026-11-12T06:06:24.845Z"
+  },
+  "attempts": [
+    {
+      "id": "b2fb343097ce129370b006c15e6e7ec7776d",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m01",
+      "op": "capture",
+      "requestId": "b2fb343097ce129370b006c15e6e7ec7776d",
+      "payloadHash": "4f9ab8d30e9fa1cdedcf1f650961c2f725cc900dba4db901fea8804d2fe8a2b3",
+      "startedAt": "2026-11-12T06:04:54.540Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "3UB04961JD370824G",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:04:57.477Z"
+    },
+    {
+      "id": "25e01489be8a8427c76b1421d35b5452f8a2",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m02",
+      "op": "capture",
+      "requestId": "25e01489be8a8427c76b1421d35b5452f8a2",
+      "payloadHash": "b5e3e99e4c455635c5aa84c608aab64577a25b840fe68a26e5df771a5bd6b215",
+      "startedAt": "2026-11-12T06:04:57.487Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "5FY78986WU0891036",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:00.635Z"
+    },
+    {
+      "id": "a528022462e9e5af02b447ed7ee112c182a4",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m03",
+      "op": "capture",
+      "requestId": "a528022462e9e5af02b447ed7ee112c182a4",
+      "payloadHash": "d922d282faab11c68240377f4f5b472a73cc8b8cdf1fe33653bd0d7d9dc7acdb",
+      "startedAt": "2026-11-12T06:05:00.640Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "0MT17243R76739249",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:03.115Z"
+    },
+    {
+      "id": "23f755c5e37a71e63216cab24e63acdc8714",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m04",
+      "op": "capture",
+      "requestId": "23f755c5e37a71e63216cab24e63acdc8714",
+      "payloadHash": "5f6d090162e09b691ec5c16126ea3bd64d3618e1484f011ca56384799969f042",
+      "startedAt": "2026-11-12T06:05:03.120Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "7TC031820R927215S",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:06.253Z"
+    },
+    {
+      "id": "7c2ab31d1e72aaed80aa5863ecc218c36be4",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m05",
+      "op": "capture",
+      "requestId": "7c2ab31d1e72aaed80aa5863ecc218c36be4",
+      "payloadHash": "448975143285da63eb7c52b78878bf0ec28f31374e243b454ea967c31de629da",
+      "startedAt": "2026-11-12T06:05:06.265Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "7RM70268TE240015C",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:09.159Z"
+    },
+    {
+      "id": "909792f04e1fc8e13caaeacf193e9291372b",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m06",
+      "op": "capture",
+      "requestId": "909792f04e1fc8e13caaeacf193e9291372b",
+      "payloadHash": "5cf24e4d0472949cbd95a43ab9f1e0f18618afa87675818b12164e880ddedf58",
+      "startedAt": "2026-11-12T06:05:09.184Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "21572001J8804334U",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:11.949Z"
+    },
+    {
+      "id": "1a17ea13c9e11385cc5c65251275cab15831",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m07",
+      "op": "capture",
+      "requestId": "1a17ea13c9e11385cc5c65251275cab15831",
+      "payloadHash": "ad4f7c685eb2206bf1ca5ec342fa05b99413be78b37364ca230bac97516b277d",
+      "startedAt": "2026-11-12T06:05:11.975Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "9DJ842585U084292W",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:15.126Z"
+    },
+    {
+      "id": "6a4b2e608e403c681cd2cf4e2e96826f16e7",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m08",
+      "op": "capture",
+      "requestId": "6a4b2e608e403c681cd2cf4e2e96826f16e7",
+      "payloadHash": "17c78ec9ab1c5c716010a70e3ac214c02fbda8c9d1a9a876cae962b6ca10a20d",
+      "startedAt": "2026-11-12T06:05:15.132Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "4HY55519EM7769102",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:18.662Z"
+    },
+    {
+      "id": "8fc0d8ecbb460bd1f0315a8b442b4b083d72",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m09",
+      "op": "capture",
+      "requestId": "8fc0d8ecbb460bd1f0315a8b442b4b083d72",
+      "payloadHash": "96f9eaf20a9d98297dbd690349aac5e0e9a42da6234d1a38a465ef3262606f5c",
+      "startedAt": "2026-11-12T06:05:18.668Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "3BP60288376821732",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:21.586Z"
+    },
+    {
+      "id": "3d1160ed50c0ac53a8bc1e5420531bc6c138",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m10",
+      "op": "capture",
+      "requestId": "3d1160ed50c0ac53a8bc1e5420531bc6c138",
+      "payloadHash": "0aba932dbb2661464106f551dfd030fab53b0a9273fb358704d4715254cd2c16",
+      "startedAt": "2026-11-12T06:05:21.596Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "6GA95575P8437881K",
+          "status": "COMPLETED",
+          "cents": 8800
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:24.730Z"
+    },
+    {
+      "id": "44f3a2f4be82bd37e41e2f73da8061218c19",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m11",
+      "op": "capture",
+      "requestId": "44f3a2f4be82bd37e41e2f73da8061218c19",
+      "payloadHash": "5b81917867d6a1f50ce76e69fdfd71acec15b9a72fc4331bfbdff110e3bc23e9",
+      "startedAt": "2026-11-12T06:05:24.739Z",
+      "result": {
+        "ok": false,
+        "error": "capture 422 PAYER_CANNOT_PAY debug 70c28ae654da"
+      },
+      "finishedAt": "2026-11-12T06:05:26.066Z"
+    },
+    {
+      "id": "be2317478a5d5da933c27dcd82350db8f89f",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m01",
+      "op": "refund",
+      "requestId": "be2317478a5d5da933c27dcd82350db8f89f",
+      "payloadHash": "02f33749df792072323904c2f6dcad7daabdd0319c60b255e9d55d3a38994605",
+      "startedAt": "2026-11-12T06:05:26.072Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "7J104632L2093353H",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:28.937Z"
+    },
+    {
+      "id": "745752b2a7a0b5d835cfaa3ff93e7850a499",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m01",
+      "op": "void",
+      "requestId": "745752b2a7a0b5d835cfaa3ff93e7850a499",
+      "payloadHash": "ef17b1655f98404d65e12b222c04cab9f7839737ca185d2c1b4b4b23890cfa0a",
+      "startedAt": "2026-11-12T06:05:28.943Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f592074002f57"
+      },
+      "finishedAt": "2026-11-12T06:05:30.875Z"
+    },
+    {
+      "id": "7febda3f0b01faa2cbb994af8c2d55f326eb",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m02",
+      "op": "refund",
+      "requestId": "7febda3f0b01faa2cbb994af8c2d55f326eb",
+      "payloadHash": "3cfcf7235bb08fb59e6ca7c39deba75fb3f06ab9f522fc06fa891ccc0d857dff",
+      "startedAt": "2026-11-12T06:05:30.883Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "8BM12787JG0939052",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:33.560Z"
+    },
+    {
+      "id": "15935e2e90db2036b125b6dee98f5a5347d7",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m02",
+      "op": "void",
+      "requestId": "15935e2e90db2036b125b6dee98f5a5347d7",
+      "payloadHash": "43cfad0301374da59bbb7dad524f30c51e5da6535ae60d212aa4f4406c089481",
+      "startedAt": "2026-11-12T06:05:33.566Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f124198cc2e4f"
+      },
+      "finishedAt": "2026-11-12T06:05:34.530Z"
+    },
+    {
+      "id": "dfd5c9fda3e79c6475b8c7bf62b41b2e8fe6",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m03",
+      "op": "refund",
+      "requestId": "dfd5c9fda3e79c6475b8c7bf62b41b2e8fe6",
+      "payloadHash": "6f09fdc94619b8bb8ffd9d0d865f5082d71d40ddbedec80cc89e3b2558429c18",
+      "startedAt": "2026-11-12T06:05:34.537Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "69G14097RB824372G",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:37.470Z"
+    },
+    {
+      "id": "f0330c3b465e0aa54c71122791c059aa90ab",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m03",
+      "op": "void",
+      "requestId": "f0330c3b465e0aa54c71122791c059aa90ab",
+      "payloadHash": "b402fed67533940a7020c26ff7f97b05ffcbe792b267d08dccad8fd606dc2139",
+      "startedAt": "2026-11-12T06:05:37.476Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f393858c9fff9"
+      },
+      "finishedAt": "2026-11-12T06:05:38.553Z"
+    },
+    {
+      "id": "0abafde4aa57767a9fc9672d099e546e76e7",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m04",
+      "op": "refund",
+      "requestId": "0abafde4aa57767a9fc9672d099e546e76e7",
+      "payloadHash": "2c777872112b53b9357c57360a2adf8f7f8fd7f2229acb767fb6eca6d2f3a30a",
+      "startedAt": "2026-11-12T06:05:38.559Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "4S824835YH087632J",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:41.270Z"
+    },
+    {
+      "id": "caa7fc1d5c800e481ead039c948f0c6f4bbb",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m04",
+      "op": "void",
+      "requestId": "caa7fc1d5c800e481ead039c948f0c6f4bbb",
+      "payloadHash": "9dc435609e47621f63b2cfa1c52abd45d13ecad4417d3b2e5ed3081fdc6e4d29",
+      "startedAt": "2026-11-12T06:05:41.280Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f771078233a5f"
+      },
+      "finishedAt": "2026-11-12T06:05:42.702Z"
+    },
+    {
+      "id": "073a39b72d7a33808734f5011dc7b24c1bb4",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m05",
+      "op": "refund",
+      "requestId": "073a39b72d7a33808734f5011dc7b24c1bb4",
+      "payloadHash": "1cf89c933cb1b8253912529e012d59dd32d3dc74742086f2c384553503a38bfd",
+      "startedAt": "2026-11-12T06:05:42.726Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "2PV99092NX017364C",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:45.133Z"
+    },
+    {
+      "id": "05ec1b55c06c8820902db558e068a0e3f9b0",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m05",
+      "op": "void",
+      "requestId": "05ec1b55c06c8820902db558e068a0e3f9b0",
+      "payloadHash": "7839a654e048c5ed52b4c9194419924ac69e73a6f22136503fd12986bf3541aa",
+      "startedAt": "2026-11-12T06:05:45.160Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f95708600595d"
+      },
+      "finishedAt": "2026-11-12T06:05:46.901Z"
+    },
+    {
+      "id": "25a540dfc59d57729148665a80c4489544b2",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m06",
+      "op": "refund",
+      "requestId": "25a540dfc59d57729148665a80c4489544b2",
+      "payloadHash": "91ecd254ca754bcd28359f6398f97e475140120d678b091dac4a4953a0ffa010",
+      "startedAt": "2026-11-12T06:05:46.918Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "8WA07805PU069450B",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:50.290Z"
+    },
+    {
+      "id": "e859888099c8a144bd81bb5edd52520ddb71",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m06",
+      "op": "void",
+      "requestId": "e859888099c8a144bd81bb5edd52520ddb71",
+      "payloadHash": "24e49f51aa1e98a73c25874ebae91c5e315d9ec793f9ddfeda40a94f778bd440",
+      "startedAt": "2026-11-12T06:05:50.304Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f195539f66713"
+      },
+      "finishedAt": "2026-11-12T06:05:51.580Z"
+    },
+    {
+      "id": "58d00dbcfe2827b914bacfedf85eb59151f6",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m07",
+      "op": "refund",
+      "requestId": "58d00dbcfe2827b914bacfedf85eb59151f6",
+      "payloadHash": "fdbc5fc6aec30f96230c6fb66b5ed99fce622bac8e57f4b90a585391b0a4fd33",
+      "startedAt": "2026-11-12T06:05:51.604Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "2TF27000X15414937",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:55.031Z"
+    },
+    {
+      "id": "dd093679ce9f1b197507471371442b14dcf1",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m07",
+      "op": "void",
+      "requestId": "dd093679ce9f1b197507471371442b14dcf1",
+      "payloadHash": "7ea31c56d8d34b95fa777eea813ca8bf6bfe32f9f4285db38d580285ee4f5720",
+      "startedAt": "2026-11-12T06:05:55.057Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f27546112ebb2"
+      },
+      "finishedAt": "2026-11-12T06:05:56.441Z"
+    },
+    {
+      "id": "9fef702c90a5af68fc3bd05f686b01e02c80",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m08",
+      "op": "refund",
+      "requestId": "9fef702c90a5af68fc3bd05f686b01e02c80",
+      "payloadHash": "3e62fe587dcbc87b1101bfd139b853219dfc1d7e4cac2ff807c5ab7a795c63c4",
+      "startedAt": "2026-11-12T06:05:56.453Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "44A800144V258992L",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:05:59.776Z"
+    },
+    {
+      "id": "44871586ba9922ef53523b77589b024b5284",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m08",
+      "op": "void",
+      "requestId": "44871586ba9922ef53523b77589b024b5284",
+      "payloadHash": "948fd70048baaae0f9b79f0703ecc30b718cc8af080ac780e846b9a6f21f7faa",
+      "startedAt": "2026-11-12T06:05:59.787Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f715512d32f9a"
+      },
+      "finishedAt": "2026-11-12T06:06:01.613Z"
+    },
+    {
+      "id": "719e98da70b2d1ce0d51590bee9c49cecb62",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m09",
+      "op": "refund",
+      "requestId": "719e98da70b2d1ce0d51590bee9c49cecb62",
+      "payloadHash": "21532f2ca7d22d603ce374445bfe2c352494240b64c5b576ae111f2fd2c9b6a4",
+      "startedAt": "2026-11-12T06:06:01.620Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "8LJ7297321618974C",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:06:04.715Z"
+    },
+    {
+      "id": "942aebe362418834e783292e5ec374914040",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m09",
+      "op": "void",
+      "requestId": "942aebe362418834e783292e5ec374914040",
+      "payloadHash": "a29f0b35af9cdba70ddf818a1ef00c659ccaf6f8051e7ec93e1e5f67eed019bc",
+      "startedAt": "2026-11-12T06:06:04.723Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f554552801536"
+      },
+      "finishedAt": "2026-11-12T06:06:06.236Z"
+    },
+    {
+      "id": "c77cbf0ac3868759472c83b99373a67a4179",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m10",
+      "op": "refund",
+      "requestId": "c77cbf0ac3868759472c83b99373a67a4179",
+      "payloadHash": "dae853452ede937ddce428ded5e09319900536f9b52c829cab25b705d11aa007",
+      "startedAt": "2026-11-12T06:06:06.264Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "refundId": "08R5530427205394A",
+          "status": "COMPLETED"
+        }
+      },
+      "finishedAt": "2026-11-12T06:06:09.209Z"
+    },
+    {
+      "id": "b1581be8baace1f94514ec0eca7428b10a76",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m10",
+      "op": "void",
+      "requestId": "b1581be8baace1f94514ec0eca7428b10a76",
+      "payloadHash": "0a69d937c9a6f1a01acde9e531d29349bfef92fb1cb222e28d79e1dc9c77902e",
+      "startedAt": "2026-11-12T06:06:09.226Z",
+      "result": {
+        "ok": false,
+        "error": "void 422 PREVIOUSLY_CAPTURED debug f7199837f2e70"
+      },
+      "finishedAt": "2026-11-12T06:06:10.429Z"
+    },
+    {
+      "id": "a04c32db79af640750c26eb964bee88a0a75",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m11",
+      "op": "void",
+      "requestId": "a04c32db79af640750c26eb964bee88a0a75",
+      "payloadHash": "0cbf448a9c4e29ddd58895f8f9f4b3e362a9f89f0face02b829f99302c5d2d73",
+      "startedAt": "2026-11-12T06:06:10.435Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:12.330Z"
+    },
+    {
+      "id": "5ce93890eea6ce2f24680550b209032ebe6e",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m12",
+      "op": "void",
+      "requestId": "5ce93890eea6ce2f24680550b209032ebe6e",
+      "payloadHash": "9af6f7879b048c0277aa55803ea56d3f0df9319ae3a00f6e4bd78c9e94a5b399",
+      "startedAt": "2026-11-12T06:06:12.345Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:14.651Z"
+    },
+    {
+      "id": "461adabc5988b7fd032b798cb93fb669f4b3",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m13",
+      "op": "void",
+      "requestId": "461adabc5988b7fd032b798cb93fb669f4b3",
+      "payloadHash": "80bd6338e70c06aa692535d6e4be35f3b598b46acc70d99505066f4b88c76785",
+      "startedAt": "2026-11-12T06:06:14.659Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:16.172Z"
+    },
+    {
+      "id": "9a245160a079087680124d6b21421e404a9f",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m14",
+      "op": "void",
+      "requestId": "9a245160a079087680124d6b21421e404a9f",
+      "payloadHash": "91a03d8533e2d884e694f5bd1680e9d58b01a883dda95f483408eecb26c608b2",
+      "startedAt": "2026-11-12T06:06:16.178Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:18.092Z"
+    },
+    {
+      "id": "e064c52d72a77e64b488c28504df950d679c",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m15",
+      "op": "void",
+      "requestId": "e064c52d72a77e64b488c28504df950d679c",
+      "payloadHash": "7b4090f6d775ecee14736b6e2000804161f352db1931ebdb29dcb4d0772447f2",
+      "startedAt": "2026-11-12T06:06:18.103Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:19.631Z"
+    },
+    {
+      "id": "b0ae587be18618cc3a31bcc95f3c5b01c3fc",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m16",
+      "op": "void",
+      "requestId": "b0ae587be18618cc3a31bcc95f3c5b01c3fc",
+      "payloadHash": "c13d1a9e6add30d56976472c0e195f35ac3e14d8dfd517c1a02a3b9ddd4fec96",
+      "startedAt": "2026-11-12T06:06:19.641Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:21.487Z"
+    },
+    {
+      "id": "e066c46a748d420e03daa8e1a95402794580",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m17",
+      "op": "void",
+      "requestId": "e066c46a748d420e03daa8e1a95402794580",
+      "payloadHash": "6a2a497604aa417b336a4ec9cf7b67a89a002c97703229039f3301c9e8e73c15",
+      "startedAt": "2026-11-12T06:06:21.496Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:23.354Z"
+    },
+    {
+      "id": "b530a12d11d21154eb670ba9005022151125",
+      "poolId": "run-20261112-11921f",
+      "memberId": "m18",
+      "op": "void",
+      "requestId": "b530a12d11d21154eb670ba9005022151125",
+      "payloadHash": "bb0e6659ed18c16a428b9fe05e3328157e0ce3596fa4726eac4d431ffdf1e36d",
+      "startedAt": "2026-11-12T06:06:23.359Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:06:24.841Z"
+    }
+  ],
+  "preview": {
+    "ok": false,
+    "reason": "INFEASIBLE",
+    "total": 144000,
+    "shortfallCents": 144000
+  },
+  "heldCount": 0,
+  "seconds": 130
+}

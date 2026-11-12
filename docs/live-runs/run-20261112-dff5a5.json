@@ -1,0 +1,1261 @@
+{
+  "pool": {
+    "id": "run-20261112-dff5a5",
+    "title": "Live run, 20 families, PayPal declines family 7",
+    "school": "Harbor View Elementary (demo)",
+    "teacher": "Ms. Rivera (demo)",
+    "template": "class-trip",
+    "minN": 18,
+    "deadline": "2026-11-13T02:11:45.019Z",
+    "closeAt": "2026-11-13T02:11:45.019Z",
+    "vendors": [
+      {
+        "name": "Bayline Coaches (demo)",
+        "receiver": "sb-coachnew@business.example.com",
+        "fixedCents": 144000,
+        "perHeadCents": 0
+      },
+      {
+        "name": "Harbor Science Museum (demo)",
+        "receiver": "sb-museumnew@business.example.com",
+        "fixedCents": 0,
+        "perHeadCents": 800
+      }
+    ],
+    "state": "FAILED",
+    "createdAt": "2026-11-12T06:11:45.019Z",
+    "kind": "live-run",
+    "port": "sandbox",
+    "holdSource": "saved-wallet",
+    "decline": "m07",
+    "note": "payout 422 INSUFFICIENT_FUNDS debug ca593657d49f0"
+  },
+  "members": [
+    {
+      "id": "m01",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Maya R.",
+      "family": "Rojas family",
+      "lang": "es",
+      "role": "child",
+      "seq": 0,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "91Y23718NX701625R",
+      "authId": "4GP60560DH330273S",
+      "authorizedAt": "2026-11-12T06:11:49.024Z",
+      "honorUntil": "2026-11-15T06:11:49.024Z",
+      "validUntil": "2026-12-11T06:11:49.024Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f42058330c9b1"
+    },
+    {
+      "id": "m02",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Liam T.",
+      "family": "Tran family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 1,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "9U331146AG3123118",
+      "authId": "9V3662917M317172S",
+      "authorizedAt": "2026-11-12T06:11:49.170Z",
+      "honorUntil": "2026-11-15T06:11:49.170Z",
+      "validUntil": "2026-12-11T06:11:49.170Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f420583f6b3f2"
+    },
+    {
+      "id": "m03",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Ava P.",
+      "family": "Patel family",
+      "lang": "en",
+      "role": "child",
+      "seq": 2,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "8M92940833485602C",
+      "authId": "33H95742UA1063223",
+      "authorizedAt": "2026-11-12T06:11:48.798Z",
+      "honorUntil": "2026-11-15T06:11:48.798Z",
+      "validUntil": "2026-12-11T06:11:48.798Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f4205835d7eb8"
+    },
+    {
+      "id": "m04",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Noah K.",
+      "family": "Kim family",
+      "lang": "en",
+      "role": "child",
+      "seq": 3,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "25R67127SG889780T",
+      "authId": "28P2357715549954P",
+      "authorizedAt": "2026-11-12T06:11:48.781Z",
+      "honorUntil": "2026-11-15T06:11:48.781Z",
+      "validUntil": "2026-12-11T06:11:48.781Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f4205835db79d"
+    },
+    {
+      "id": "m05",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Sofia G.",
+      "family": "Garcia family",
+      "lang": "es",
+      "role": "child",
+      "seq": 4,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "2F870838EL642712Y",
+      "authId": "66298264WJ5355308",
+      "authorizedAt": "2026-11-12T06:11:48.792Z",
+      "honorUntil": "2026-11-15T06:11:48.792Z",
+      "validUntil": "2026-12-11T06:11:48.792Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f4205830976a0"
+    },
+    {
+      "id": "m06",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Ethan N.",
+      "family": "Nguyen family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 5,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "7R6256029T0351125",
+      "authId": "2DJ84839JP419154H",
+      "authorizedAt": "2026-11-12T06:11:51.470Z",
+      "honorUntil": "2026-11-15T06:11:51.470Z",
+      "validUntil": "2026-12-11T06:11:51.470Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f495591f7ef62"
+    },
+    {
+      "id": "m07",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Zoe B.",
+      "family": "Brown family",
+      "lang": "en",
+      "role": "child",
+      "seq": 6,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "2S225945117888841",
+      "authId": "4U480234VF036742K",
+      "authorizedAt": "2026-11-12T06:11:51.663Z",
+      "honorUntil": "2026-11-15T06:11:51.663Z",
+      "validUntil": "2026-12-11T06:11:51.663Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f495591e1479f"
+    },
+    {
+      "id": "m08",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Lucas M.",
+      "family": "Martinez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 7,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "2UF16988LW1409135",
+      "authId": "8K189955BH7644730",
+      "authorizedAt": "2026-11-12T06:11:52.065Z",
+      "honorUntil": "2026-11-15T06:11:52.065Z",
+      "validUntil": "2026-12-11T06:11:52.065Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f495591d27fbc"
+    },
+    {
+      "id": "m09",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Mia W.",
+      "family": "Williams family",
+      "lang": "en",
+      "role": "child",
+      "seq": 8,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "255602659Y512653T",
+      "authId": "053546791G695530S",
+      "authorizedAt": "2026-11-12T06:11:51.679Z",
+      "honorUntil": "2026-11-15T06:11:51.679Z",
+      "validUntil": "2026-12-11T06:11:51.679Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f4955910e63e8"
+    },
+    {
+      "id": "m10",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Daniel L.",
+      "family": "Le family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 9,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "3X3692715L9567108",
+      "authId": "6VA87718U6084491N",
+      "authorizedAt": "2026-11-12T06:11:51.825Z",
+      "honorUntil": "2026-11-15T06:11:51.825Z",
+      "validUntil": "2026-12-11T06:11:51.825Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f495591e67b61"
+    },
+    {
+      "id": "m11",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Isabella H.",
+      "family": "Hernandez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 10,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "4UG88345AA0123134",
+      "authId": "0MH591444V1504918",
+      "authorizedAt": "2026-11-12T06:11:54.756Z",
+      "honorUntil": "2026-11-15T06:11:54.756Z",
+      "validUntil": "2026-12-11T06:11:54.756Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f593434a19889"
+    },
+    {
+      "id": "m12",
+      "poolId": "run-20261112-dff5a5",
+      "child": "James O.",
+      "family": "Okafor family",
+      "lang": "en",
+      "role": "child",
+      "seq": 11,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "6CL27001XM021662G",
+      "authId": "6W250137F92497235",
+      "authorizedAt": "2026-11-12T06:11:54.932Z",
+      "honorUntil": "2026-11-15T06:11:54.932Z",
+      "validUntil": "2026-12-11T06:11:54.932Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f5934344d0ff0"
+    },
+    {
+      "id": "m13",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Chloe D.",
+      "family": "Davis family",
+      "lang": "en",
+      "role": "child",
+      "seq": 12,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "82S857707E9492703",
+      "authId": "2GL14512251455243",
+      "authorizedAt": "2026-11-12T06:11:54.731Z",
+      "honorUntil": "2026-11-15T06:11:54.731Z",
+      "validUntil": "2026-12-11T06:11:54.731Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f593434ec403c"
+    },
+    {
+      "id": "m14",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Mateo S.",
+      "family": "Sanchez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 13,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "1FH34747FY958513N",
+      "authId": "6EW9643811500533L",
+      "authorizedAt": "2026-11-12T06:11:55.338Z",
+      "honorUntil": "2026-11-15T06:11:55.338Z",
+      "validUntil": "2026-12-11T06:11:55.338Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f593434e674a2"
+    },
+    {
+      "id": "m15",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Emma P.",
+      "family": "Pham family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 14,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "4YS932114K418720N",
+      "authId": "5BC010153J7485337",
+      "authorizedAt": "2026-11-12T06:11:54.938Z",
+      "honorUntil": "2026-11-15T06:11:54.938Z",
+      "validUntil": "2026-12-11T06:11:54.938Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f5934344213be"
+    },
+    {
+      "id": "m16",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Leo J.",
+      "family": "Johnson family",
+      "lang": "en",
+      "role": "child",
+      "seq": 15,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "19M195751J521225K",
+      "authId": "37G40254MK4899804",
+      "authorizedAt": "2026-11-12T06:11:58.004Z",
+      "honorUntil": "2026-11-15T06:11:58.004Z",
+      "validUntil": "2026-12-11T06:11:58.004Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f1710090e8b67"
+    },
+    {
+      "id": "m17",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Aria C.",
+      "family": "Cruz family",
+      "lang": "es",
+      "role": "child",
+      "seq": 16,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "65621527Y1422691P",
+      "authId": "7W092293WX329314N",
+      "authorizedAt": "2026-11-12T06:11:58.015Z",
+      "honorUntil": "2026-11-15T06:11:58.015Z",
+      "validUntil": "2026-12-11T06:11:58.015Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f1710096751e1"
+    },
+    {
+      "id": "m18",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Henry W.",
+      "family": "Wong family",
+      "lang": "en",
+      "role": "child",
+      "seq": 17,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "30T78344LN780353C",
+      "authId": "61C0429439084490M",
+      "authorizedAt": "2026-11-12T06:11:57.896Z",
+      "honorUntil": "2026-11-15T06:11:57.896Z",
+      "validUntil": "2026-12-11T06:11:57.896Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f17100940d9ff"
+    },
+    {
+      "id": "m19",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Lily V.",
+      "family": "Vo family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 18,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "3KT530872H1543047",
+      "authId": "32G33826KL228501X",
+      "authorizedAt": "2026-11-12T06:11:57.602Z",
+      "honorUntil": "2026-11-15T06:11:57.602Z",
+      "validUntil": "2026-12-11T06:11:57.602Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f17100956e2c3"
+    },
+    {
+      "id": "m20",
+      "poolId": "run-20261112-dff5a5",
+      "child": "Jack A.",
+      "family": "Ahmed family",
+      "lang": "en",
+      "role": "child",
+      "seq": 19,
+      "capCents": 8800,
+      "state": "HELD",
+      "orderId": "1V339756GA772553R",
+      "authId": "7F326270WJ576545X",
+      "authorizedAt": "2026-11-12T06:11:58.636Z",
+      "honorUntil": "2026-11-15T06:11:58.636Z",
+      "validUntil": "2026-12-11T06:11:58.636Z",
+      "renewAt": null,
+      "approvedHash": "45243277ce43414a6a639d0d234b8d7403ad042e3b950b6c0198f2ab4e1f406f",
+      "source": "saved-wallet",
+      "debugId": "f171009740e6f"
+    }
+  ],
+  "close": {
+    "state": "CLOSING",
+    "steps": [
+      "Read back 20 holds",
+      "Share per child $80.00 for 20 children, total $1600.00",
+      "Maya R.: captured $80.00",
+      "Liam T.: captured $80.00",
+      "Ava P.: captured $80.00",
+      "Noah K.: captured $80.00",
+      "Sofia G.: captured $80.00",
+      "Ethan N.: captured $80.00",
+      "Zoe B.: PayPal declined the capture (capture 422 PAYER_CANNOT_PAY); re-sharing among 19 children",
+      "New share per child $83.78, total $1592.00",
+      "Lucas M.: captured $83.79",
+      "Mia W.: captured $83.79",
+      "Daniel L.: captured $83.79",
+      "Isabella H.: captured $83.79",
+      "James O.: captured $83.79",
+      "Chloe D.: captured $83.79",
+      "Mateo S.: captured $83.79",
+      "Emma P.: captured $83.79",
+      "Leo J.: captured $83.79",
+      "Aria C.: captured $83.79",
+      "Henry W.: captured $83.79",
+      "Lily V.: captured $83.79",
+      "Jack A.: captured $83.78",
+      "Maya R.: captured $3.79 (top-up)",
+      "Liam T.: captured $3.79 (top-up)",
+      "Ava P.: captured $3.79 (top-up)",
+      "Noah K.: captured $3.79 (top-up)",
+      "Sofia G.: captured $3.79 (top-up)",
+      "Ethan N.: captured $3.79 (top-up)",
+      "Charged $1592.00 against $1592.00 due: exact"
+    ],
+    "startedAt": "2026-11-12T06:11:58.650Z"
+  },
+  "attempts": [
+    {
+      "id": "1cbd0475a4c1fa9eadc2415def3ecc73356a",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m01",
+      "op": "capture",
+      "requestId": "1cbd0475a4c1fa9eadc2415def3ecc73356a",
+      "payloadHash": "9e09744cfd3ca554ec94626e599c399ad68f456011ddda128aa7cf2f1c8eb7aa",
+      "startedAt": "2026-11-12T06:12:28.609Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "8FE04234UK0504153",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:31.113Z"
+    },
+    {
+      "id": "b3265b0f1f59fd86b7acfd281b69963adc72",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m02",
+      "op": "capture",
+      "requestId": "b3265b0f1f59fd86b7acfd281b69963adc72",
+      "payloadHash": "ce4933c30d191c16691630721dcf95f8a79d50b3e1a540f064f73a38ccd87e48",
+      "startedAt": "2026-11-12T06:12:31.125Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "16W80371BE941670R",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:34.421Z"
+    },
+    {
+      "id": "4f00d531b076137c33b2f459161bf2024d58",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m03",
+      "op": "capture",
+      "requestId": "4f00d531b076137c33b2f459161bf2024d58",
+      "payloadHash": "35fbeaf878cbf2fef11fb063324c5210a1bccca77a3765b13823e4d09c541758",
+      "startedAt": "2026-11-12T06:12:34.439Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "7VM81292255969221",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:37.347Z"
+    },
+    {
+      "id": "e53469b68cad581af22f64da5ddc0fbbec9c",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m04",
+      "op": "capture",
+      "requestId": "e53469b68cad581af22f64da5ddc0fbbec9c",
+      "payloadHash": "d7889e8508997fe84aea148ddd2d61d1fd8352061683628f7b0bea3fc8ad8bd5",
+      "startedAt": "2026-11-12T06:12:37.359Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "87H40145AP787142P",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:39.821Z"
+    },
+    {
+      "id": "7348bf3ced0542e1d6e5bba97b6a0f03b227",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m05",
+      "op": "capture",
+      "requestId": "7348bf3ced0542e1d6e5bba97b6a0f03b227",
+      "payloadHash": "8936f546809e0739acbf1960c370e386599d811a4bddf206a8a7de545cf82872",
+      "startedAt": "2026-11-12T06:12:39.834Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "5HP20597EY913240V",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:42.971Z"
+    },
+    {
+      "id": "2ec86f316735902e0d5239a5b5bc7dd97a8a",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m06",
+      "op": "capture",
+      "requestId": "2ec86f316735902e0d5239a5b5bc7dd97a8a",
+      "payloadHash": "2dfd3033fd8f4af926ea4c897bd2e6e6e77ba189536e7670e00cf78b998d7b55",
+      "startedAt": "2026-11-12T06:12:43.003Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "1DM45521BE3939808",
+          "status": "COMPLETED",
+          "cents": 8000
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:45.909Z"
+    },
+    {
+      "id": "06ac425996484b966b7f8a0d9ae6bc1ba871",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m07",
+      "op": "capture",
+      "requestId": "06ac425996484b966b7f8a0d9ae6bc1ba871",
+      "payloadHash": "ccda6958a605ed449f328d52e1b9fb3e364ee591a6220fd07bd930653b848f58",
+      "startedAt": "2026-11-12T06:12:45.930Z",
+      "result": {
+        "ok": false,
+        "error": "capture 422 PAYER_CANNOT_PAY debug 70c28ae654da"
+      },
+      "finishedAt": "2026-11-12T06:12:46.826Z"
+    },
+    {
+      "id": "15982241dfad8b7c4d734450fbb6fd74521c",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m08",
+      "op": "capture",
+      "requestId": "15982241dfad8b7c4d734450fbb6fd74521c",
+      "payloadHash": "706fb1b43275e40f7d544e3dbe21ea67e01f065793f3c187bc3981246ebf1f62",
+      "startedAt": "2026-11-12T06:12:46.858Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "919894631N636932A",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:50.100Z"
+    },
+    {
+      "id": "32bcf2ca7e038e79e847ea379bd54788eb01",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m09",
+      "op": "capture",
+      "requestId": "32bcf2ca7e038e79e847ea379bd54788eb01",
+      "payloadHash": "226cc19b621896251d69e9667e6bbd96aba5550e620430a78da6e62708bf3030",
+      "startedAt": "2026-11-12T06:12:50.156Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "3XT05715CT916731S",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:53.172Z"
+    },
+    {
+      "id": "a8dd6962954f63caaa641e13139a2796bac7",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m10",
+      "op": "capture",
+      "requestId": "a8dd6962954f63caaa641e13139a2796bac7",
+      "payloadHash": "a654c0290dfa4dc0f65c05fee732a2abb2c99950450907795631035818ddb5dc",
+      "startedAt": "2026-11-12T06:12:53.189Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "7V785587U7981344S",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:55.692Z"
+    },
+    {
+      "id": "7ae49ad039a43bd9dd506b4c9b093256b8e0",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m11",
+      "op": "capture",
+      "requestId": "7ae49ad039a43bd9dd506b4c9b093256b8e0",
+      "payloadHash": "695abb3428e3bdeeb8818f8e7a67cc042d74621745853b70e879e16d4307f70e",
+      "startedAt": "2026-11-12T06:12:55.703Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "7BR52516TA941953R",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:12:58.615Z"
+    },
+    {
+      "id": "bbf6cc20abee6e64b82ad3a30bf4b24deafd",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m12",
+      "op": "capture",
+      "requestId": "bbf6cc20abee6e64b82ad3a30bf4b24deafd",
+      "payloadHash": "ed4e726b1b4aa0b76f8a371592202a4c52dafbf25d1211582e9506df03b6b682",
+      "startedAt": "2026-11-12T06:12:58.642Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "4GV3252207381304L",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:01.355Z"
+    },
+    {
+      "id": "240d446ea1a97a19070b99636899a0c617a7",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m13",
+      "op": "capture",
+      "requestId": "240d446ea1a97a19070b99636899a0c617a7",
+      "payloadHash": "d5fed563e209d9df99558259c36f0fd4a3dd6475c2c88942362c59125a15232b",
+      "startedAt": "2026-11-12T06:13:01.372Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "5X066332TU962794B",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:04.024Z"
+    },
+    {
+      "id": "605be0ff497b4dbb9da15121c7c66aed1660",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m14",
+      "op": "capture",
+      "requestId": "605be0ff497b4dbb9da15121c7c66aed1660",
+      "payloadHash": "aad67547291751cf0a8f61e8a05c0204f849f56c24d8cc0c791c71de3c1993e5",
+      "startedAt": "2026-11-12T06:13:04.037Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "08T38314BY4270341",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:06.707Z"
+    },
+    {
+      "id": "c46d6317171cabaa751e01da51e115583fac",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m15",
+      "op": "capture",
+      "requestId": "c46d6317171cabaa751e01da51e115583fac",
+      "payloadHash": "68199860161b79bdd5cf7622ad6024f4eca334c9ab7ca06e5a21d2d7854b6eeb",
+      "startedAt": "2026-11-12T06:13:06.742Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "1HD44501MT717341F",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:10.057Z"
+    },
+    {
+      "id": "bed95cc894337543c60c44d9adecf0b61e7f",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m16",
+      "op": "capture",
+      "requestId": "bed95cc894337543c60c44d9adecf0b61e7f",
+      "payloadHash": "7607541a0b243bbf37bf552c9eb067ecbe68775ef46fb3f8defc3e8d5517e234",
+      "startedAt": "2026-11-12T06:13:10.070Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "8TR4199379092420D",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:13.383Z"
+    },
+    {
+      "id": "ae7489cbea065566c48a045c0c808c238750",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m17",
+      "op": "capture",
+      "requestId": "ae7489cbea065566c48a045c0c808c238750",
+      "payloadHash": "e0b957e3326641c14a6d4b9b826b497ad31ab636e1ad213a94a13cf4aee924f4",
+      "startedAt": "2026-11-12T06:13:13.417Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "34J66451NE500983B",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:16.118Z"
+    },
+    {
+      "id": "3b6d16b2260b949c97516145970f74893198",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m18",
+      "op": "capture",
+      "requestId": "3b6d16b2260b949c97516145970f74893198",
+      "payloadHash": "35c233921cdb702cee91662d2aaadd2f3ea493855a932e66167e11906f9de575",
+      "startedAt": "2026-11-12T06:13:16.156Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "36S233548S5706228",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:19.686Z"
+    },
+    {
+      "id": "28c8ee27595530e2c6e84ecf4f4d8ac1eb49",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m19",
+      "op": "capture",
+      "requestId": "28c8ee27595530e2c6e84ecf4f4d8ac1eb49",
+      "payloadHash": "860de74e3ccdaa515c785b3bf11ada922ee104ca2779499d9ee6268ce3b94758",
+      "startedAt": "2026-11-12T06:13:19.732Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "9FM579587V748425C",
+          "status": "COMPLETED",
+          "cents": 8379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:22.807Z"
+    },
+    {
+      "id": "28bd364843706f8750105855eba5d018fbd1",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m20",
+      "op": "capture",
+      "requestId": "28bd364843706f8750105855eba5d018fbd1",
+      "payloadHash": "8d63e39a67b4cd8e0ca9d1b82d5e447dc7cf1d3550fe95a2ad1b0e32cd867883",
+      "startedAt": "2026-11-12T06:13:22.835Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "5GS75066PH661230U",
+          "status": "COMPLETED",
+          "cents": 8378
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:26.056Z"
+    },
+    {
+      "id": "e59bab23bc3dafbe7800a7a7e897db0a7a6f",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m01",
+      "op": "capture",
+      "requestId": "e59bab23bc3dafbe7800a7a7e897db0a7a6f",
+      "payloadHash": "0a82a9da5da06b7aa269d8963c6f3c53cbd2e53526f5b4d6d5d0edf99916bd2a",
+      "startedAt": "2026-11-12T06:13:26.075Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "1K577772LU627230E",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:29.574Z"
+    },
+    {
+      "id": "3812ef16c86187835851c55709a367fbc136",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m02",
+      "op": "capture",
+      "requestId": "3812ef16c86187835851c55709a367fbc136",
+      "payloadHash": "cdcde0d567b8400a9a592940b9f9ef81391f9f0af58f89150bdee2a66dc6846f",
+      "startedAt": "2026-11-12T06:13:29.588Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "4F436206SS354954X",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:32.485Z"
+    },
+    {
+      "id": "59276075cdab99dd43a9676201fba4942270",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m03",
+      "op": "capture",
+      "requestId": "59276075cdab99dd43a9676201fba4942270",
+      "payloadHash": "2d3fb3e2fda8f27f40a856f28b3c8cf75e66fecfc8ecb958e1b35418a767ef0e",
+      "startedAt": "2026-11-12T06:13:32.505Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "0CU708438T985834E",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:35.397Z"
+    },
+    {
+      "id": "d7ebe97be43005e0618ed7dd209bab61032e",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m04",
+      "op": "capture",
+      "requestId": "d7ebe97be43005e0618ed7dd209bab61032e",
+      "payloadHash": "38ae0d2f694ebcc6e5e37710d49132a9856fada05cc5eab4fd665f205841404d",
+      "startedAt": "2026-11-12T06:13:35.414Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "51Y45558PS2835042",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:38.300Z"
+    },
+    {
+      "id": "d3a08b90ad831a1538908d39a73ffdef72c1",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m05",
+      "op": "capture",
+      "requestId": "d3a08b90ad831a1538908d39a73ffdef72c1",
+      "payloadHash": "e8300dd715446efb8c429eec2e4036d418ffd8e5a8645ebfc6f12fa6545d7512",
+      "startedAt": "2026-11-12T06:13:38.317Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "1NW78062HR105713N",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:41.173Z"
+    },
+    {
+      "id": "66aa4e7905fc93b4ebe1c49869ee25872dd8",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m06",
+      "op": "capture",
+      "requestId": "66aa4e7905fc93b4ebe1c49869ee25872dd8",
+      "payloadHash": "58815b20d084115d13a1afcf0f7a4c5a0722bdbcc941357cd1bf6968cc189412",
+      "startedAt": "2026-11-12T06:13:41.186Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "36D15772LL860243G",
+          "status": "COMPLETED",
+          "cents": 379
+        }
+      },
+      "finishedAt": "2026-11-12T06:13:44.134Z"
+    },
+    {
+      "id": "43201bb5ea4a0231bcfae3a68997b6579d9f",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m01",
+      "op": "void",
+      "requestId": "43201bb5ea4a0231bcfae3a68997b6579d9f",
+      "payloadHash": "1d0eee39c1b8fb395b77c3e4df8e6656f70f665476a9ccda7c68ae592fcb6d62",
+      "startedAt": "2026-11-12T06:13:44.159Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:46.154Z"
+    },
+    {
+      "id": "40571b0cf2977b12d0e5b9f49b7148cf295d",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m02",
+      "op": "void",
+      "requestId": "40571b0cf2977b12d0e5b9f49b7148cf295d",
+      "payloadHash": "c91ab843ff708ff74e0f31131a6c56ea4bcd7c2560ef91f5a82128c0b45ba95b",
+      "startedAt": "2026-11-12T06:13:46.162Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:47.994Z"
+    },
+    {
+      "id": "da45a502f9b953699b2c391a6edf9f08d0cf",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m03",
+      "op": "void",
+      "requestId": "da45a502f9b953699b2c391a6edf9f08d0cf",
+      "payloadHash": "f4a01767c4cbfdd9d7684d13b838a22740c877485382ab3e8693b76716c53628",
+      "startedAt": "2026-11-12T06:13:48.001Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:49.837Z"
+    },
+    {
+      "id": "81192b818ec57ec24844b6d1335837245ea7",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m04",
+      "op": "void",
+      "requestId": "81192b818ec57ec24844b6d1335837245ea7",
+      "payloadHash": "7dd2de7b1f74f5dc523434eb19a6dbb2d64c05bb549df04e9a32e5471414a3b1",
+      "startedAt": "2026-11-12T06:13:49.845Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:51.705Z"
+    },
+    {
+      "id": "b8404657172d347b36ff64f72b84a6a5572f",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m05",
+      "op": "void",
+      "requestId": "b8404657172d347b36ff64f72b84a6a5572f",
+      "payloadHash": "c0c6f44ce9b6428e10b835f5581f4dd2d7fc6213203dd90d50aff8a373d26014",
+      "startedAt": "2026-11-12T06:13:51.713Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:53.591Z"
+    },
+    {
+      "id": "cbce8fe0592d51e97bdcd3e5453b1c7df73f",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m06",
+      "op": "void",
+      "requestId": "cbce8fe0592d51e97bdcd3e5453b1c7df73f",
+      "payloadHash": "ddd1c20c4b90f1e0580ef04d4f746b4bd92495e9b889d8a89a58fe0bdb48b88b",
+      "startedAt": "2026-11-12T06:13:53.603Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:55.899Z"
+    },
+    {
+      "id": "f4cebb98bcd8d3e28213f35a5aab1a303770",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m08",
+      "op": "void",
+      "requestId": "f4cebb98bcd8d3e28213f35a5aab1a303770",
+      "payloadHash": "7a293a4a8c9a527028fcb5190f4aa407fbaa3fb6b31077bae1b17840f376a32a",
+      "startedAt": "2026-11-12T06:13:55.908Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:57.729Z"
+    },
+    {
+      "id": "7b20b8411cc0d5ed45e9135ba6e0d03e9819",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m09",
+      "op": "void",
+      "requestId": "7b20b8411cc0d5ed45e9135ba6e0d03e9819",
+      "payloadHash": "4f02a738fa541eb9f1b9b2db7b2bd9992b6740cb389acb4d185bf08d91ff3f37",
+      "startedAt": "2026-11-12T06:13:57.739Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:13:59.751Z"
+    },
+    {
+      "id": "34ffbbb714eb5ec1f027cf188fb2dc5a9f29",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m10",
+      "op": "void",
+      "requestId": "34ffbbb714eb5ec1f027cf188fb2dc5a9f29",
+      "payloadHash": "e402736cb00bf6c9fdc38e03aa1a39585d5624324fcb02f0accd21f1996371c1",
+      "startedAt": "2026-11-12T06:13:59.769Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:02.151Z"
+    },
+    {
+      "id": "32b326a17171fdcc26f002912f5724af40f0",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m11",
+      "op": "void",
+      "requestId": "32b326a17171fdcc26f002912f5724af40f0",
+      "payloadHash": "f85055d0ad26004aab9b338b000c772476c0c208a303d6fc6feb82657febf060",
+      "startedAt": "2026-11-12T06:14:02.161Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:03.765Z"
+    },
+    {
+      "id": "ab19fd035315feaca778f2485f61d55a75b0",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m12",
+      "op": "void",
+      "requestId": "ab19fd035315feaca778f2485f61d55a75b0",
+      "payloadHash": "9af8b8221bfd439a0fedb7d15b41c2628d45339d279af81d49b50366b0f86e26",
+      "startedAt": "2026-11-12T06:14:03.771Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:05.890Z"
+    },
+    {
+      "id": "05730c861e11462aaf92f358e9fd75d0a7ca",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m13",
+      "op": "void",
+      "requestId": "05730c861e11462aaf92f358e9fd75d0a7ca",
+      "payloadHash": "cb00728a11bd1b5722afb77ebe1a0ee1eaddf72fb209e597f8f138fa47c15a0b",
+      "startedAt": "2026-11-12T06:14:05.898Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:08.199Z"
+    },
+    {
+      "id": "a20473fab5332ebac33ec1c6b44cb385ac02",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m14",
+      "op": "void",
+      "requestId": "a20473fab5332ebac33ec1c6b44cb385ac02",
+      "payloadHash": "62844298addcb2f60593c5144e05a0e528b2415c55e148310f2bf061d9bfd351",
+      "startedAt": "2026-11-12T06:14:08.219Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:10.150Z"
+    },
+    {
+      "id": "85cb4262b5606fe12dc3548d862bfedd3cec",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m15",
+      "op": "void",
+      "requestId": "85cb4262b5606fe12dc3548d862bfedd3cec",
+      "payloadHash": "1fff2475d622d59160bbd253624d8b619145b297d38fcf5193902e33e8d29a82",
+      "startedAt": "2026-11-12T06:14:10.159Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:12.152Z"
+    },
+    {
+      "id": "a2f9e1085a801384784c3ba1177ad56ce412",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m16",
+      "op": "void",
+      "requestId": "a2f9e1085a801384784c3ba1177ad56ce412",
+      "payloadHash": "5c621fccb2e215d9713ce73c1691309cd28dd87ed6ec92527d34ef8de19205f0",
+      "startedAt": "2026-11-12T06:14:12.159Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:13.643Z"
+    },
+    {
+      "id": "0e904ebcf178c3a43da12397a25e04cff4d8",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m17",
+      "op": "void",
+      "requestId": "0e904ebcf178c3a43da12397a25e04cff4d8",
+      "payloadHash": "4a87cc63bbcad2d85487b47cfa19cfca09a3d16676cd0ee6fceadf344bf8b6e9",
+      "startedAt": "2026-11-12T06:14:13.675Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:15.243Z"
+    },
+    {
+      "id": "75258ad47d0ea17d843b6c7185a5fc600880",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m18",
+      "op": "void",
+      "requestId": "75258ad47d0ea17d843b6c7185a5fc600880",
+      "payloadHash": "2c36c2c38c61e49083639554d7dba5836fdf433ab71f216cac16acdde8352721",
+      "startedAt": "2026-11-12T06:14:15.257Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:17.185Z"
+    },
+    {
+      "id": "63b3612bdd914fd1c8f514eb6b454f7ac694",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m19",
+      "op": "void",
+      "requestId": "63b3612bdd914fd1c8f514eb6b454f7ac694",
+      "payloadHash": "11845a718e5d2639624f836113a1e61d49c979d0156c57446eb1930ba4452101",
+      "startedAt": "2026-11-12T06:14:17.204Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:19.106Z"
+    },
+    {
+      "id": "a9b8ddc8a4569ceaf93257fa1abcd408cf94",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m20",
+      "op": "void",
+      "requestId": "a9b8ddc8a4569ceaf93257fa1abcd408cf94",
+      "payloadHash": "039adc71ea74fd5230a55b1211f07ef19e27f2d73b68141a089b86b9e3c62389",
+      "startedAt": "2026-11-12T06:14:19.114Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:21.547Z"
+    },
+    {
+      "id": "0c13c2c0b597a7aa4cfbe5fdba89709d9bab",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": "m07",
+      "op": "void",
+      "requestId": "0c13c2c0b597a7aa4cfbe5fdba89709d9bab",
+      "payloadHash": "64571b5286fcf6b6127bb8f7faae8b74d577c4daba2190f402854d2c6343d6cb",
+      "startedAt": "2026-11-12T06:14:21.566Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T06:14:23.035Z"
+    },
+    {
+      "id": "pool:run-20261112-dff5a5:close:1",
+      "poolId": "run-20261112-dff5a5",
+      "memberId": null,
+      "op": "payout",
+      "requestId": "pool:run-20261112-dff5a5:close:1",
+      "payloadHash": "56223ac7baa64e632da157015e0b4082d0be28ec7df2d157bacf6b13a19c37a8",
+      "startedAt": "2026-11-12T06:14:23.049Z",
+      "result": {
+        "ok": false,
+        "error": "payout 422 INSUFFICIENT_FUNDS debug ca593657d49f0"
+      },
+      "finishedAt": "2026-11-12T06:14:23.932Z"
+    }
+  ],
+  "preview": {
+    "ok": true,
+    "total": 160000,
+    "level": 8000,
+    "charges": {
+      "m01": 8000,
+      "m02": 8000,
+      "m03": 8000,
+      "m04": 8000,
+      "m05": 8000,
+      "m06": 8000,
+      "m07": 8000,
+      "m08": 8000,
+      "m09": 8000,
+      "m10": 8000,
+      "m11": 8000,
+      "m12": 8000,
+      "m13": 8000,
+      "m14": 8000,
+      "m15": 8000,
+      "m16": 8000,
+      "m17": 8000,
+      "m18": 8000,
+      "m19": 8000,
+      "m20": 8000
+    },
+    "sponsorDraw": 0
+  },
+  "heldCount": 20,
+  "seconds": 159
+}

@@ -42,7 +42,7 @@ export function vendors(): Vendor[] {
 
 const token = () => randomBytes(12).toString("base64url");
 
-function makePool(kind: Pool["kind"], title: string, n: number, port: Pool["port"], holdSource: HoldSource): { pool: Pool; members: PoolMember[] } {
+export function makePool(kind: Pool["kind"], title: string, n: number, port: Pool["port"], holdSource: HoldSource): { pool: Pool; members: PoolMember[] } {
   const now = Date.now();
   const id = `${kind === "class" ? "class" : "run"}-${new Date(now).toISOString().slice(0, 10).replace(/-/g, "")}-${randomBytes(3).toString("hex")}`;
   const pool: Pool = {
@@ -159,7 +159,7 @@ async function runInBackground(pool: Pool, members: PoolMember[], decline: boole
     let saving = Promise.resolve();
     const result = await runClose({
       pool, members: closeMembers, port, store: new LedgerAttempts(s), closeAttempt: 1,
-      faults: decline ? { m07: "INSTRUMENT_DECLINED" } : undefined,
+      faults: decline ? { m07: "PAYER_CANNOT_PAY" } : undefined,
       onStep: (_step, all) => { saving = saving.then(() => s.put("close", pool.id, pool.id, { state: "CLOSING", steps: [...all], startedAt })); },
     });
     await saving;
