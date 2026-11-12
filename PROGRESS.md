@@ -6,14 +6,15 @@
 - Repository, authorship gate, planning documents; references only in gitignored `reference/` (task list kept there too).
 - The Bursar: allocation (six properties, 10,000 cases each), renewal and hold-or-vault planner, cap and terms
   guards, attempt log, the close (decline, top-ups, cancel, crash restart, cash families), payouts with retry.
-- PayPal: probe P1 to P10 answered; 13 live sandbox runs recorded (L1 to L8 and the team-bus template), 9 of 9
-  closes exact to the cent, 8 payouts SUCCESS, 0 families above their approved amount.
+- PayPal: probe P1 to P10 answered; 13 live sandbox runs recorded (L1 to L8 and the team-bus template), 10 of 10
+  closes exact to the cent, 10 of 10 payouts SUCCESS, 0 families above their approved amount.
+- Red team (five judge agents): every defect fixed or answered, see REDTEAM_LOG.md.
 - Crew live on Gemini: Reader with quote checks, Scribe in three languages with number checks, Clerk with
   read-only Agent Toolkit tools; template fallback when the model is busy or unavailable.
 - UI: landing with motion (word reveals, count-ups, close reel, price bars, marquee), judge door with an aligned
   runs table, The Register (AG Grid, AG Charts), slip in three languages, proof ledger, Bryntum honor timeline,
   help desk, guided tour, MCP door.
-- Checks: 32 unit and property tests; six-viewport layout and axe (0 violations); nine end-to-end flows in Chromium.
+- Checks: 37 unit and property tests; six-viewport layout and axe (0 violations); nine end-to-end flows in Chromium.
 - Deployed at https://quorate.onrender.com (web, cron, Postgres from one Blueprint); recorded runs seeded.
 
 ### Waiting on Kinnoski

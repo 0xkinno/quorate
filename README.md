@@ -17,7 +17,7 @@ A working, non-trivial use of PayPal holds that solves a real problem for a real
 | Live, no login | **https://quorate.onrender.com** |
 | For judges, 60 seconds | **https://quorate.onrender.com/judge**: one button holds $88.00 for 20 families on the PayPal sandbox and closes the trip while PayPal declines family 7 |
 | Built with | PayPal Orders v2 (`AUTHORIZE`), Payments v2 (partial capture, void, reauthorize, refund), Vault v3, Payouts, Invoicing, Webhooks, sandbox negative testing, PayPal Server SDK, PayPal Agent Toolkit, JS SDK; Gemini; AG Grid and AG Charts; Bryntum Scheduler; Render |
-| Measured on the PayPal sandbox, 12 Nov 2026 | **13 live runs, 205 real holds, $13,930.00 settled, 0 cents off, 0 families charged above what they approved** ([docs/FACTS.json](docs/FACTS.json), generated, never typed) |
+| Measured on the PayPal sandbox, 12 Nov 2026 | **13 live runs, 205 real holds, 10 of 10 closes exact and paid out, $15,522.00 settled, 0 cents off, 0 families charged above what they approved** ([docs/FACTS.json](docs/FACTS.json), generated, never typed) |
 | The finding | PayPal accepted an **$80.00 capture on a $72.00 hold**. Quorate refuses it before every capture |
 
 | | |
@@ -52,7 +52,7 @@ She is not unusual. US teachers spent an average of **$895** of their own money 
 | 1 | The teacher pastes the coach quote. The Reader (Gemini) turns it into amounts, each tied to the exact words it came from; code checks every one | Teacher confirms |
 | 2 | Each family gets a slip in their language: *Held today: $88.00. Charged only if the trip runs, and less if more children go. Never more than $88.00.* | Family approves **their own hold on PayPal** |
 | 3 | The Register shows every hold, its guarantee window, and what each family would pay if the trip closed now. At 18 children the share is $88.00; at 20 it is $80.00; at 26 it is $63.38 | Nobody pays yet |
-| 4 | At the close, each family is charged its real share, the rest of every hold is released, and the coach company and the museum are paid in **one PayPal payout** | Teacher approves the close |
+| 4 | At the close time the teacher set, each family is charged its real share, the rest of every hold is released, and the coach company and the museum are paid in **one PayPal payout** | Teacher sets the close time; decides only if the close cannot finish |
 
 **Ms. Rivera confirms the trip without fronting a cent, because PayPal holds each family's share and charges only the real price once enough children are going.**
 
@@ -115,7 +115,7 @@ flowchart LR
   B <--> DB
 ```
 
-A pool moves through `OPEN -> CLOSING -> CLOSED`, or `OPEN -> LAPSED` (below the minimum at close time: every hold voided), or `CLOSING -> NEEDS_TEACHER` (the caps cannot cover the total) and then `CLOSING` again or `CANCELLED` (every capture refunded, every remainder voided). Every hold shows a verdict in plain words: **OBSERVED** (read back from PayPal in this close), **REVIEW** (needs the teacher), or **NOT OBSERVED** (PayPal returned nothing yet, which is not the same as failed).
+A pool moves through `OPEN -> CLOSING -> CLOSED`. If a close cannot finish (below the minimum, or the caps cannot cover the total), it stops at `NEEDS_TEACHER`; at the close time itself there is nothing left to wait for, so the every-minute tick cancels it to `LAPSED`: every capture refunded, every hold voided. A run started from the judge door keeps `NEEDS_TEACHER` so its options stay visible. Every hold shows a verdict in plain words: **OBSERVED** (read back from PayPal in this close), **REVIEW** (needs the teacher), or **NOT OBSERVED** (PayPal returned nothing yet, which is not the same as failed).
 
 ## The close
 
@@ -134,7 +134,7 @@ sequenceDiagram
   P-->>Q: Authorization (webhook verified)
   Q->>P: Renews holds so the guarantee covers Friday
   Note over Q: Minimum reached: the price falls with each child
-  T->>Q: Approves the close preview
+  T->>Q: Sets the close time (Friday noon)
   Q->>P: Capture each real share (final_capture false)
   P--xQ: One capture declined
   Q->>P: Re-share, top-ups within approved amounts, void remainders
@@ -171,7 +171,7 @@ A PayPal authorization is honored for 3 days and valid for 29 (probe P9). Reauth
 | | What it is | Where |
 |---|---|---|
 | **Honor timeline** (Bryntum Scheduler) | Every family's hold on one timeline: the 3-day honor window, the renewal the tick schedules, and the close line. Read-only, because amounts are decided by the Bursar, never by a drag | `/timeline`, `app/timeline/HonorTimeline.tsx` |
-| **MCP door** | A read-only JSON-RPC endpoint so a family's own assistant can check a trip (`pool_status`) and find the family's slip (`slip_link`); only the family approves on PayPal | `/api/mcp`, `app/api/mcp/route.ts` |
+| **MCP door** | A read-only JSON-RPC endpoint so a family's own assistant can check a trip (`pool_status`) and the state of a family's slip (`slip_status`); the slip link itself is never handed out, and only the family approves on PayPal | `/api/mcp`, `app/api/mcp/route.ts` |
 | **Vault path** | Trips more than 26 days out, where a hold would expire first: the family saves PayPal for the trip with the same maximum, and the real share is charged at the close | `src/bursar/renewal.ts` (`holdOrVault`), `scripts/vault-close.ts` |
 | **Second domain** | The same engine runs a team's tournament bus: other vendors, other minimum, same rule and same close | `src/pool/service.ts` (`TEMPLATES`), judge page "Same engine: a team bus" |
 
@@ -218,7 +218,7 @@ What the account setup taught us is in [FRICTION.md](FRICTION.md), written for P
 
 | Case | What happened | Proof |
 |---|---|---|
-| PayPal declines family 7 of 20 mid-close (three times, three runs) | Re-shared among 19; six families topped up $3.79 from their own holds; vendors paid $1,592.00 exactly | live runs `run-20261112-2f5570` (the GIF), `run-20261112-303059`, `run-20261112-b88276` |
+| PayPal declines family 7 of 20 mid-close (the same scenario, four runs) | Re-shared among 19; six families topped up $3.79 from their own holds; vendors paid $1,592.00 exactly | live runs `run-20261112-2f5570` (the GIF), `run-20261112-303059`, `run-20261112-b88276`, `run-20261112-dff5a5` |
 | The process dies after the 9th capture | Restarted from the attempt log; 20 captures in PayPal, not 21; vendors paid $1,600.00 | live run `run-20261112-9122dd` |
 | Only 15 of 18 children held at close time | Nothing captured; every hold voided | live run `run-20261112-2333c4` |
 | Two families can only do $40; the PTA offers up to $200 | The PTA is charged only the $96.00 gap | live run `run-20261112-7c2a65` |
@@ -233,7 +233,12 @@ What the account setup taught us is in [FRICTION.md](FRICTION.md), written for P
 | A model writes a slip note with a number we did not supply | The note is rejected and the template is sent | `tests/crew.test.ts` |
 | A parent asks the help desk for a refund | The Clerk has no money tool to call; the test fails if one ever appears | `tests/crew.test.ts` |
 | A network blip during the read-back on restart | Found by the crash run: a family was dropped and the attempt log refused the changed amounts. Fixed with retries on the same request id; re-run clean | commit history, `src/bursar/close.ts:58` |
-| Payouts while new funds are held (`INSUFFICIENT_FUNDS`) | The families' charges stand; the payout is retried with a new batch id | `scripts/retry-payouts.ts` |
+| Payouts while new funds are held (`INSUFFICIENT_FUNDS`) | The families' charges stand; the payout is retried with a new batch id | `scripts/retry-payouts.ts`, `scripts/settle-run.ts` |
+| A hold PayPal already shows as part-captured, with no capture in Quorate's own log | Held for the teacher, never captured again (the cap guard only counts captures it made) | `tests/close.test.ts` |
+| PayPal answers a capture with a 503, 429 or 401 | Not treated as a decline: the close stops and resumes with the same request ids; nobody is dropped | `tests/close.test.ts` |
+| A capture comes back PENDING | The vendor payout waits until every capture completes | `src/bursar/close.ts` |
+| A cash invoice PayPal does not show as paid | That family is held for the teacher; the payout carries only money PayPal collected | `tests/close.test.ts` |
+| The close time passes without enough children | The tick cancels: every capture refunded, every hold voided, without waiting for a person | `scripts/tick.ts` |
 
 ## Measured
 
@@ -241,20 +246,22 @@ From [docs/FACTS.json](docs/FACTS.json), generated by `scripts/facts.ts` from th
 
 | On the PayPal sandbox, 12 Nov 2026 | |
 |---|---|
-| Live runs recorded | 13, covering nine scenarios (L1 to L8 and the team-bus template). Two early runs failed and are kept: one lost the network while placing holds, one had charged every family exactly when its payout was refused and the old code stopped (fixed: charges now stand and the payout is retried) |
-| Closes exact to the cent | 9 of 9 that reached the close |
-| Closes that survived a PayPal-injected decline | 3 |
+| Live runs recorded | 13, covering nine scenarios (L1 to L8 and the team-bus template). One early run lost the network while placing holds, before any capture; it is kept. Another charged every family exactly and then had its payout refused (INSUFFICIENT_FUNDS) before refused payouts were retried; it was settled afterwards from its own attempt log (`scripts/settle-run.ts`) |
+| Closes exact to the cent | 10 of 10 that reached the close |
+| Closes that survived a PayPal-injected decline | 4 (one scenario, run four times) |
 | Real holds placed | 205 (the Vault-path run charges saved wallets and places no holds) |
-| Captures / refunds | 197 / 11 |
-| Dollars settled | $13,930.00 |
+| Captures / refunds | 222 / 11 |
+| Dollars settled | $15,522.00 |
 | Cents off, across every close | **0** |
 | Families charged above what they approved | **0** |
-| Payout batches | 8 SUCCESS to US vendor accounts; 1 DENIED, the first run, whose vendor accounts were outside a payout country, kept as a finding |
-| Tests | 32 of 32 passing (`npm test`), plus six-viewport layout and accessibility checks and nine end-to-end flows in Chromium (`tests/e2e/`) |
+| Payout batches | 10 of 10 SUCCESS. The first run's first batch was DENIED (its vendor accounts were outside a payout country) and was paid to the same vendors' US accounts; both batches are in its record |
+| Tests | 37 of 37 passing (`npm test`), plus six-viewport layout and accessibility checks and nine end-to-end flows in Chromium (`tests/e2e/`) |
+
+"Exact" means the captures minus refunds PayPal returned for a run equal what the vendors are due, to the cent, checked by the close before any payout; "settled" is money captured on the sandbox. A real hold is a PayPal authorization: the cash family and the Vault-path run place none, so they are not counted.
 
 **Both directions.** A close wrongly blocked would show NEEDS_TEACHER with enough children held; a close that should have stopped would show CLOSED below the minimum or above a cap. Neither happened in any recorded run.
 
-**Counterfactual** (a seeded model of outcomes over 1,000 generated trips, not a measurement; it uses the Bursar's own `allocate()`): when the teacher fronts, teachers put up **$1.29 million** and carry **$682,287** they never recover, counting deposits lost on trips that cancel late. When a pot collects up front, **6,132 families pay for trips that never run** and **16,194 refunds** go out. Under Quorate, teachers front **$0**, families of cancelled trips are charged **$0**, and no family pays above the final share. `npx tsx scripts/counterfactual.ts` reproduces it.
+**Counterfactual** (a seeded model of outcomes over 1,000 generated trips, not a measurement; it uses the Bursar's own `allocate()`): when the teacher fronts, teachers put up **$1.29 million** and carry **$682,287** they never recover, counting deposits lost on trips that cancel late. When a pot collects up front, **6,132 families pay for trips that never run** and **16,194 refunds** go out. Under Quorate, teachers front **$0** and families of cancelled trips are charged **$0** by design (holds are voided, never captured), and the model checks with the Bursar's own code that no family pays above the final share. `npx tsx scripts/counterfactual.ts` reproduces it.
 
 **The crew, live on Gemini** ([docs/crew-run.json](docs/crew-run.json)): one pool's Reader, Scribe (three languages) and Clerk used 4,471 input and 16,403 output tokens. On the free tier, the key's daily quota ran out during that measurement; the help desk then answers from the trip's facts and says so.
 
@@ -268,7 +275,7 @@ From [docs/FACTS.json](docs/FACTS.json), generated by `scripts/facts.ts` from th
 | Resend a PayPal call whose payload differs from the logged attempt | `src/bursar/attempts.ts:44` |
 | Let the help agent capture, refund, pay or invoice | `src/crew/clerk.ts:18`, `tests/crew.test.ts` |
 | Let a model's number become an amount | `src/crew/reader.ts:27`, `src/crew/slip.ts:37` |
-| Let a public link spend without limit | daily live-run cap and kill switch, `src/pool/service.ts:117`; help desk rate limit |
+| Let a public link spend without limit | daily live-run cap and kill switch in `startLiveRun`, `src/pool/service.ts`; help desk and quote reader rate limits |
 
 ## Where the AI is, and is not
 
@@ -363,7 +370,7 @@ src/paypal/            live.ts (Server SDK), rest.ts, cardhold.ts, invoicing.ts,
 src/crew/              reader.ts, scribe.ts, clerk.ts, slip.ts, model.ts
 src/pool/              service.ts, seed.ts, stats.ts
 src/db/store.ts        Postgres ledger, or a local file for clean-clone runs
-scripts/               probe, p10, live-close, live-scenarios, vault-close, tick, retry-payouts, facts, counterfactual, crew-cost, diagrams, vault-setup, register-webhook, reach, check-copy
+scripts/               probe.ts, p10.ts, p5b.ts, live-close.ts, live-scenarios.ts, vault-close.ts, tick.ts, retry-payouts.ts, settle-run.ts, facts.ts, evidence.ts, counterfactual.ts, crew-cost.ts, diagrams.mjs, vault-setup.ts, register-webhook.ts, reach.ts, check-copy.ts
 tests/                 allocate, renewal-guards, close, crew; e2e/layout (six viewports, axe), e2e/flows (every action)
 docs/                  FACTS.json, live-runs/, probe/, counterfactual.json, crew-run.json, images/
 ```

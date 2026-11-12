@@ -11,7 +11,7 @@ Group payments without a group payer: each family's PayPal holds their child's s
 ## Inspiration
 Every field trip starts the same way: a teacher pays for the coach on her own card, then chases twenty-six
 families for weeks. US teachers already spend an average of $895 a year of their own money on their
-classrooms (AdoptAClassroom.org, 2025). PayPal closed its Money Pools collection product in 2021, and the
+classrooms (AdoptAClassroom.org, 2025). PayPal closed its Money Pools collection product in 2021 (newsroom.uk.paypal-corp.com), and the
 problem of one person fronting money for a group never went away. We wanted the purchase to wait for the
 group, and the price to fall as the group grows.
 
@@ -49,8 +49,8 @@ each approved. If the trip does not reach its minimum, nobody is charged.
   (all written up for PayPal in FRICTION.md).
 
 ## Accomplishments that we're proud of
-13 live sandbox runs, 9 of 9 closes exact to the cent, 3 closes that survived a PayPal-injected decline,
-205 real holds, $13,930.00 settled, 0 cents off, and 0 families charged above what they approved. A run
+13 live sandbox runs, 10 of 10 closes exact to the cent and paid out, 4 closes that survived a PayPal-injected
+decline, 205 real holds, $15,522.00 settled, 0 cents off, and 0 families charged above what they approved. A run
 killed after its 9th capture restarted with no capture repeated.
 
 ## What we learned

@@ -112,9 +112,11 @@ test("APIs: status measured, stats from FACTS, MCP door read-only", async ({ req
   const stats = await (await request.get("/api/stats")).json();
   expect(stats.recorded.liveRuns.centsOff).toBe(0);
   const list = await (await request.post("/api/mcp", { data: { jsonrpc: "2.0", id: 1, method: "tools/list" } })).json();
-  expect(list.result.tools.map((t: { name: string }) => t.name)).toEqual(["pool_status", "slip_link"]);
+  expect(list.result.tools.map((t: { name: string }) => t.name)).toEqual(["pool_status", "slip_status"]);
   const call = await (await request.post("/api/mcp", { data: { jsonrpc: "2.0", id: 2, method: "tools/call", params: { name: "pool_status", arguments: { poolId: "run-20261112-2f5570" } } } })).json();
   expect(JSON.parse(call.result.content[0].text).close.exact).toBe(true);
-  const slip = await (await request.post("/api/mcp", { data: { jsonrpc: "2.0", id: 3, method: "tools/call", params: { name: "slip_link", arguments: { child: "Maya R." } } } })).json();
-  expect(JSON.parse(slip.result.content[0].text).slip).toMatch(/\/slip\//);
+  const slip = await (await request.post("/api/mcp", { data: { jsonrpc: "2.0", id: 3, method: "tools/call", params: { name: "slip_status", arguments: { child: "Maya R." } } } })).json();
+  const slipState = JSON.parse(slip.result.content[0].text);
+  expect(slipState.holdAmount).toBe("$88.00");
+  expect(JSON.stringify(slipState)).not.toContain("/slip/"); // the door never hands out slip links
 });

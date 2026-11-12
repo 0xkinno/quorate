@@ -15,7 +15,7 @@ export async function stats() {
     closes: rs.filter((r) => r.state === "CLOSED").length,
     declinesSurvived: rs.filter((r) => r.state === "CLOSED" && r.decline).length,
     centsOff: rs.reduce((s, r) => s + (r.reconciled ? Math.abs(r.reconciled.vendorsDue - r.reconciled.netCharged) : 0), 0),
-    holds: rs.reduce((s, r) => s + r.n, 0),
+    holds: rs.filter((r) => r.state !== "FAILED" && !(r as { scenario?: string }).scenario?.startsWith("L8")).reduce((s, r) => s + r.n, 0),
   });
   return { sandbox: summarize(by("sandbox")), standin: summarize(by("stand-in")), lastRun: runs.at(-1) ?? null, total: runs.length };
 }

@@ -37,10 +37,11 @@ export function CountUp({ to, prefix = "", suffix = "", decimals = 0, className 
   const inView = useInView(ref, { once: true });
   const reduce = useReducedMotion();
   const mv = useMotionValue(0);
-  const [v, setV] = useState(reduce ? to : 0);
+  // The real number is rendered on the server and without JavaScript; the count-up only replays it on view.
+  const [v, setV] = useState(to);
   useEffect(() => {
-    if (!inView || reduce) { if (reduce) setV(to); return; }
-    const c = animate(mv, to, { duration: 1.6, ease: EASE, onUpdate: (x) => setV(x) });
+    if (!inView || reduce) return;
+    const c = animate(mv, to, { from: 0, duration: 1.6, ease: EASE, onUpdate: (x) => setV(x) });
     return () => c.stop();
   }, [inView, reduce, to, mv]);
   return <span ref={ref} className={className}>{prefix}{v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}{suffix}</span>;

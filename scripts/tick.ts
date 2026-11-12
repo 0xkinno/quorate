@@ -36,12 +36,18 @@ for (const pool of await listPools("class", s)) {
   }
   // 2. Close time.
   if (now < Date.parse(pool.closeAt)) continue;
+  const fresh = await s.get<Pool>("pool", pool.id);
+  if (fresh?.state !== "OPEN") continue; // another tick claimed it
+  await s.put("pool", pool.id, pool.id, { ...fresh, state: "CLOSING" });
   const held = (await getPool(pool.id, s))!.members.filter((m) => m.state === "HELD" && m.authId);
+  const children = held.filter((m) => m.role === "child").length;
   const ctx = { pool, port, store: new LedgerAttempts(s), closeAttempt: 1,
     members: held.map((m) => ({ id: m.id, label: m.child, role: m.role, seq: m.seq, capCents: m.capCents, authId: m.authId!, approvedHash: m.approvedHash! })) };
   let result: CloseResult = await runClose(ctx);
   let state: Pool["state"] = result.state === "CLOSED" ? "CLOSED" : "NEEDS_TEACHER";
-  if (result.state === "NEEDS_TEACHER" && held.length < pool.minN) { result = await cancelClose(ctx, result); state = "LAPSED"; }
+  // At close time there is no later moment to wait for: a close that cannot finish is cancelled, every capture
+  // refunded and every hold voided, so no family stays charged for a trip that is not happening.
+  if (result.state === "NEEDS_TEACHER") { result = await cancelClose(ctx, result); state = "LAPSED"; log.push({ pool: pool.id, children, cancelled: true }); }
   await s.put("close", pool.id, pool.id, { ...result, startedAt: new Date(now).toISOString(), finishedAt: new Date().toISOString() });
   for (const o of result.members) { const m = held.find((x) => x.id === o.id)!; await s.put("member", `${pool.id}:${m.id}`, pool.id, { ...m, state: o.status === "EXPIRED" ? "RELEASED" : o.status }); }
   await s.put("pool", pool.id, pool.id, { ...pool, state });

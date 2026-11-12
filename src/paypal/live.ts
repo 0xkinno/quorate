@@ -8,11 +8,12 @@ import { PayPalError, toAmount, toCents, type AuthorizationView, type MockCode, 
  * 30 s timeout, SDK retries off: the attempt log owns retries). Payouts and webhook verification
  * are not in the SDK and go through REST (src/paypal/rest.ts).
  */
-export const env = () => ({
-  id: process.env.PAYPAL_CLIENT_ID ?? "",
-  secret: process.env.PAYPAL_CLIENT_SECRET ?? "",
-  base: process.env.PAYPAL_API_BASE ?? "https://api-m.sandbox.paypal.com",
-});
+export const env = () => {
+  const base = process.env.PAYPAL_API_BASE ?? "https://api-m.sandbox.paypal.com";
+  // Quorate runs on the PayPal sandbox only; a production base URL is refused, not silently used.
+  if (!/^https:\/\/api-m\.sandbox\.paypal\.com\/?$/.test(base)) throw new Error(`SANDBOX_ONLY refused PAYPAL_API_BASE=${base}`);
+  return { id: process.env.PAYPAL_CLIENT_ID ?? "", secret: process.env.PAYPAL_CLIENT_SECRET ?? "", base };
+};
 export const hasPayPalKeys = () => Boolean(env().id && env().secret);
 
 function sdk() {
@@ -65,7 +66,7 @@ export async function authorizeOrder(orderId: string, requestId: string) {
     const r = await sdk().orders.authorizeOrder({ id: orderId, paypalRequestId: requestId, prefer: "return=representation" });
     const auth = r.result.purchaseUnits?.[0]?.payments?.authorizations?.[0];
     if (!auth?.id) throw new PayPalError("authorizeOrder", 500, "NO_AUTHORIZATION");
-    return { authId: auth.id, status: auth.status as string, expiresAt: auth.expirationTime ?? "", amountCents: toCents(auth.amount?.value ?? "0") };
+    return { authId: auth.id, status: auth.status as string, expiresAt: auth.expirationTime ?? "", amountCents: toCents(auth.amount?.value ?? "0"), referenceId: r.result.purchaseUnits?.[0]?.referenceId ?? "" };
   } catch (e) { if (e instanceof PayPalError) throw e; wrap("authorizeOrder", e); }
 }
 

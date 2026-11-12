@@ -62,7 +62,11 @@ export async function attempt<T>(
     return value;
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
-    if (!msg.startsWith("CRASH")) await store.finish(meta.requestId, { ok: false, error: msg });
+    // Record a definite answer from PayPal (a 4xx refusal other than auth or rate limit). Anything else
+    // (crash, network, 401, 429, 5xx) leaves the row open, so a restart resends with the same request id.
+    const status = (e as { status?: number }).status;
+    const definite = typeof status === "number" && status >= 400 && status < 500 && status !== 401 && status !== 429;
+    if (definite) await store.finish(meta.requestId, { ok: false, error: msg });
     throw e;
   }
 }

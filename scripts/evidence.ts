@@ -23,7 +23,7 @@ Payouts: ${facts.liveRuns.payoutsSucceeded} SUCCESS, ${facts.liveRuns.payoutsDen
 for (const r of runs) {
   const sc = r.scenario ?? (r.pool.decline ? "L3" : "L1");
   const rc = r.close?.reconciled;
-  md += `| ${r.pool.createdAt.slice(11, 19)} | \`${r.pool.id}\` | ${sc} ${NAMES[sc] ?? ""} | ${r.members.filter((m: { authId?: string }) => m.authId).length} | ${r.pool.state} | ${rc ? usd(rc.netCharged) : "-"} | ${rc ? usd(rc.vendorsDue) : "-"} | ${r.close?.payout?.batchId ? `\`${r.close.payout.batchId}\` ${r.close.payout.status}` : "-"} |\n`;
+  md += `| ${r.pool.createdAt.slice(11, 19)} | \`${r.pool.id}\` | ${sc} ${NAMES[sc] ?? ""} | ${r.members.filter((m: { authId?: string }) => m.authId && !/^(CASH|VAULT)/.test(m.authId)).length} | ${r.pool.state} | ${rc ? usd(rc.netCharged) : "-"} | ${rc ? usd(rc.vendorsDue) : "-"} | ${r.close?.payout?.batchId ? `\`${r.close.payout.batchId}\` ${r.close.payout.status}` : "-"} |\n`;
 }
 md += `\n## Notes on each kind of run\n`;
 for (const r of runs) {
@@ -43,10 +43,10 @@ md += `
 - A run whose hold creation lost the network ("fetch failed") before any capture: no money moved. Network
   calls are now retried with the same PayPal-Request-Id.
 - A run that charged every family exactly ($1,592.00 after PayPal's decline) and then had its payout refused
-  with INSUFFICIENT_FUNDS while new funds were held; the old code stopped there. Now the charges stand and the
-  payout is retried with a new sender_batch_id.
-- The first clean close's payout was DENIED (RECEIVER_COUNTRY_NOT_ALLOWED): its vendor accounts were outside a
-  payout country. Later runs pay US vendor accounts and reach SUCCESS.
+  with INSUFFICIENT_FUNDS while new funds were held; the old code stopped there. It was settled afterwards from
+  its own attempt log (scripts/settle-run.ts). Now the charges stand and the payout is retried automatically.
+- The first clean close's first payout was DENIED (RECEIVER_COUNTRY_NOT_ALLOWED): its vendor accounts were outside
+  a payout country. The same vendors were paid on their US sandbox accounts.
 
 ## Other evidence
 - Probe answers P1 to P10 with debug ids: FINDINGS.md, raw files in docs/probe/.

@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { checkQuote, checkReply, DEMO_QUOTE, type Quote } from "../src/crew/reader";
-import { CLERK_ACTIONS, MONEY_TOOL } from "../src/crew/clerk";
+import { CLERK_ACTIONS, CLERK_TOOLS, MONEY_TOOL } from "../src/crew/clerk";
 import { numbersMatch } from "../src/crew/slip";
 
 describe("the Clerk cannot move money", () => {
   it("enables only read actions in the PayPal Agent Toolkit", () => {
     expect(CLERK_ACTIONS).toEqual({ orders: { get: true }, invoices: { get: true }, transactions: { list: true } });
+  });
+  it("allows exactly three read tools by name", () => {
+    expect([...CLERK_TOOLS]).toEqual(["get_order", "get_invoice", "list_transactions"]);
   });
   it("the money-tool pattern catches every money-moving toolkit tool", () => {
     for (const t of ["create_order", "pay_order", "create_refund", "capture_order", "send_invoice", "cancel_sent_invoice", "accept_dispute_claim", "create_subscription", "record_payment_for_invoice"])

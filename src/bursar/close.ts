@@ -31,7 +31,7 @@ export type CloseResult = {
   poolId: string; closeAttempt: number; port: PayPalPort["kind"];
   plan: Plan | null; members: MemberOut[]; steps: string[];
   payout?: { batchId: string; senderBatchId: string; status: string; items: PayoutItem[] };
-  options?: Option[]; reconciled?: { vendorsDue: number; netCharged: number; exact: boolean };
+  options?: Option[]; reconciled?: { vendorsDue: number; netCharged: number; exact: boolean; cashCents?: number; payoutCents?: number };
 };
 
 export const poolFixed = (p: PoolTerms) => p.vendors.reduce((s, v) => s + v.fixedCents, 0);
@@ -50,6 +50,8 @@ type Ctx = {
   onStep?: (step: string, all: string[]) => void;
   /** Records the cash a family gets back on their PayPal invoice (Invoicing record-refund). */
   cashRefund?: (invoiceId: string, cents: number, requestId: string) => Promise<string>;
+  /** Confirms on PayPal that a cash family's invoice is recorded as paid before it counts. */
+  cashVerify?: (invoiceId: string) => Promise<boolean>;
 };
 
 const usd = (c: number) => `$${toAmount(c)}`;
@@ -74,7 +76,10 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     return requestId(pool.id, m, op, closeAttempt, n);
   };
 
-  // 1. Freeze and read back.
+  // 1. Freeze and read back. A hold PayPal reports as already captured, in part or in full, is only
+  // accepted when our own attempt log knows those captures; otherwise it goes to the teacher, because
+  // the cap guard can only count captures it made (PayPal itself would allow 115%).
+  const logged = new Set((await store.list(pool.id)).filter((x) => x.op === "capture").map((x) => x.memberId));
   const active: (CloseMember & { capEff: number; captured: number })[] = [];
   for (const m of [...ctx.members].sort((a, b) => a.seq - b.seq)) {
     const o: MemberOut = { id: m.id, label: m.label, role: m.role, capCents: m.capCents, status: "REVIEW", verdict: "NOT OBSERVED", chargedCents: 0, releasedCents: 0, captures: [], refunds: [] };
@@ -82,6 +87,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     try { assertTermsUnchanged(m.approvedHash, memberTerms(pool, m.capCents)); }
     catch (e) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = (e as Error).message; log(`${m.label}: terms changed since approval, held for the teacher`); continue; }
     if (m.cash) {
+      if (ctx.cashVerify && !(await ctx.cashVerify(m.cash.invoiceId))) { o.verdict = "REVIEW"; o.note = `PayPal invoice ${m.cash.invoiceId} is not recorded as paid`; log(`${m.label}: cash not confirmed on the PayPal invoice, held for the teacher`); continue; }
       o.verdict = "OBSERVED"; o.note = `cash recorded on PayPal invoice ${m.cash.invoiceId}`;
       active.push({ ...m, capEff: m.capCents, captured: m.capCents });
       continue;
@@ -89,6 +95,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     try {
       const a = await readBack(port, m.authId);
       o.verdict = "OBSERVED";
+      if (a.status === "CAPTURED" || (a.status === "PARTIALLY_CAPTURED" && !logged.has(m.id))) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = `hold already ${a.status.toLowerCase().replace("_", " ")} outside this close`; log(`${m.label}: hold already ${a.status}, held for the teacher`); continue; }
       if (a.status !== "CREATED" && a.status !== "PARTIALLY_CAPTURED") { o.status = a.status === "EXPIRED" ? "EXPIRED" : "RELEASED"; o.note = `hold ${a.status}`; log(`${m.label}: hold ${a.status}, drops out`); continue; }
       if (a.amountCents < m.capCents) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = "hold smaller than approved amount"; continue; }
     } catch { o.verdict = "NOT OBSERVED"; o.note = "PayPal returned nothing for this hold yet"; continue; }
@@ -110,6 +117,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   log(`Share per child ${usd(p.level)} for ${kidsActive()} children, total ${usd(p.total)}`);
 
   // 2 to 4. Capture until every share is taken or the plan cannot be met.
+  const pending: string[] = [];
   for (let pass = 0; pass < 20; pass++) {
     let changed = false;
     for (const m of [...active]) {
@@ -124,9 +132,12 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
         const c = await attempt(store, { poolId: pool.id, memberId: m.id, op: "capture", requestId: reqId, payload: { authId: m.authId, cents: delta, final: false } },
           () => port.capture({ authId: m.authId, cents: delta, final: false, requestId: reqId, invoiceId: `${pool.id}-${m.id}-${closeAttempt}-${o.captures.length + 1}`, mock: ctx.faults?.[m.id] }));
         m.captured += c.cents; o.captures.push({ captureId: c.captureId, cents: c.cents });
+        if (c.status !== "COMPLETED") pending.push(`${m.label} ${c.status}`);
         log(`${m.label}: captured ${usd(c.cents)}${o.captures.length > 1 ? " (top-up)" : ""}`);
       } catch (e) {
-        if (!(e instanceof PayPalError) && !String((e as Error).message).match(/^(capture|INSTRUMENT|AUTHORIZATION|PAYER|MAX|TRANSACTION)/)) throw e;
+        // Only a business refusal (422) is a decline. A 401, 429, 5xx or network error is not the family's
+        // doing: the close stops and is resumed later with the same request ids.
+        if (!(e instanceof PayPalError) || e.status !== 422) throw e;
         const msg = (e as Error).message;
         if (m.captured === 0) {
           active.splice(active.indexOf(m), 1);
@@ -196,10 +207,19 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
 
   // 6. Pay the vendors in one batch.
   const n = kidsActive();
-  const items: PayoutItem[] = pool.vendors.map((v, i) => ({ receiver: v.receiver, cents: v.fixedCents + v.perHeadCents * n, senderItemId: `${pool.id}-v${i}-${closeAttempt}`, note: `${v.name}: ${n} children` }));
+  const due = pool.vendors.map((v) => v.fixedCents + v.perHeadCents * n);
+  // Cash never entered the PayPal balance: the office hands it to the first vendor, so the payout carries only
+  // what PayPal collected. Vendors still receive exactly the total due.
+  const cashCents = active.filter((m) => m.cash).reduce((s, m) => s + m.captured, 0);
+  let cashLeft = cashCents;
+  const items: PayoutItem[] = pool.vendors.map((v, i) => { const fromCash = Math.min(cashLeft, due[i]); cashLeft -= fromCash;
+    return { receiver: v.receiver, cents: due[i] - fromCash, senderItemId: `${pool.id}-v${i}-${closeAttempt}`, note: `${v.name}: ${n} children${fromCash ? ` (plus ${usd(fromCash)} cash from the office)` : ""}` }; }).filter((i) => i.cents > 0);
   const senderBatchId = `pool:${pool.id}:close:${closeAttempt}`;
   let po: { batchId: string; status: string };
-  try {
+  if (pending.length) {
+    po = { batchId: "", status: `WAITING captures pending: ${pending.join(", ")}` };
+    log(`Payout held until every capture completes (${pending.length} pending)`);
+  } else try {
     po = await attempt(store, { poolId: pool.id, memberId: null, op: "payout", requestId: senderBatchId, payload: items },
       () => port.payout({ senderBatchId, subject: "Class trip payment", items }));
     log(`Payout batch ${po.batchId}: ${items.map((i) => `${usd(i.cents)}`).join(" + ")}`);
@@ -210,7 +230,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   }
 
   return { state: "CLOSED", poolId: pool.id, closeAttempt, port: port.kind, plan: p, members: [...out.values()], steps,
-    payout: { batchId: po.batchId, senderBatchId, status: po.status, items }, reconciled: { vendorsDue: items.reduce((s, i) => s + i.cents, 0), netCharged, exact } };
+    payout: { batchId: po.batchId, senderBatchId, status: po.status, items }, reconciled: { vendorsDue: due.reduce((s, c) => s + c, 0), netCharged, exact, cashCents, payoutCents: items.reduce((s, i) => s + i.cents, 0) } };
 }
 
 /** Teacher chose cancel after partial captures: refund each capture exactly, void every remainder. */

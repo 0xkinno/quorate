@@ -37,7 +37,7 @@ describe("the close", () => {
     const { port, store, members } = setup(20);
     const r = await runClose({ pool, members, port, store, closeAttempt: 1 });
     expect(r.state).toBe("CLOSED");
-    expect(r.reconciled).toEqual({ vendorsDue: totalDue(144_000, 800, 20), netCharged: totalDue(144_000, 800, 20), exact: true });
+    expect(r.reconciled).toMatchObject({ vendorsDue: totalDue(144_000, 800, 20), netCharged: totalDue(144_000, 800, 20), exact: true, cashCents: 0 });
     expect(r.members.every((m) => m.status === "SETTLED" && m.chargedCents <= 8_800)).toBe(true);
     expect(r.plan && r.plan.ok && r.plan.level).toBe(8_000);
     expect(r.payout!.items.map((i) => i.cents)).toEqual([144_000, 16_000]);
@@ -122,6 +122,48 @@ describe("cash families", () => {
     expect(r.state).toBe("CLOSED");
     expect(refunds).toEqual([800]);
     expect(r.members.find((m) => m.id === "k19")!.chargedCents).toBe(8_000);
+    expect(r.reconciled!.exact).toBe(true);
+  });
+});
+
+describe("red-team fixes", () => {
+  it("refuses a hold PayPal shows as already part-captured when our log has no capture for it", async () => {
+    const { port, store, members } = setup(20);
+    await port.capture({ authId: members[4].authId, cents: 8_000, final: false, requestId: "outside", invoiceId: "x" }); // captured outside Quorate
+    const r = await runClose({ pool, members, port, store, closeAttempt: 1 });
+    const o = r.members.find((m) => m.id === "k4")!;
+    expect(o.verdict).toBe("REVIEW");
+    expect(port.netCaptured(members[4].authId)).toBe(8_000); // not captured a second time
+    expect(r.reconciled!.exact).toBe(true);
+  });
+
+  it("treats only a 422 refusal as a decline; a 503 stops the close for a retry with no family dropped", async () => {
+    const { port, store, members } = setup(20);
+    const orig = port.capture.bind(port);
+    let n = 0;
+    port.capture = async (x) => { if (++n === 3) { const { PayPalError } = await import("../src/paypal/types"); throw new PayPalError("capture", 503, "SERVICE_UNAVAILABLE"); } return orig(x); };
+    await expect(runClose({ pool, members, port, store, closeAttempt: 1 })).rejects.toThrow(/503/);
+    port.capture = orig;
+    const r = await runClose({ pool, members, port, store, closeAttempt: 1 });
+    expect(r.state).toBe("CLOSED");
+    expect(r.members.filter((m) => m.status === "DECLINED")).toHaveLength(0);
+    expect(port.caps.size).toBe(20);
+  });
+
+  it("pays vendors only what PayPal collected; the office hands over the cash", async () => {
+    const { port, store, members } = setup(20);
+    members[19] = { ...members[19], cash: { invoiceId: "INV2-TEST" } };
+    const r = await runClose({ pool, members, port, store, closeAttempt: 1, cashRefund: async () => "REF", cashVerify: async () => true });
+    expect(r.reconciled!.cashCents).toBe(8_000);
+    expect(r.reconciled!.payoutCents).toBe(totalDue(144_000, 800, 20) - 8_000);
+    expect(r.reconciled!.vendorsDue).toBe(totalDue(144_000, 800, 20));
+  });
+
+  it("does not count a cash family whose invoice PayPal does not show as paid", async () => {
+    const { port, store, members } = setup(20);
+    members[19] = { ...members[19], cash: { invoiceId: "INV2-UNPAID" } };
+    const r = await runClose({ pool, members, port, store, closeAttempt: 1, cashVerify: async () => false });
+    expect(r.members.find((m) => m.id === "k19")!.verdict).toBe("REVIEW");
     expect(r.reconciled!.exact).toBe(true);
   });
 });

@@ -10,6 +10,7 @@ export async function POST(_: Request, { params }: { params: Promise<{ token: st
   const f = await memberByToken(token);
   if (!f) return Response.json({ error: "NOT_FOUND" }, { status: 404 });
   if (f.member.state !== "INVITED") return Response.json({ error: "ALREADY_HELD" }, { status: 409 });
+  if (f.pool.state !== "OPEN" || Date.now() >= Date.parse(f.pool.closeAt)) return Response.json({ error: "TRIP_CLOSED" }, { status: 409 });
   try {
     const o = await createAuthorizeOrder({ memberId: f.member.id, poolId: f.pool.id, seq: f.member.seq, capCents: f.member.capCents,
       termsHash: hashFor(f.pool, f.member.capCents), requestId: requestId(f.pool.id, f.member.id, "order", Date.now()) });

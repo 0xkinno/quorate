@@ -11,6 +11,7 @@ import { getPool, memberByToken } from "../pool/service";
 const DASHES = new RegExp(`[${String.fromCharCode(0x2013)}${String.fromCharCode(0x2014)}]`, "g");
 
 export const CLERK_ACTIONS = { orders: { get: true }, invoices: { get: true }, transactions: { list: true } } as const;
+export const CLERK_TOOLS = ["get_order", "get_invoice", "list_transactions"] as const;
 export const MONEY_TOOL = /create_order|pay_order|refund|capture|send_invoice|cancel|accept_dispute|subscription|record_payment|create_invoice|delete/;
 
 type V4Tool = { description?: string; parameters: unknown; execute: (args: unknown, opts?: unknown) => Promise<unknown> };
@@ -25,7 +26,8 @@ export async function paypalReadTools(): Promise<Record<string, Tool>> {
   const raw = kit.getTools() as unknown as Record<string, V4Tool>;
   const out: Record<string, Tool> = {};
   for (const [name, t] of Object.entries(raw)) {
-    if (MONEY_TOOL.test(name)) throw new Error(`CLERK_REFUSES_MONEY_TOOL ${name}`);
+    // Exact allow-list first; the money pattern is a second line of defence.
+    if (!CLERK_TOOLS.includes(name as (typeof CLERK_TOOLS)[number]) || MONEY_TOOL.test(name)) throw new Error(`CLERK_REFUSES_TOOL ${name}`);
     // The toolkit targets an older AI SDK tool shape; adapt it without changing what it does.
     out[name] = tool({ description: t.description ?? name, inputSchema: t.parameters as never, execute: async (args: unknown) => t.execute(args) }) as Tool;
   }

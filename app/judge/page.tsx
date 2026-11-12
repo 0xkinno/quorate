@@ -25,7 +25,7 @@ export default async function Judge() {
     <main className="mx-auto max-w-6xl px-4 pt-14">
       <p className="eyebrow"><span className="eyebrow-dot" />For judges · about 60 seconds</p>
       <h1 className="display mt-5 max-w-4xl text-[2.6rem] leading-[1.02] tracking-[-0.03em] sm:text-6xl">Close a class trip on the PayPal sandbox.</h1>
-      <p className="lede mt-5 max-w-2xl">Every step below is a real PayPal call. Nothing here needs a login, and no real money moves.</p>
+      <p className="lede mt-5 max-w-2xl">Live runs make real calls to the PayPal sandbox; the decline is PayPal&apos;s own negative-testing switch. Only step 02 uses a PayPal sandbox login, printed below. No real money moves.</p>
       <ul className="mt-7 flex flex-wrap gap-2" aria-label="Measured status">
         {chips.map(([k, v, ok]) => (
           <li key={k} className="status-chip"><span className={`h-2 w-2 rounded-full ${ok ? "bg-[var(--settled)]" : "bg-[var(--review)]"}`} /><span className="font-medium text-[var(--ink)]">{k}</span><span>{v}</span></li>

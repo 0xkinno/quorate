@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-12T10:01:43.305Z",
+  "PAYER_CANNOT_PAY": {
+    "authId": "70G86944HD290761N",
+    "status": 422,
+    "debugId": "f81056231d38b",
+    "body": {
+      "name": "UNPROCESSABLE_ENTITY",
+      "details": [
+        {
+          "issue": "PAYER_CANNOT_PAY",
+          "description": "Payer cannot pay for this transaction. Please contact the payer to find other ways to pay for this transaction."
+        }
+      ],
+      "message": "The requested action could not be performed, semantically incorrect, or failed business validation.",
+      "debug_id": "70c28ae654da",
+      "links": [
+        {
+          "href": "https://developer.paypal.com/docs/limited-release/orders/api/#error-PAYER_CANNOT_PAY",
+          "rel": "information_link",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "TRANSACTION_REFUSED": {
+    "authId": "21U821234X809120J",
+    "status": 422,
+    "debugId": "f506866eb214e",
+    "body": {
+      "name": "UNPROCESSABLE_ENTITY",
+      "details": [
+        {
+          "issue": "TRANSACTION_REFUSED",
+          "description": "PayPal's internal controls prevent authorization from being captured."
+        }
+      ],
+      "message": "The requested action could not be performed, semantically incorrect, or failed business validation.",
+      "debug_id": "70c28ae654da",
+      "links": [
+        {
+          "href": "https://developer.paypal.com/docs/limited-release/orders/api/#error-TRANSACTION_REFUSED",
+          "rel": "information_link",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "AUTHORIZATION_EXPIRED": {
+    "authId": "6TX23328064831520",
+    "status": 422,
+    "debugId": "f2196733070dd",
+    "body": {
+      "name": "UNPROCESSABLE_ENTITY",
+      "details": [
+        {
+          "issue": "AUTHORIZATION_EXPIRED",
+          "description": "An expired authorization cannot be captured."
+        }
+      ],
+      "message": "The requested action could not be performed, semantically incorrect, or failed business validation.",
+      "debug_id": "70c28ae654da",
+      "links": [
+        {
+          "href": "https://developer.paypal.com/docs/limited-release/orders/api/#error-AUTHORIZATION_EXPIRED",
+          "rel": "information_link",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  "INSTRUMENT_DECLINED": {
+    "authId": "0J434550PT106125P",
+    "status": 403,
+    "debugId": "f63752631b9f9",
+    "body": null
+  }
+}

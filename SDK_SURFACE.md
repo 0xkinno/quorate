@@ -44,4 +44,4 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 ## Agent access
 | Feature | Where | Status |
 |---|---|---|
-| MCP door (JSON-RPC 2.0 over HTTP, read-only): `pool_status`, `slip_link` | `app/api/mcp/route.ts` | Live; tested in `tests/e2e/flows.spec.ts` |
+| MCP door (JSON-RPC 2.0 over HTTP, read-only): `pool_status`, `slip_status` | `app/api/mcp/route.ts` | Live; tested in `tests/e2e/flows.spec.ts` |

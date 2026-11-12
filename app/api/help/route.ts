@@ -14,7 +14,8 @@ export async function POST(req: Request) {
   const n = h && h.day === day ? h.n + 1 : 1;
   hits.set(ip, { n, day });
   if (n > 40) return Response.json({ error: "Daily question limit reached" }, { status: 429 });
-  const { question, token, poolId } = (await req.json()) as { question: string; token?: string; poolId?: string };
+  const body = (await req.json().catch(() => null)) as { question?: string; token?: string; poolId?: string } | null;
+  const question = body?.question ?? "", token = body?.token, poolId = body?.poolId;
   if (!question || question.length > 500) return Response.json({ error: "Ask a question under 500 characters" }, { status: 400 });
   try {
     const r = await askClerk(question, { token, poolId });
