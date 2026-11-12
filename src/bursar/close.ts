@@ -44,6 +44,8 @@ type Ctx = {
   pool: PoolTerms; members: CloseMember[]; port: PayPalPort; store: AttemptStore; closeAttempt: number;
   /** Sandbox negative testing: make PayPal decline this member's capture. */
   faults?: Record<string, MockCode>;
+  /** Called after each step so the register can show the close as it happens. */
+  onStep?: (step: string, all: string[]) => void;
 };
 
 const usd = (c: number) => `$${toAmount(c)}`;
@@ -52,6 +54,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   const { pool, port, store, closeAttempt } = ctx;
   const fixed = poolFixed(pool), perHead = poolPerHead(pool);
   const steps: string[] = [];
+  const log = (s: string) => { steps.push(s); ctx.onStep?.(s, steps); };
   const out = new Map<string, MemberOut>();
   const counter = new Map<string, number>();
   const rid = (m: string, op: string) => {
@@ -65,21 +68,21 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
     const o: MemberOut = { id: m.id, label: m.label, role: m.role, capCents: m.capCents, status: "REVIEW", verdict: "NOT OBSERVED", chargedCents: 0, releasedCents: 0, captures: [], refunds: [] };
     out.set(m.id, o);
     try { assertTermsUnchanged(m.approvedHash, memberTerms(pool, m.capCents)); }
-    catch (e) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = (e as Error).message; steps.push(`${m.label}: terms changed since approval, held for the teacher`); continue; }
+    catch (e) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = (e as Error).message; log(`${m.label}: terms changed since approval, held for the teacher`); continue; }
     try {
       const a = await port.getAuthorization(m.authId);
       o.verdict = "OBSERVED";
-      if (a.status !== "CREATED" && a.status !== "PARTIALLY_CAPTURED") { o.status = a.status === "EXPIRED" ? "EXPIRED" : "RELEASED"; o.note = `hold ${a.status}`; steps.push(`${m.label}: hold ${a.status}, drops out`); continue; }
+      if (a.status !== "CREATED" && a.status !== "PARTIALLY_CAPTURED") { o.status = a.status === "EXPIRED" ? "EXPIRED" : "RELEASED"; o.note = `hold ${a.status}`; log(`${m.label}: hold ${a.status}, drops out`); continue; }
       if (a.amountCents < m.capCents) { o.status = "REVIEW"; o.verdict = "REVIEW"; o.note = "hold smaller than approved amount"; continue; }
     } catch { o.verdict = "NOT OBSERVED"; o.note = "PayPal returned nothing for this hold yet"; continue; }
     active.push({ ...m, capEff: m.capCents, captured: 0 });
   }
-  steps.push(`Read back ${active.length} holds`);
+  log(`Read back ${active.length} holds`);
 
   const kidsActive = () => active.filter((m) => m.role === "child").length;
   const plan = () => allocate(fixed, perHead, active.map((m) => ({ id: m.id, role: m.role, seq: m.seq, capCents: m.capEff })));
   const teacher = (p: Plan | null, why: string): CloseResult => {
-    steps.push(`Needs the teacher: ${why}`);
+    log(`Needs the teacher: ${why}`);
     for (const m of active) { const o = out.get(m.id)!; o.chargedCents = m.captured; if (m.captured > 0) o.status = "CAPTURED_PART"; }
     return { state: "NEEDS_TEACHER", poolId: pool.id, closeAttempt, port: port.kind, plan: p, members: [...out.values()], steps, options: options(pool, active, p) };
   };
@@ -87,7 +90,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   if (kidsActive() < pool.minN) return teacher(null, `${kidsActive()} children held, ${pool.minN} needed`);
   let p = plan();
   if (!p.ok) return teacher(p, `short by ${usd(p.shortfallCents)}`);
-  steps.push(`Share per child ${usd(p.level)} for ${kidsActive()} children, total ${usd(p.total)}`);
+  log(`Share per child ${usd(p.level)} for ${kidsActive()} children, total ${usd(p.total)}`);
 
   // 2 to 4. Capture until every share is taken or the plan cannot be met.
   for (let pass = 0; pass < 20; pass++) {
@@ -104,23 +107,23 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
         const c = await attempt(store, { poolId: pool.id, memberId: m.id, op: "capture", requestId: reqId, payload: { authId: m.authId, cents: delta, final: false } },
           () => port.capture({ authId: m.authId, cents: delta, final: false, requestId: reqId, invoiceId: `${pool.id}-${m.id}-${closeAttempt}-${o.captures.length + 1}`, mock: ctx.faults?.[m.id] }));
         m.captured += c.cents; o.captures.push({ captureId: c.captureId, cents: c.cents });
-        steps.push(`${m.label}: captured ${usd(c.cents)}${o.captures.length > 1 ? " (top-up)" : ""}`);
+        log(`${m.label}: captured ${usd(c.cents)}${o.captures.length > 1 ? " (top-up)" : ""}`);
       } catch (e) {
         if (!(e instanceof PayPalError) && !String((e as Error).message).match(/^(capture|INSTRUMENT|AUTHORIZATION|PAYER|MAX)/)) throw e;
         const msg = (e as Error).message;
         if (m.captured === 0) {
           active.splice(active.indexOf(m), 1);
           o.status = "DECLINED"; o.note = msg;
-          steps.push(`${m.label}: PayPal declined the capture (${msg.split(" ").slice(0, 3).join(" ")}); re-sharing among ${kidsActive()} children`);
+          log(`${m.label}: PayPal declined the capture (${msg.split(" ").slice(0, 3).join(" ")}); re-sharing among ${kidsActive()} children`);
         } else {
           m.capEff = m.captured; o.note = msg;
-          steps.push(`${m.label}: top-up declined; keeps ${usd(m.captured)}, others re-share`);
+          log(`${m.label}: top-up declined; keeps ${usd(m.captured)}, others re-share`);
         }
         changed = true;
         if (kidsActive() < pool.minN) return teacher(null, `${kidsActive()} children after a decline, ${pool.minN} needed`);
         p = plan();
         if (!p.ok) return teacher(p, `short by ${usd(p.shortfallCents)} after a decline`);
-        steps.push(`New share per child ${usd(p.level)}, total ${usd(p.total)}`);
+        log(`New share per child ${usd(p.level)}, total ${usd(p.total)}`);
       }
     }
     if (!changed) break;
@@ -138,7 +141,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
       const r = await attempt(store, { poolId: pool.id, memberId: m.id, op: "refund", requestId: reqId, payload: { captureId: o.captures[i].captureId, cents: take } },
         () => port.refund({ captureId: o.captures[i].captureId, cents: take, requestId: reqId }));
       o.refunds.push({ refundId: r.refundId, cents: take }); m.captured -= take; over -= take;
-      steps.push(`${m.label}: refunded ${usd(take)} (share fell)`);
+      log(`${m.label}: refunded ${usd(take)} (share fell)`);
     }
     if (m.captured < m.capCents) {
       const reqId = rid(m.id, "void");
@@ -159,7 +162,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   }
   const netCharged = active.reduce((s, m) => s + m.captured, 0);
   const exact = netCharged === p.total;
-  steps.push(`Charged ${usd(netCharged)} against ${usd(p.total)} due: ${exact ? "exact" : "MISMATCH"}`);
+  log(`Charged ${usd(netCharged)} against ${usd(p.total)} due: ${exact ? "exact" : "MISMATCH"}`);
   if (!exact) throw new Error(`RECONCILE_MISMATCH charged=${netCharged} due=${p.total}`);
 
   // 6. Pay the vendors in one batch.
@@ -168,7 +171,7 @@ export async function runClose(ctx: Ctx): Promise<CloseResult> {
   const senderBatchId = `pool:${pool.id}:close:${closeAttempt}`;
   const po = await attempt(store, { poolId: pool.id, memberId: null, op: "payout", requestId: senderBatchId, payload: items },
     () => port.payout({ senderBatchId, subject: "Class trip payment", items }));
-  steps.push(`Payout batch ${po.batchId}: ${items.map((i) => `${usd(i.cents)}`).join(" + ")}`);
+  log(`Payout batch ${po.batchId}: ${items.map((i) => `${usd(i.cents)}`).join(" + ")}`);
 
   return { state: "CLOSED", poolId: pool.id, closeAttempt, port: port.kind, plan: p, members: [...out.values()], steps,
     payout: { batchId: po.batchId, senderBatchId, status: po.status, items }, reconciled: { vendorsDue: items.reduce((s, i) => s + i.cents, 0), netCharged, exact } };
