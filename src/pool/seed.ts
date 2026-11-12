@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { db, type Store } from "../db/store";
 
 /**
- * First boot on a fresh database: import the recorded live sandbox runs from docs/live-runs, so a
+ * On each boot, import any recorded live sandbox run from docs/live-runs that the database lacks, so a
  * judge opening the deployed site sees real runs with their PayPal ids and attempt logs straight away.
  * Imported runs keep their original timestamps and are labelled "recorded live run" in the UI.
  */
@@ -15,12 +15,12 @@ export function ensureSeeded(s: Store = db()) {
 }
 
 async function seed(s: Store) {
-  if ((await s.get("meta", "seeded")) || (await s.list("run")).length > 0) return;
   const dir = join(process.cwd(), "docs", "live-runs");
   if (!existsSync(dir)) return;
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json"))) {
     const r = JSON.parse(readFileSync(join(dir, f), "utf8"));
     if (!r.pool || r.pool.port !== "sandbox") continue;
+    if (await s.get("pool", r.pool.id)) continue; // already imported, or created on this deployment
     const pool = { ...r.pool, recorded: true };
     await s.put("pool", pool.id, pool.id, pool);
     for (const m of r.members) await s.put("member", `${pool.id}:${m.id}`, pool.id, { ...m, token: `recorded-${pool.id}-${m.id}` });
