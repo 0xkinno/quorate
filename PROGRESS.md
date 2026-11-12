@@ -1,29 +1,31 @@
 # Progress
 
-## 12 Nov 2026, session 1 (from 05:25 WAT)
-Done
-- Phase 0: repository, authorship gate (local hook, project settings, GitHub workflow), references
-  studied, planning documents (RULES_EXTRACT, LANE_MAP, SPONSOR_INTEL, MOMENT, THESIS).
-- Phase 3 core: allocation with six property tests at 10,000 cases each, renewal scheduler, cap and
-  terms guards, attempt log, the close saga against the PayPal stand-in (happy close, decline mid-close
-  with top-ups, sponsor gap, below minimum, cancel with refunds, crash and restart without a double
-  capture, terms changed). 22 tests pass.
-- Phase 1 code: Next.js skeleton, `/api/live`, measured `/api/status`, Render Blueprint, tick stub,
-  reachability script. Build passes. Not deployed yet.
-- Phase 2: probe questions pre-registered in FINDINGS.md.
+## 12 Nov 2026 (WAT)
 
-Waiting on Kinnoski
-- GitHub repo URL; confirm the commit email (GitHub noreply address).
-- PayPal sandbox app keys and sandbox accounts; Gemini key; Render account connected to the repo.
+### Done and verified
+- Repository, authorship gate, planning documents; references only in gitignored `reference/` (task list kept there too).
+- The Bursar: allocation (six properties, 10,000 cases each), renewal and hold-or-vault planner, cap and terms
+  guards, attempt log, the close (decline, top-ups, cancel, crash restart, cash families), payouts with retry.
+- PayPal: probe P1 to P10 answered; 13 live sandbox runs recorded (L1 to L8 and the team-bus template), 9 of 9
+  closes exact to the cent, 8 payouts SUCCESS, 0 families above their approved amount.
+- Crew live on Gemini: Reader with quote checks, Scribe in three languages with number checks, Clerk with
+  read-only Agent Toolkit tools; template fallback when the model is busy or unavailable.
+- UI: landing with motion (word reveals, count-ups, close reel, price bars, marquee), judge door with an aligned
+  runs table, The Register (AG Grid, AG Charts), slip in three languages, proof ledger, Bryntum honor timeline,
+  help desk, guided tour, MCP door.
+- Checks: 32 unit and property tests; six-viewport layout and axe (0 violations); nine end-to-end flows in Chromium.
+- Deployed at https://quorate.onrender.com (web, cron, Postgres from one Blueprint); recorded runs seeded.
 
-Next
-- Probe the sandbox (P1 to P10), then order and authorize routes, the slip, webhooks, Postgres store.
+### Waiting on Kinnoski
+- In Render's environment: `GEMINI_API_KEY` (the new key), `PAYPAL_WEBHOOK_ID=0VF35856UV734571V`,
+  `PUBLIC_BASE_URL=https://quorate.onrender.com`.
+- Devpost criteria sentences, the demo video link, and the go-ahead to submit.
 
-## Self-judge (0 to 10)
+### Self-judge (0 to 10)
 | Criterion | Score | Why |
 |---|---|---|
-| Technological Implementation | 4 | Close saga proven against the stand-in only; no live sandbox call yet |
-| Design | 1 | Placeholder page |
-| Potential Impact | 6 | Sourced problem, clear person |
-| Innovation/Idea | 7 | Multi-hold close with a falling price is an empty lane |
-| Presentation | 1 | Nothing to show yet |
+| Technological Implementation | 9 | Multi-hold close live on the sandbox with PayPal-injected declines, crash restart, cash and vault paths; probe published |
+| Design | 8 | Coherent paper-and-stamp system, motion on the landing, aligned ledgers, 0 axe violations at six viewports |
+| Potential Impact | 8 | Sourced teacher spending; second domain on the same engine |
+| Innovation/Idea | 9 | One purchase for many payers with a falling price, sponsors for the gap, exact under declines |
+| Presentation | 8 | 60-second judge path, live decline on screen, proof pages, README numbers generated from runs |

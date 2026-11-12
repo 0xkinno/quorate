@@ -44,7 +44,7 @@ body::before {
 }
 main, header, footer { position: relative; z-index: 1; }
 
-.display { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+.display { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.022em; }
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .caps { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--ink-2); }
 .rule { border-color: var(--rule); }
@@ -97,3 +97,73 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--held); outline-
   .arc, .rise { animation: none !important; }
   .card-glow:hover { transform: none; }
 }
+
+/* Typography polish */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body { font-feature-settings: "ss01", "cv11"; letter-spacing: -0.003em; }
+h1, h2, h3, .display { font-feature-settings: "kern", "liga"; text-wrap: balance; }
+p { text-wrap: pretty; }
+.mono, .kpi, .chip { font-feature-settings: "tnum", "zero"; }
+
+/* Proof and shared components */
+.section-h { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; letter-spacing: -0.015em; }
+.kpi { font-family: var(--font-mono); font-size: 1.65rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+.pill {
+  display: inline-flex; align-items: center; gap: 0.3rem; border-radius: 999px; padding: 0.15rem 0.6rem;
+  background: rgba(255, 255, 255, 0.75); border: 1px solid var(--rule); font-size: 0.72rem; font-weight: 500; color: var(--ink-2);
+  font-family: var(--font-mono);
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 0.45rem; border-radius: 6px; padding: 0.18rem 0.5rem;
+  background: #eef1ff; color: #2338c7; border: 1px solid rgba(51, 85, 255, 0.18);
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; cursor: copy; transition: background 0.15s ease;
+}
+.chip:hover { background: #e2e7ff; }
+.empty { border: 1px dashed var(--rule); border-radius: 12px; padding: 1rem 1.25rem; color: var(--ink-2); background: rgba(255, 255, 255, 0.4); font-size: 0.92rem; }
+.ledger { border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+.ledger thead th {
+  position: sticky; top: 0; z-index: 1; background: #f4f2ed; text-align: left; padding: 0.7rem 1rem;
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--rule);
+}
+.ledger thead th.text-right { text-align: right; }
+.ledger tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(22, 24, 29, 0.06); vertical-align: top; }
+.ledger tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.35); }
+.ledger tbody tr:hover td { background: rgba(51, 85, 255, 0.04); }
+.ledger tbody tr:last-child td { border-bottom: 0; }
+
+/* Bryntum honor timeline */
+.q-close-line { border-left: 2px solid #b42318 !important; }
+.q-close-line .b-sch-range-label, .q-close-line label { color: #b42318 !important; font-weight: 600; }
+
+/* Motion layer and refined type */
+.hero-aura {
+  position: absolute; inset: -10% -20% auto -20%; height: 620px; pointer-events: none; z-index: 0; filter: blur(60px); opacity: 0.7;
+  background: radial-gradient(40% 50% at 70% 40%, rgba(51, 85, 255, 0.18), transparent 70%), radial-gradient(35% 45% at 20% 20%, rgba(255, 205, 150, 0.35), transparent 70%);
+}
+.eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px);
+  border-radius: 999px; padding: 0.35rem 0.85rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.01em; color: var(--ink-2); }
+.eyebrow-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--held); box-shadow: 0 0 0 4px rgba(51, 85, 255, 0.15); }
+.lede { font-size: 1.16rem; line-height: 1.65; font-weight: 400; color: var(--ink-2); letter-spacing: -0.005em; }
+.h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.05; letter-spacing: -0.028em; }
+.num { font-family: var(--font-mono); font-feature-settings: "tnum"; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+.moment-card { height: 100%; border-left: 2px solid var(--held); padding: 0.25rem 0 0.25rem 1.25rem; font-size: 1.15rem; line-height: 1.6; }
+.stat { font-family: var(--font-display); font-weight: 500; font-size: 2.1rem; line-height: 1; letter-spacing: -0.03em; }
+.stat-lg { font-family: var(--font-display); font-weight: 500; font-size: 3rem; line-height: 1; letter-spacing: -0.035em; }
+.kpi-xl { font-family: var(--font-display); font-weight: 500; font-size: 2.6rem; line-height: 1; letter-spacing: -0.03em; }
+.btn-lg { padding: 0.95rem 1.4rem; font-size: 1rem; border-radius: 12px; }
+.marquee { overflow: hidden; background: rgba(255, 255, 255, 0.45); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; gap: 2.5rem; padding: 0.95rem 0; animation: marquee 48s linear infinite; }
+.marquee-item { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-2); white-space: nowrap; }
+.marquee-item > span { font-size: 0.5rem; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.cta-band { position: relative; overflow: hidden; margin-top: 2rem; background: radial-gradient(60% 120% at 85% 0%, rgba(51, 85, 255, 0.45), transparent 60%), #16181d; }
+.cta-band [aria-hidden] path[stroke="var(--ink)"] { stroke: #fff; }
+.reel { box-shadow: 0 30px 80px -40px rgba(22, 24, 29, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.6); }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+.status-chip { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.65); border-radius: 999px; padding: 0.4rem 0.85rem; font-size: 0.8rem; color: var(--ink-2); }
+.step-no { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; color: var(--held); letter-spacing: 0.04em; }
+.link-quiet { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(22, 24, 29, 0.25); text-underline-offset: 3px; }
+.link-quiet:hover { text-decoration-color: var(--held); color: var(--held); }
+.ledger td .stamp { white-space: nowrap; }
+.kpi-fine { font-family: var(--font-display); font-weight: 500; font-size: 2rem; line-height: 1.05; letter-spacing: -0.03em; font-feature-settings: "tnum", "lnum"; }
+.section-h { font-weight: 500 !important; }

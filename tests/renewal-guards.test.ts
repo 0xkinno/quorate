@@ -39,3 +39,12 @@ describe("guards", () => {
     expect(() => assertTermsUnchanged(h, { ...t, fixedCents: 150_000 })).toThrow(/REFUSED_TERMS_CHANGED/);
   });
 });
+
+import { holdOrVault } from "../src/bursar/renewal";
+describe("hold or vault", () => {
+  it("uses a hold up to 26 days out and the Vault path beyond", () => {
+    expect(holdOrVault(t0, t0 + 26 * DAY)).toBe("HOLD");
+    expect(holdOrVault(t0, t0 + 26 * DAY + 1)).toBe("VAULT");
+    expect(holdOrVault(t0, t0 + 40 * DAY)).toBe("VAULT");
+  });
+});

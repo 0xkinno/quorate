@@ -15,7 +15,7 @@ const runs: Run[] = readdirSync("docs/live-runs").filter((f) => f.endsWith(".jso
 const sandbox = runs.filter((r) => r.pool.port === "sandbox");
 const closed = sandbox.filter((r) => r.close?.reconciled);
 const paidOut = closed.filter((r) => r.close?.payout?.status === "SUCCESS");
-const holds = sandbox.reduce((s, r) => s + r.members.filter((m) => m.authId && !m.authId.startsWith("CASH")).length, 0);
+const holds = sandbox.reduce((s, r) => s + r.members.filter((m) => m.authId && !m.authId.startsWith("CASH") && !m.authId.startsWith("VAULT")).length, 0);
 const captures = sandbox.reduce((s, r) => s + (r.close?.members ?? []).reduce((a, m) => a + m.captures.length, 0), 0);
 const refunds = sandbox.reduce((s, r) => s + (r.close?.members ?? []).reduce((a, m) => a + m.refunds.length, 0), 0);
 const aboveCap = sandbox.reduce((s, r) => s + (r.close?.members ?? []).filter((m) => m.chargedCents > m.capCents).length, 0);

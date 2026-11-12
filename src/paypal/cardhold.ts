@@ -34,3 +34,15 @@ export async function createCardHold(a: { memberId: string; poolId: string; capC
   if (!auth) throw new Error(`NO_AUTHORIZATION order=${r.json.id} status=${r.json.status}`);
   return { orderId: r.json.id, authId: auth.id, status: auth.status, expiresAt: auth.expiration_time, amountCents: toCents(auth.amount.value), debugId: r.debugId };
 }
+
+/** Vault path: charge a saved PayPal wallet the real share at the close (merchant-initiated, intent CAPTURE). */
+export async function chargeSavedWallet(a: { vaultId: string; memberId: string; poolId: string; cents: number; termsHash: string; requestId: string }) {
+  const r = await call<{ id: string; status: string; purchase_units: { payments?: { captures?: { id: string; status: string; amount: { value: string } }[] } }[] }>("chargeSavedWallet", "POST", "/v2/checkout/orders", {
+    intent: "CAPTURE",
+    purchase_units: [{ reference_id: a.memberId, custom_id: a.termsHash.slice(0, 64), invoice_id: `${a.poolId}-${a.memberId}-vault`, description: "Class trip share (charged at the close)", amount: { currency_code: "USD", value: toAmount(a.cents) } }],
+    payment_source: { paypal: { vault_id: a.vaultId, stored_credential: { payment_initiator: "MERCHANT", usage: "SUBSEQUENT", usage_pattern: "UNSCHEDULED_POSTPAID" } } },
+  }, { "PayPal-Request-Id": a.requestId, Prefer: "return=representation" });
+  const cap = r.json.purchase_units?.[0]?.payments?.captures?.[0];
+  if (!cap) throw new Error(`NO_CAPTURE order=${r.json.id} status=${r.json.status}`);
+  return { orderId: r.json.id, captureId: cap.id, status: cap.status, cents: toCents(cap.amount.value), debugId: r.debugId };
+}

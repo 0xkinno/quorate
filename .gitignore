@@ -18,3 +18,4 @@ APPROVE_LINK.txt
 .data/
 docs/video/
 .vitest-results.json
+/TASK.md

@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const usd = (c: number) => `$${(c / 100).toFixed(2)}`;
 const facts = JSON.parse(readFileSync("docs/FACTS.json", "utf8"));
-const NAMES: Record<string, string> = { L1: "Clean close", L2: "Below the minimum", L3: "PayPal declines family 7", L4: "Sponsor covers the gap", L5: "PayPal refuses a capture, teacher cancels", L6: "Process dies after the 9th capture", L7: "One family pays cash (PayPal invoice)" };
+const NAMES: Record<string, string> = { L1: "Clean close", L2: "Below the minimum", L3: "PayPal declines family 7", L4: "Sponsor covers the gap", L5: "PayPal refuses a capture, teacher cancels", L6: "Process dies after the 9th capture", L7: "One family pays cash (PayPal invoice)", L8: "Trip 40 days out: Vault path", T1: "Same engine: team tournament bus" };
 const runs = readdirSync("docs/live-runs").filter((f) => f.endsWith(".json")).map((f) => JSON.parse(readFileSync(`docs/live-runs/${f}`, "utf8")))
   .sort((a, b) => a.pool.createdAt.localeCompare(b.pool.createdAt));
 

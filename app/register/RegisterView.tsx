@@ -22,7 +22,7 @@ type Member = {
 };
 type CloseOut = { id: string; status: string; verdict: string; chargedCents: number; releasedCents: number; captures: { captureId: string; cents: number }[]; refunds: { refundId: string; cents: number }[]; note?: string };
 type View = {
-  pool: { id: string; title: string; school: string; teacher: string; minN: number; state: string; port: string; holdSource: string; note?: string; decline?: string; closeAt: string; vendors: { name: string; fixedCents: number; perHeadCents: number }[]; kind: string };
+  pool: { id: string; title: string; school: string; teacher: string; minN: number; state: string; port: string; holdSource: string; note?: string; decline?: string; closeAt: string; vendors: { name: string; fixedCents: number; perHeadCents: number }[]; kind: string; template?: string };
   members: Member[]; heldCount: number;
   preview: { ok: boolean; level?: number; total: number; charges?: Record<string, number>; shortfallCents?: number };
   close?: { state: string; steps: string[]; members?: CloseOut[]; reconciled?: { vendorsDue: number; netCharged: number; exact: boolean }; payout?: { batchId: string; items: { receiver: string; cents: number; note: string }[] } };
@@ -119,7 +119,8 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
   if (!v) return <p className="py-20 text-center text-[var(--ink-2)]">Opening the register</p>;
   const going = v.heldCount;
   const sums = rows.reduce((s, r) => ({ held: s.held + (r.authId ? r.capCents : 0), now: s.now + (r.nowCents ?? 0), charged: s.charged + (r.chargedCents ?? 0) }), { held: 0, now: 0, charged: 0 });
-  const curve = Array.from({ length: 9 }, (_, i) => 18 + i).map((n) => ({ n, share: Math.ceil((144000 + 800 * n) / n) / 100 }));
+  const FIX = v.pool.vendors.reduce((a, x) => a + x.fixedCents, 0), PER = v.pool.vendors.reduce((a, x) => a + x.perHeadCents, 0);
+  const curve = Array.from({ length: 9 }, (_, i) => v.pool.minN + i).map((n) => ({ n, share: Math.ceil((FIX + PER * n) / n) / 100 }));
   const closing = v.pool.state === "HOLDING" || v.pool.state === "CLOSING";
 
   return (
@@ -142,15 +143,16 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
           </select>
           <span className="stamp stamp-held">{v.pool.state}</span>
           <Link className="btn btn-ghost !py-2 text-sm" href={`/proof/${v.pool.id}`}>Proof page</Link>
+          <Link className="btn btn-ghost !py-2 text-sm" href={`/timeline?pool=${v.pool.id}`}>Honor timeline</Link>
         </div>
       </div>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-4">
         {[
-          ["Children going", `${going} of ${v.members.length}`],
+          [v.pool.template === "team-bus" ? "Players going" : "Children going", `${going} of ${v.members.length}`],
           ["Needed", String(v.pool.minN)],
           ["Price per child now", v.preview.ok ? usd(v.preview.level) : going < v.pool.minN ? "below minimum" : "short"],
-          ["If 2 more join", going >= v.pool.minN - 2 ? usd(Math.ceil((144000 + 800 * (going + 2)) / (going + 2))) : "n/a"],
+          ["If 2 more join", going >= v.pool.minN - 2 ? usd(Math.ceil((FIX + PER * (going + 2)) / (going + 2))) : "n/a"],
         ].map(([k, val]) => <div key={k} className="card p-4"><div className="caps">{k}</div><div className="mono mt-1 text-2xl font-semibold">{val}</div></div>)}
       </div>
 

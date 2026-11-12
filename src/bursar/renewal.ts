@@ -26,3 +26,14 @@ export function guaranteedUntil(plan: RenewalPlan, renewedAt?: number) {
   if (renewedAt !== undefined) return Math.min(renewedAt + HONOR_DAYS * DAY, plan.validUntil);
   return plan.honorUntil;
 }
+
+/**
+ * Hold or Vault. A hold (with one renewal) can reach a close up to 29 days out; Quorate keeps a 3-day
+ * margin and switches trips more than 26 days away to the Vault path: the family saves PayPal for this
+ * trip, approving the same maximum, and the real share is charged at the close as a merchant-initiated
+ * payment, never above the approved amount.
+ */
+export const VAULT_AFTER_DAYS = 26;
+export function holdOrVault(now: number, closeAt: number): "HOLD" | "VAULT" {
+  return closeAt - now > VAULT_AFTER_DAYS * DAY ? "VAULT" : "HOLD";
+}

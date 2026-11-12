@@ -34,6 +34,19 @@ const CHILDREN: [string, string, Lang][] = [
   ["Ruby C.", "Chen family", "en"], ["Sam T.", "Torres family", "es"],
 ];
 
+/** Second domain on the same engine: a youth football team's tournament bus. Same code path, other labels and numbers. */
+export const TEMPLATES = {
+  "class-trip": { school: "Harbor View Elementary (demo)", teacher: "Ms. Rivera (demo)", minN: 18 },
+  "team-bus": { school: "Harbor FC under-12s (demo)", teacher: "Coach Okafor (demo)", minN: 12 },
+} as const;
+
+export function teamVendors(): Vendor[] {
+  return [
+    { name: "Northline Coaches (demo)", receiver: process.env.VENDOR_COACH_EMAIL || "coach@example.test", fixedCents: 96_000, perHeadCents: 0 },
+    { name: "Bay Cup tournament entry (demo)", receiver: process.env.VENDOR_MUSEUM_EMAIL || "museum@example.test", fixedCents: 0, perHeadCents: 1_500 },
+  ];
+}
+
 export function vendors(): Vendor[] {
   return [
     { name: "Bayline Coaches (demo)", receiver: process.env.VENDOR_COACH_EMAIL || "coach@example.test", fixedCents: 144_000, perHeadCents: 0 },
@@ -43,13 +56,13 @@ export function vendors(): Vendor[] {
 
 const token = () => randomBytes(12).toString("base64url");
 
-export function makePool(kind: Pool["kind"], title: string, n: number, port: Pool["port"], holdSource: HoldSource): { pool: Pool; members: PoolMember[] } {
+export function makePool(kind: Pool["kind"], title: string, n: number, port: Pool["port"], holdSource: HoldSource, template: Pool["template"] = "class-trip"): { pool: Pool; members: PoolMember[] } {
   const now = Date.now();
   const id = `${kind === "class" ? "class" : "run"}-${new Date(now).toISOString().slice(0, 10).replace(/-/g, "")}-${randomBytes(3).toString("hex")}`;
   const pool: Pool = {
-    id, title, school: "Harbor View Elementary (demo)", teacher: "Ms. Rivera (demo)", template: "class-trip", minN: 18,
+    id, title, school: TEMPLATES[template].school, teacher: TEMPLATES[template].teacher, template, minN: TEMPLATES[template].minN,
     deadline: new Date(now + 20 * 3600_000).toISOString(), closeAt: new Date(now + 20 * 3600_000).toISOString(),
-    vendors: vendors(), state: "OPEN", createdAt: new Date(now).toISOString(), kind, port, holdSource,
+    vendors: template === "team-bus" ? teamVendors() : vendors(), state: "OPEN", createdAt: new Date(now).toISOString(), kind, port, holdSource,
   };
   const cap = worstCaseShare(poolFixed(pool), poolPerHead(pool), pool.minN);
   const members = CHILDREN.slice(0, n).map(([child, family, lang], i): PoolMember => ({
@@ -117,14 +130,15 @@ const today = () => new Date().toISOString().slice(0, 10);
  * The judge's live run: 20 families hold $88.00 each on the PayPal sandbox, then the close runs
  * with PayPal itself declining family 7's capture (sandbox negative testing) when asked.
  */
-export async function startLiveRun(opts: { decline: boolean; n?: number; wait?: boolean }, s = db()) {
+export async function startLiveRun(opts: { decline: boolean; n?: number; wait?: boolean; template?: Pool["template"] }, s = db()) {
   if (process.env.QUORATE_LIVE === "off") throw new Error("LIVE_OFF");
   const runs = (await listPools("live-run", s)).filter((p) => p.createdAt.startsWith(today()));
   const max = Number(process.env.LIVE_MAX_CLOSES_PER_DAY ?? 20);
   if (runs.length >= max) throw new Error(`DAILY_LIMIT ${max}`);
-  const n = Math.min(Math.max(opts.n ?? 20, 18), 26);
+  const team = opts.template === "team-bus";
+  const n = team ? Math.min(Math.max(opts.n ?? 14, 12), 22) : Math.min(Math.max(opts.n ?? 20, 18), 26);
   const live = hasPayPalKeys();
-  const { pool, members } = makePool("live-run", `Live run, ${n} families${opts.decline ? ", PayPal declines family 7" : ""}`, n, live ? "sandbox" : "stand-in", live ? (process.env.PAYPAL_VAULT_ID ? "saved-wallet" : "sandbox-card") : "stand-in");
+  const { pool, members } = makePool("live-run", team ? `Team bus, ${n} players${opts.decline ? ", PayPal declines player 7" : ""}` : `Live run, ${n} families${opts.decline ? ", PayPal declines family 7" : ""}`, n, live ? "sandbox" : "stand-in", live ? (process.env.PAYPAL_VAULT_ID ? "saved-wallet" : "sandbox-card") : "stand-in", team ? "team-bus" : "class-trip");
   pool.state = "HOLDING";
   if (opts.decline) pool.decline = "m07";
   await savePool(s, pool, members);

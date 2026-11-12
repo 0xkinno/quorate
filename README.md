@@ -1,8 +1,12 @@
+<h1 align="center">Quorate</h1>
+
+<p align="center">
+  <a href="https://quorate.onrender.com/judge"><img src="https://img.shields.io/badge/live-quorate.onrender.com-3355ff" alt="Live demo"></a>
+  <a href="https://github.com/0xkinno/quorate/actions/workflows/ci.yml"><img src="https://github.com/0xkinno/quorate/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-16181d" alt="Licence: MIT"></a>
+</p>
+
 <p align="center"><img src="docs/images/banner.png" alt="Quorate landing page: Nobody fronts the money. Permission slips stamped held, settled and released float over a road at dawn." width="100%"></p>
-
-# Quorate
-
-[![Live](https://img.shields.io/badge/live-quorate.onrender.com-3355ff)](https://quorate.onrender.com/judge) [![CI](https://github.com/0xkinno/quorate/actions/workflows/ci.yml/badge.svg)](https://github.com/0xkinno/quorate/actions/workflows/ci.yml) [![Licence: MIT](https://img.shields.io/badge/licence-MIT-16181d)](LICENSE)
 
 **Nobody fronts the money.** Each family's PayPal holds their child's share of a class trip. Nobody is charged until enough children are going, and everyone pays less with each child who joins.
 
@@ -12,16 +16,16 @@ A working, non-trivial use of PayPal holds that solves a real problem for a real
 |---|---|
 | Live, no login | **https://quorate.onrender.com** |
 | For judges, 60 seconds | **https://quorate.onrender.com/judge**: one button holds $88.00 for 20 families on the PayPal sandbox and closes the trip while PayPal declines family 7 |
-| Built with | PayPal Orders v2 (`AUTHORIZE`), Payments v2 (partial capture, void, reauthorize, refund), Vault v3, Payouts, Invoicing, Webhooks, sandbox negative testing, PayPal Server SDK, PayPal Agent Toolkit, JS SDK; Gemini; AG Grid and AG Charts; Render |
-| Measured on the PayPal sandbox, 12 Nov 2026 | **11 live runs, 191 real holds, $11,160.00 settled, 0 cents off, 0 families charged above what they approved** ([docs/FACTS.json](docs/FACTS.json), generated, never typed) |
+| Built with | PayPal Orders v2 (`AUTHORIZE`), Payments v2 (partial capture, void, reauthorize, refund), Vault v3, Payouts, Invoicing, Webhooks, sandbox negative testing, PayPal Server SDK, PayPal Agent Toolkit, JS SDK; Gemini; AG Grid and AG Charts; Bryntum Scheduler; Render |
+| Measured on the PayPal sandbox, 12 Nov 2026 | **13 live runs, 205 real holds, $13,930.00 settled, 0 cents off, 0 families charged above what they approved** ([docs/FACTS.json](docs/FACTS.json), generated, never typed) |
 | The finding | PayPal accepted an **$80.00 capture on a $72.00 hold**. Quorate refuses it before every capture |
 
 | | |
 |:---:|:---:|
-| <img src="docs/images/screens/landing-laptop.png" alt="Landing page" width="100%"> | <img src="docs/images/screens/register-desktop.png" alt="The Register after a live close: 20 families, each charged $80.00, exact to the cent" width="100%"> |
+| <img src="docs/images/screens/landing-desktop.png" alt="Landing page" width="100%"> | <img src="docs/images/screens/register-desktop.png" alt="The Register after a live close: every family charged exactly, PayPal ids on each row" width="100%"> |
 | **The promise**: the family approves the worst case, then pays the real share | **The Register** after a live close: every row a real PayPal authorization |
-| <img src="docs/images/screens/slip-iphone.png" alt="The family slip on a phone, in Spanish, with the PayPal button" width="60%"> | <img src="docs/images/screens/proof-desktop.png" alt="Proof page listing every PayPal authorization, capture and payout id" width="100%"> |
-| **The slip** on a phone, in the family's language | **The proof page**: every PayPal id, and the attempt log written before each call |
+| <img src="docs/images/screens/judge-desktop.png" alt="The judge door: run a live close with a PayPal decline, approve a hold, and every recorded run with its proof" width="100%"> | <img src="docs/images/screens/proof-desktop.png" alt="Proof page: the money, the payout, the close step by step, every hold and the attempt log" width="100%"> |
+| **The judge door**: one button for a live close, and every recorded run with its proof | **The proof page**: every PayPal id, and the attempt log written before each call |
 
 ---
 
@@ -150,7 +154,7 @@ At the close, the Bursar finds **one price `L`** so that every child pays `min(c
 
 ```
 children going   18      20      22      24      26
-share per child  $88.00  $80.00  $73.46  $68.00  $63.39 / $63.38
+share per child  $88.00  $80.00  $73.45  $68.00  $63.38
                  ######  #####   ####    ####    ###
 ```
 
@@ -161,6 +165,15 @@ Six properties are checked at **10,000 random cases each** (`tests/allocate.test
 <p align="center"><img src="docs/images/hold-lifecycle.png" alt="Timeline of one hold: approved on day 0, honored for 3 days, valid for 29, renewed at close minus 3 days so the new honor window covers the Friday close; at the close the real share is captured and the remainder voided." width="100%"></p>
 
 A PayPal authorization is honored for 3 days and valid for 29 (probe P9). Reauthorizing inside the honor period is refused with `REAUTHORIZATION_TOO_SOON` (probe P4), and it restarts the honor period. So the scheduler renews once, at `max(t0 + 3 days, close - 3 days)`, and the Register's **Guaranteed until** column always shows the window that covers the close. A close more than 29 days out is flagged `CANNOT_REACH_CLOSE` before any family approves (`src/bursar/renewal.ts:15`).
+
+## Beyond the close
+
+| | What it is | Where |
+|---|---|---|
+| **Honor timeline** (Bryntum Scheduler) | Every family's hold on one timeline: the 3-day honor window, the renewal the tick schedules, and the close line. Read-only, because amounts are decided by the Bursar, never by a drag | `/timeline`, `app/timeline/HonorTimeline.tsx` |
+| **MCP door** | A read-only JSON-RPC endpoint so a family's own assistant can check a trip (`pool_status`) and find the family's slip (`slip_link`); only the family approves on PayPal | `/api/mcp`, `app/api/mcp/route.ts` |
+| **Vault path** | Trips more than 26 days out, where a hold would expire first: the family saves PayPal for the trip with the same maximum, and the real share is charged at the close | `src/bursar/renewal.ts` (`holdOrVault`), `scripts/vault-close.ts` |
+| **Second domain** | The same engine runs a team's tournament bus: other vendors, other minimum, same rule and same close | `src/pool/service.ts` (`TEMPLATES`), judge page "Same engine: a team bus" |
 
 ## PayPal, specifically
 
@@ -211,6 +224,8 @@ What the account setup taught us is in [FRICTION.md](FRICTION.md), written for P
 | Two families can only do $40; the PTA offers up to $200 | The PTA is charged only the $96.00 gap | live run `run-20261112-7c2a65` |
 | PayPal refuses a capture and the trip drops below 18 | The teacher cancels; every capture refunded exactly; every hold released | live run `run-20261112-11921f` |
 | One family pays cash at the office | Counted on a PayPal invoice; its $8.00 change recorded as a refund there | live run `run-20261112-8aaa0a` |
+| A trip 40 days out, past what a hold can reach | `holdOrVault()` chooses the Vault path; each family charged the real share from a saved wallet at the close; $1,600.00 exact | live run `run-20261112-f9489e` |
+| A different group: a youth football team's tournament bus | Same engine, other numbers (coach $960 + $15 entry, 12 players minimum); 14 players charged $83.57, $1,170.00 exact | live run `run-20261112-545199` |
 | A capture above the approved amount | Refused before PayPal is called (PayPal would accept it, P3) | `tests/renewal-guards.test.ts` |
 | A family's terms change after they approve | That hold is held for the teacher; the rest close exactly | `tests/close.test.ts` |
 | A resend with a different payload after a crash | `HELD_FOR_TEACHER` | `tests/close.test.ts` |
@@ -226,16 +241,16 @@ From [docs/FACTS.json](docs/FACTS.json), generated by `scripts/facts.ts` from th
 
 | On the PayPal sandbox, 12 Nov 2026 | |
 |---|---|
-| Live runs recorded | 11, covering seven scenarios. Two early runs failed and are kept: one lost the network while placing holds, one had charged every family exactly when its payout was refused and the old code stopped (fixed: charges now stand and the payout is retried) |
-| Closes exact to the cent | 7 of 7 that reached the close |
+| Live runs recorded | 13, covering nine scenarios (L1 to L8 and the team-bus template). Two early runs failed and are kept: one lost the network while placing holds, one had charged every family exactly when its payout was refused and the old code stopped (fixed: charges now stand and the payout is retried) |
+| Closes exact to the cent | 9 of 9 that reached the close |
 | Closes that survived a PayPal-injected decline | 3 |
-| Real holds placed | 191 |
-| Captures / refunds | 163 / 11 |
-| Dollars settled | $11,160.00 |
+| Real holds placed | 205 (the Vault-path run charges saved wallets and places no holds) |
+| Captures / refunds | 197 / 11 |
+| Dollars settled | $13,930.00 |
 | Cents off, across every close | **0** |
 | Families charged above what they approved | **0** |
-| Payout batches | 6 SUCCESS to US vendor accounts; 1 DENIED, the first run, whose vendor accounts were outside a payout country, kept as a finding |
-| Tests | 31 of 31 passing (`npm test`), plus six-viewport layout and accessibility checks |
+| Payout batches | 8 SUCCESS to US vendor accounts; 1 DENIED, the first run, whose vendor accounts were outside a payout country, kept as a finding |
+| Tests | 32 of 32 passing (`npm test`), plus six-viewport layout and accessibility checks and nine end-to-end flows in Chromium (`tests/e2e/`) |
 
 **Both directions.** A close wrongly blocked would show NEEDS_TEACHER with enough children held; a close that should have stopped would show CLOSED below the minimum or above a cap. Neither happened in any recorded run.
 
@@ -279,6 +294,7 @@ From [docs/FACTS.json](docs/FACTS.json), generated by `scripts/facts.ts` from th
 | Best Use of PayPal + AI | Gemini reads and writes the words; PayPal holds, captures, releases and pays; the help agent uses the Agent Toolkit read-only |
 | Best Use of Agentic Commerce | The help agent answers from live PayPal data and cannot transact; the Bursar transacts only within what each family approved |
 | Best Use of AG Grid | The Register: Theming API, custom cell renderers (honor countdown, PayPal id chips, stamps), pinned totals that must reconcile, cell flash on live updates, quick filters, CSV for the school office |
+| Best Use of Bryntum | The honor timeline: each hold's honor window and scheduled renewal against the close, from the same renewal plan the tick runs (`/timeline`) |
 | Best Use of Render | Web service, cron job and Postgres from one Blueprint (`render.yaml`); measured health at `/api/status` |
 
 ## What is live and what is demo
@@ -341,20 +357,20 @@ Deploy on Render: New, Blueprint, this repository. `render.yaml` creates the web
 ## Repository
 
 ```
-app/                   landing, /judge, /register, /slip/[token], /proof/[poolId], /help, /api/*
+app/                   landing, /judge, /register, /slip/[token], /proof/[poolId], /timeline, /help, /api/* (incl. /api/mcp)
 src/bursar/            allocate.ts, renewal.ts, guards.ts, attempts.ts, close.ts   (no model imports)
 src/paypal/            live.ts (Server SDK), rest.ts, cardhold.ts, invoicing.ts, standin.ts, types.ts
 src/crew/              reader.ts, scribe.ts, clerk.ts, slip.ts, model.ts
 src/pool/              service.ts, seed.ts, stats.ts
 src/db/store.ts        Postgres ledger, or a local file for clean-clone runs
-scripts/               probe, p10, live-close, live-scenarios, tick, retry-payouts, facts, counterfactual, crew-cost, diagrams, vault-setup, register-webhook, reach, check-copy
-tests/                 allocate, renewal-guards, close, crew; e2e/layout (six viewports, axe)
+scripts/               probe, p10, live-close, live-scenarios, vault-close, tick, retry-payouts, facts, counterfactual, crew-cost, diagrams, vault-setup, register-webhook, reach, check-copy
+tests/                 allocate, renewal-guards, close, crew; e2e/layout (six viewports, axe), e2e/flows (every action)
 docs/                  FACTS.json, live-runs/, probe/, counterfactual.json, crew-run.json, images/
 ```
 
 ## Docs
 
-[JUDGE.md](JUDGE.md) (60 s, 3 min, 10 min) · [EVIDENCE.md](EVIDENCE.md) · [FINDINGS.md](FINDINGS.md) · [SDK_SURFACE.md](SDK_SURFACE.md) · [DISCOVERY.md](DISCOVERY.md) · [RISK.md](RISK.md) · [PROOF_PLAN.md](PROOF_PLAN.md) · [DESIGN.md](DESIGN.md) · [FRICTION.md](FRICTION.md) · [paypal-plan.md](paypal-plan.md) · [MOMENT.md](MOMENT.md) · [THESIS.md](THESIS.md) · [TASK.md](TASK.md) · [PROGRESS.md](PROGRESS.md) · [MILESTONES.md](MILESTONES.md) · [DISCLOSURES.md](DISCLOSURES.md)
+[JUDGE.md](JUDGE.md) (60 s, 3 min, 10 min) · [EVIDENCE.md](EVIDENCE.md) · [FINDINGS.md](FINDINGS.md) · [SDK_SURFACE.md](SDK_SURFACE.md) · [DISCOVERY.md](DISCOVERY.md) · [RISK.md](RISK.md) · [PROOF_PLAN.md](PROOF_PLAN.md) · [DESIGN.md](DESIGN.md) · [FRICTION.md](FRICTION.md) · [paypal-plan.md](paypal-plan.md) · [MOMENT.md](MOMENT.md) · [THESIS.md](THESIS.md) · [PROGRESS.md](PROGRESS.md) · [MILESTONES.md](MILESTONES.md) · [DISCLOSURES.md](DISCLOSURES.md)
 
 ## Licence
 

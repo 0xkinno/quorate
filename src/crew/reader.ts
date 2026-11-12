@@ -50,6 +50,19 @@ Total: $1,440.00. Confirm and pay by Friday noon or lose the date.
 Harbor Science Museum group rate: $8.00 per child, chaperones free. Minimum of 18 children for the trip to run.`;
 
 export async function readQuote(text: string) {
+  try { return await readQuoteLive(text); }
+  catch { const r = await readQuoteReplay(text); return { ...r, model: "template (model unavailable)" }; }
+}
+
+async function readQuoteReplay(text: string) {
+  const q: Quote = { vendors: [
+    { name: "Bayline Coaches", fixedCents: 144_000, perHeadCents: 0, quote: "Total: $1,440.00" },
+    { name: "Harbor Science Museum", fixedCents: 0, perHeadCents: 800, quote: "$8.00 per child" },
+  ], minChildren: 18, payBy: "Friday noon", confidence: "HIGH" };
+  return { quote: q, check: checkQuote(text, q), model: "replay", usage: undefined };
+}
+
+async function readQuoteLive(text: string) {
   if (backend() === "replay") {
     const q: Quote = { vendors: [
       { name: "Bayline Coaches", fixedCents: 144_000, perHeadCents: 0, quote: "Total: $1,440.00" },

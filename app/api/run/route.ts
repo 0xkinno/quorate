@@ -3,9 +3,9 @@ import { startLiveRun } from "@/src/pool/service";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const body = (await req.json().catch(() => ({}))) as { decline?: boolean };
+  const body = (await req.json().catch(() => ({}))) as { decline?: boolean; template?: "class-trip" | "team-bus" };
   try {
-    const pool = await startLiveRun({ decline: body.decline !== false });
+    const pool = await startLiveRun({ decline: body.decline !== false, template: body.template === "team-bus" ? "team-bus" : "class-trip" });
     return Response.json({ poolId: pool.id, port: pool.port });
   } catch (e) {
     const msg = (e as Error).message;

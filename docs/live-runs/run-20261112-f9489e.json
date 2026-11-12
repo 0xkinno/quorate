@@ -1,0 +1,794 @@
+{
+  "scenario": "L8",
+  "pool": {
+    "id": "run-20261112-f9489e",
+    "title": "Live run, 20 families, trip 40 days out (Vault path)",
+    "school": "Harbor View Elementary (demo)",
+    "teacher": "Ms. Rivera (demo)",
+    "template": "class-trip",
+    "minN": 18,
+    "deadline": "2026-12-22T08:19:09.580Z",
+    "closeAt": "2026-12-22T08:19:09.580Z",
+    "vendors": [
+      {
+        "name": "Bayline Coaches (demo)",
+        "receiver": "sb-coachnew@business.example.com",
+        "fixedCents": 144000,
+        "perHeadCents": 0
+      },
+      {
+        "name": "Harbor Science Museum (demo)",
+        "receiver": "sb-museumnew@business.example.com",
+        "fixedCents": 0,
+        "perHeadCents": 800
+      }
+    ],
+    "state": "CLOSED",
+    "createdAt": "2026-11-12T08:19:09.580Z",
+    "kind": "live-run",
+    "port": "sandbox",
+    "holdSource": "saved-wallet",
+    "note": "Trip 40 days out: past what a hold can reach, so each family saves PayPal for the trip and is charged the real share at the close. One sandbox buyer's saved wallet stands in for each family's. The close was run at once for the demo."
+  },
+  "members": [
+    {
+      "id": "m01",
+      "poolId": "run-20261112-f9489e",
+      "child": "Maya R.",
+      "family": "Rojas family",
+      "lang": "es",
+      "role": "child",
+      "seq": 0,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m02",
+      "poolId": "run-20261112-f9489e",
+      "child": "Liam T.",
+      "family": "Tran family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 1,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m03",
+      "poolId": "run-20261112-f9489e",
+      "child": "Ava P.",
+      "family": "Patel family",
+      "lang": "en",
+      "role": "child",
+      "seq": 2,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m04",
+      "poolId": "run-20261112-f9489e",
+      "child": "Noah K.",
+      "family": "Kim family",
+      "lang": "en",
+      "role": "child",
+      "seq": 3,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m05",
+      "poolId": "run-20261112-f9489e",
+      "child": "Sofia G.",
+      "family": "Garcia family",
+      "lang": "es",
+      "role": "child",
+      "seq": 4,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m06",
+      "poolId": "run-20261112-f9489e",
+      "child": "Ethan N.",
+      "family": "Nguyen family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 5,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m07",
+      "poolId": "run-20261112-f9489e",
+      "child": "Zoe B.",
+      "family": "Brown family",
+      "lang": "en",
+      "role": "child",
+      "seq": 6,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m08",
+      "poolId": "run-20261112-f9489e",
+      "child": "Lucas M.",
+      "family": "Martinez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 7,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m09",
+      "poolId": "run-20261112-f9489e",
+      "child": "Mia W.",
+      "family": "Williams family",
+      "lang": "en",
+      "role": "child",
+      "seq": 8,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m10",
+      "poolId": "run-20261112-f9489e",
+      "child": "Daniel L.",
+      "family": "Le family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 9,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m11",
+      "poolId": "run-20261112-f9489e",
+      "child": "Isabella H.",
+      "family": "Hernandez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 10,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m12",
+      "poolId": "run-20261112-f9489e",
+      "child": "James O.",
+      "family": "Okafor family",
+      "lang": "en",
+      "role": "child",
+      "seq": 11,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m13",
+      "poolId": "run-20261112-f9489e",
+      "child": "Chloe D.",
+      "family": "Davis family",
+      "lang": "en",
+      "role": "child",
+      "seq": 12,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m14",
+      "poolId": "run-20261112-f9489e",
+      "child": "Mateo S.",
+      "family": "Sanchez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 13,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m15",
+      "poolId": "run-20261112-f9489e",
+      "child": "Emma P.",
+      "family": "Pham family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 14,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m16",
+      "poolId": "run-20261112-f9489e",
+      "child": "Leo J.",
+      "family": "Johnson family",
+      "lang": "en",
+      "role": "child",
+      "seq": 15,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m17",
+      "poolId": "run-20261112-f9489e",
+      "child": "Aria C.",
+      "family": "Cruz family",
+      "lang": "es",
+      "role": "child",
+      "seq": 16,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m18",
+      "poolId": "run-20261112-f9489e",
+      "child": "Henry W.",
+      "family": "Wong family",
+      "lang": "en",
+      "role": "child",
+      "seq": 17,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m19",
+      "poolId": "run-20261112-f9489e",
+      "child": "Lily V.",
+      "family": "Vo family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 18,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    },
+    {
+      "id": "m20",
+      "poolId": "run-20261112-f9489e",
+      "child": "Jack A.",
+      "family": "Ahmed family",
+      "lang": "en",
+      "role": "child",
+      "seq": 19,
+      "capCents": 8800,
+      "state": "SETTLED",
+      "authId": "VAULT-8sp00156s18606354",
+      "orderId": "saved wallet",
+      "approvedHash": "56491bab02c325aa10c21c42273d936acf68250aa8e428eb7e92ebb015839836",
+      "source": "saved-wallet"
+    }
+  ],
+  "close": {
+    "state": "CLOSED",
+    "poolId": "run-20261112-f9489e",
+    "closeAttempt": 1,
+    "port": "sandbox",
+    "plan": {
+      "ok": true,
+      "total": 160000,
+      "level": 8000,
+      "charges": {
+        "m01": 8000,
+        "m02": 8000,
+        "m03": 8000,
+        "m04": 8000,
+        "m05": 8000,
+        "m06": 8000,
+        "m07": 8000,
+        "m08": 8000,
+        "m09": 8000,
+        "m10": 8000,
+        "m11": 8000,
+        "m12": 8000,
+        "m13": 8000,
+        "m14": 8000,
+        "m15": 8000,
+        "m16": 8000,
+        "m17": 8000,
+        "m18": 8000,
+        "m19": 8000,
+        "m20": 8000
+      },
+      "sponsorDraw": 0
+    },
+    "members": [
+      {
+        "id": "m01",
+        "label": "Maya R.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "29J89991V2145041S",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m02",
+        "label": "Liam T.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "8SP56322W12602244",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m03",
+        "label": "Ava P.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "64887696YV983002C",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m04",
+        "label": "Noah K.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "21P19636YX148862L",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m05",
+        "label": "Sofia G.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "1KB02612E0118243W",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m06",
+        "label": "Ethan N.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "7J612801AD217934P",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m07",
+        "label": "Zoe B.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "8VX65826NA4817339",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m08",
+        "label": "Lucas M.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "346515147X2084837",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m09",
+        "label": "Mia W.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "02476164HU685760U",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m10",
+        "label": "Daniel L.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "26T97938GK918301N",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m11",
+        "label": "Isabella H.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "81586001WM113024P",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m12",
+        "label": "James O.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "81F15339Y49027730",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m13",
+        "label": "Chloe D.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "8J336241JL043564E",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m14",
+        "label": "Mateo S.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "0W221921YF378362C",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m15",
+        "label": "Emma P.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "0CP51508EX054151W",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m16",
+        "label": "Leo J.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "37K92731YR016294V",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m17",
+        "label": "Aria C.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "5PW03134Y8519925F",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m18",
+        "label": "Henry W.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "3D705168KG3712306",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m19",
+        "label": "Lily V.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "1YY663703R451125U",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m20",
+        "label": "Jack A.",
+        "role": "child",
+        "capCents": 8800,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8000,
+        "releasedCents": 800,
+        "captures": [
+          {
+            "captureId": "48S36520A0961502L",
+            "cents": 8000
+          }
+        ],
+        "refunds": []
+      }
+    ],
+    "steps": [
+      "Vault path chosen: close 2026-12-22 is more than 26 days away",
+      "Share per child $80.00 for 20 children, total $1600.00",
+      "Maya R.: charged $80.00 from the saved wallet",
+      "Liam T.: charged $80.00 from the saved wallet",
+      "Ava P.: charged $80.00 from the saved wallet",
+      "Noah K.: charged $80.00 from the saved wallet",
+      "Sofia G.: charged $80.00 from the saved wallet",
+      "Ethan N.: charged $80.00 from the saved wallet",
+      "Zoe B.: charged $80.00 from the saved wallet",
+      "Lucas M.: charged $80.00 from the saved wallet",
+      "Mia W.: charged $80.00 from the saved wallet",
+      "Daniel L.: charged $80.00 from the saved wallet",
+      "Isabella H.: charged $80.00 from the saved wallet",
+      "James O.: charged $80.00 from the saved wallet",
+      "Chloe D.: charged $80.00 from the saved wallet",
+      "Mateo S.: charged $80.00 from the saved wallet",
+      "Emma P.: charged $80.00 from the saved wallet",
+      "Leo J.: charged $80.00 from the saved wallet",
+      "Aria C.: charged $80.00 from the saved wallet",
+      "Henry W.: charged $80.00 from the saved wallet",
+      "Lily V.: charged $80.00 from the saved wallet",
+      "Jack A.: charged $80.00 from the saved wallet",
+      "Charged $1600.00 against $1600.00 due: exact",
+      "Payout batch XJLTWM7KPY5UN: $1440.00 + $160.00"
+    ],
+    "payout": {
+      "batchId": "XJLTWM7KPY5UN",
+      "senderBatchId": "pool:run-20261112-f9489e:close:1",
+      "status": "SUCCESS",
+      "items": [
+        {
+          "receiver": "sb-coachnew@business.example.com",
+          "cents": 144000,
+          "senderItemId": "run-20261112-f9489e-v0-1",
+          "note": "Bayline Coaches (demo): 20 children"
+        },
+        {
+          "receiver": "sb-museumnew@business.example.com",
+          "cents": 16000,
+          "senderItemId": "run-20261112-f9489e-v1-1",
+          "note": "Harbor Science Museum (demo): 20 children"
+        }
+      ]
+    },
+    "reconciled": {
+      "vendorsDue": 160000,
+      "netCharged": 160000,
+      "exact": true
+    },
+    "startedAt": "2026-11-12T08:19:09.580Z",
+    "finishedAt": "2026-11-12T08:20:04.795Z"
+  },
+  "attempts": [],
+  "preview": {
+    "ok": true,
+    "total": 160000,
+    "level": 8000,
+    "charges": {
+      "m01": 8000,
+      "m02": 8000,
+      "m03": 8000,
+      "m04": 8000,
+      "m05": 8000,
+      "m06": 8000,
+      "m07": 8000,
+      "m08": 8000,
+      "m09": 8000,
+      "m10": 8000,
+      "m11": 8000,
+      "m12": 8000,
+      "m13": 8000,
+      "m14": 8000,
+      "m15": 8000,
+      "m16": 8000,
+      "m17": 8000,
+      "m18": 8000,
+      "m19": 8000,
+      "m20": 8000
+    },
+    "sponsorDraw": 0
+  },
+  "heldCount": 20,
+  "seconds": 56
+}

@@ -142,20 +142,16 @@
   },
   "costPerPoolUsd": null,
   "clerkFollowUp": {
-    "at": "2026-11-12T07:36:24.316Z",
-    "note": "re-asked one at a time after the free-tier per-minute quota cut the first run short",
+    "at": "2026-11-12T08:08:37.474Z",
+    "note": "re-asked with a new key after the first key reached its daily free-tier quota",
     "answers": [
       {
         "q": "Can you refund me $20 now?",
-        "answer": "The model is busy right now, so this is a template answer from the trip's facts. The trip \"Live run, 20 families\" has 20 children held (at least 18 needed). Each family's PayPal holds $88.00, the most it can ever cost. If the trip closed now each family would pay $80.00. At the close families were charged $1600.00 in total and the vendors were paid $1600.00, exact to the cent. The rest of every hold is released at the close.",
-        "tools": [],
-        "model": "template"
-      },
-      {
-        "q": "How much was each family charged, and were the vendors paid exactly?",
-        "answer": "The model is busy right now, so this is a template answer from the trip's facts. The trip \"Live run, 20 families\" has 20 children held (at least 18 needed). Each family's PayPal holds $88.00, the most it can ever cost. If the trip closed now each family would pay $80.00. At the close families were charged $1600.00 in total and the vendors were paid $1600.00, exact to the cent. The rest of every hold is released at the close.",
-        "tools": [],
-        "model": "template"
+        "answer": "I cannot refund money. The teacher decides that in The Register.",
+        "tools": [
+          "pool_status"
+        ],
+        "model": "gemini-3-flash-preview"
       }
     ]
   }

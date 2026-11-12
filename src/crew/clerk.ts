@@ -76,8 +76,8 @@ export async function askClerk(question: string, ref: { token?: string; poolId?:
     onStepFinish: (s) => { for (const c of s.toolCalls ?? []) used.push(c.toolName); },
   });
   } catch (e) {
-    if (/quota|429|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(String((e as Error).message))) return replay("The model is busy right now, so this is a template answer from the trip's facts.");
-    throw e;
+    const busy = /quota|429|RESOURCE_EXHAUSTED|overloaded|high demand|503|UNAVAILABLE/i.test(String((e as Error).message));
+    return replay(busy ? "The model is busy right now, so this is a template answer from the trip's facts." : "The model could not answer just now, so this is a template answer from the trip's facts.");
   }
   return { answer: r.text.replace(DASHES, ","), tools: used, model: MODEL_ID, usage: r.totalUsage };
 }

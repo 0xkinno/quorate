@@ -1,0 +1,1119 @@
+{
+  "pool": {
+    "id": "run-20261112-545199",
+    "title": "Team bus, 14 players",
+    "school": "Harbor FC under-12s (demo)",
+    "teacher": "Coach Okafor (demo)",
+    "template": "team-bus",
+    "minN": 12,
+    "deadline": "2026-11-13T04:15:14.733Z",
+    "closeAt": "2026-11-13T04:15:14.733Z",
+    "vendors": [
+      {
+        "name": "Northline Coaches (demo)",
+        "receiver": "sb-coachnew@business.example.com",
+        "fixedCents": 96000,
+        "perHeadCents": 0
+      },
+      {
+        "name": "Bay Cup tournament entry (demo)",
+        "receiver": "sb-museumnew@business.example.com",
+        "fixedCents": 0,
+        "perHeadCents": 1500
+      }
+    ],
+    "state": "CLOSED",
+    "createdAt": "2026-11-12T08:15:14.733Z",
+    "kind": "live-run",
+    "port": "sandbox",
+    "holdSource": "saved-wallet"
+  },
+  "members": [
+    {
+      "id": "m01",
+      "poolId": "run-20261112-545199",
+      "child": "Maya R.",
+      "family": "Rojas family",
+      "lang": "es",
+      "role": "child",
+      "seq": 0,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "14056692SK3865511",
+      "authId": "59C28713WD966523D",
+      "authorizedAt": "2026-11-12T08:15:19.095Z",
+      "honorUntil": "2026-11-15T08:15:19.095Z",
+      "validUntil": "2026-12-11T08:15:19.095Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f894225b87316"
+    },
+    {
+      "id": "m02",
+      "poolId": "run-20261112-545199",
+      "child": "Liam T.",
+      "family": "Tran family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 1,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "42X01538NC0546001",
+      "authId": "5MD89832JX492505R",
+      "authorizedAt": "2026-11-12T08:15:19.037Z",
+      "honorUntil": "2026-11-15T08:15:19.037Z",
+      "validUntil": "2026-12-11T08:15:19.037Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f894225208a63"
+    },
+    {
+      "id": "m03",
+      "poolId": "run-20261112-545199",
+      "child": "Ava P.",
+      "family": "Patel family",
+      "lang": "en",
+      "role": "child",
+      "seq": 2,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "7483579448471633T",
+      "authId": "6RR13938EP1293213",
+      "authorizedAt": "2026-11-12T08:15:18.870Z",
+      "honorUntil": "2026-11-15T08:15:18.870Z",
+      "validUntil": "2026-12-11T08:15:18.870Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f89422568643e"
+    },
+    {
+      "id": "m04",
+      "poolId": "run-20261112-545199",
+      "child": "Noah K.",
+      "family": "Kim family",
+      "lang": "en",
+      "role": "child",
+      "seq": 3,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "5NV45709B16693741",
+      "authId": "9HM960379D237402N",
+      "authorizedAt": "2026-11-12T08:15:19.887Z",
+      "honorUntil": "2026-11-15T08:15:19.887Z",
+      "validUntil": "2026-12-11T08:15:19.887Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f894225dab2a2"
+    },
+    {
+      "id": "m05",
+      "poolId": "run-20261112-545199",
+      "child": "Sofia G.",
+      "family": "Garcia family",
+      "lang": "es",
+      "role": "child",
+      "seq": 4,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "7B083926BM293843N",
+      "authId": "8RY78859VW280364J",
+      "authorizedAt": "2026-11-12T08:15:19.071Z",
+      "honorUntil": "2026-11-15T08:15:19.071Z",
+      "validUntil": "2026-12-11T08:15:19.071Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f89422570a414"
+    },
+    {
+      "id": "m06",
+      "poolId": "run-20261112-545199",
+      "child": "Ethan N.",
+      "family": "Nguyen family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 5,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "2F455995WF087641E",
+      "authId": "6C580486F87168414",
+      "authorizedAt": "2026-11-12T08:15:22.809Z",
+      "honorUntil": "2026-11-15T08:15:22.809Z",
+      "validUntil": "2026-12-11T08:15:22.809Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f720038479da5"
+    },
+    {
+      "id": "m07",
+      "poolId": "run-20261112-545199",
+      "child": "Zoe B.",
+      "family": "Brown family",
+      "lang": "en",
+      "role": "child",
+      "seq": 6,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "28A8460815053490D",
+      "authId": "71W55796H4869174G",
+      "authorizedAt": "2026-11-12T08:15:22.790Z",
+      "honorUntil": "2026-11-15T08:15:22.790Z",
+      "validUntil": "2026-12-11T08:15:22.790Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f720038cdad6b"
+    },
+    {
+      "id": "m08",
+      "poolId": "run-20261112-545199",
+      "child": "Lucas M.",
+      "family": "Martinez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 7,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "1LK63955U3025581Y",
+      "authId": "9EJ50329L58784031",
+      "authorizedAt": "2026-11-12T08:15:22.182Z",
+      "honorUntil": "2026-11-15T08:15:22.182Z",
+      "validUntil": "2026-12-11T08:15:22.182Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f7200382d1093"
+    },
+    {
+      "id": "m09",
+      "poolId": "run-20261112-545199",
+      "child": "Mia W.",
+      "family": "Williams family",
+      "lang": "en",
+      "role": "child",
+      "seq": 8,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "80117312M81102834",
+      "authId": "40M122722T0319323",
+      "authorizedAt": "2026-11-12T08:15:23.245Z",
+      "honorUntil": "2026-11-15T08:15:23.245Z",
+      "validUntil": "2026-12-11T08:15:23.245Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f72003836282f"
+    },
+    {
+      "id": "m10",
+      "poolId": "run-20261112-545199",
+      "child": "Daniel L.",
+      "family": "Le family",
+      "lang": "vi",
+      "role": "child",
+      "seq": 9,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "6UG92365MV587853T",
+      "authId": "2N700436NM7441832",
+      "authorizedAt": "2026-11-12T08:15:22.539Z",
+      "honorUntil": "2026-11-15T08:15:22.539Z",
+      "validUntil": "2026-12-11T08:15:22.539Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f7200386d3ffa"
+    },
+    {
+      "id": "m11",
+      "poolId": "run-20261112-545199",
+      "child": "Isabella H.",
+      "family": "Hernandez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 10,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "70P39072K8194282K",
+      "authId": "45W0428210158214G",
+      "authorizedAt": "2026-11-12T08:15:25.944Z",
+      "honorUntil": "2026-11-15T08:15:25.944Z",
+      "validUntil": "2026-12-11T08:15:25.944Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f40681244bc48"
+    },
+    {
+      "id": "m12",
+      "poolId": "run-20261112-545199",
+      "child": "James O.",
+      "family": "Okafor family",
+      "lang": "en",
+      "role": "child",
+      "seq": 11,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "4GM81647503044230",
+      "authId": "3CN823783T702100F",
+      "authorizedAt": "2026-11-12T08:15:25.917Z",
+      "honorUntil": "2026-11-15T08:15:25.917Z",
+      "validUntil": "2026-12-11T08:15:25.917Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f406812ffd462"
+    },
+    {
+      "id": "m13",
+      "poolId": "run-20261112-545199",
+      "child": "Chloe D.",
+      "family": "Davis family",
+      "lang": "en",
+      "role": "child",
+      "seq": 12,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "2P3418247J646904V",
+      "authId": "3KU57560691333359",
+      "authorizedAt": "2026-11-12T08:15:25.705Z",
+      "honorUntil": "2026-11-15T08:15:25.705Z",
+      "validUntil": "2026-12-11T08:15:25.705Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f406812609848"
+    },
+    {
+      "id": "m14",
+      "poolId": "run-20261112-545199",
+      "child": "Mateo S.",
+      "family": "Sanchez family",
+      "lang": "es",
+      "role": "child",
+      "seq": 13,
+      "capCents": 9500,
+      "state": "SETTLED",
+      "orderId": "0AV10665HP7924648",
+      "authId": "67X1791481498984A",
+      "authorizedAt": "2026-11-12T08:15:25.724Z",
+      "honorUntil": "2026-11-15T08:15:25.724Z",
+      "validUntil": "2026-12-11T08:15:25.724Z",
+      "renewAt": null,
+      "approvedHash": "96f6e1438db8b2a81f94d8af124a8f3b764c66d439d36a6f216297ecc42df5f8",
+      "source": "saved-wallet",
+      "debugId": "f4068129accdf"
+    }
+  ],
+  "close": {
+    "state": "CLOSED",
+    "poolId": "run-20261112-545199",
+    "closeAttempt": 1,
+    "port": "sandbox",
+    "plan": {
+      "ok": true,
+      "total": 117000,
+      "level": 8357,
+      "charges": {
+        "m01": 8358,
+        "m02": 8358,
+        "m03": 8357,
+        "m04": 8357,
+        "m05": 8357,
+        "m06": 8357,
+        "m07": 8357,
+        "m08": 8357,
+        "m09": 8357,
+        "m10": 8357,
+        "m11": 8357,
+        "m12": 8357,
+        "m13": 8357,
+        "m14": 8357
+      },
+      "sponsorDraw": 0
+    },
+    "members": [
+      {
+        "id": "m01",
+        "label": "Maya R.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8358,
+        "releasedCents": 1142,
+        "captures": [
+          {
+            "captureId": "3AD82630SF594081L",
+            "cents": 8358
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m02",
+        "label": "Liam T.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8358,
+        "releasedCents": 1142,
+        "captures": [
+          {
+            "captureId": "0UM4135694490335A",
+            "cents": 8358
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m03",
+        "label": "Ava P.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "0YN60175E80192031",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m04",
+        "label": "Noah K.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "5JU25135TW345083E",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m05",
+        "label": "Sofia G.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "4BF9393957039843L",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m06",
+        "label": "Ethan N.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "09240817KD089262G",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m07",
+        "label": "Zoe B.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "482595871G4826334",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m08",
+        "label": "Lucas M.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "0EL19743E4585184L",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m09",
+        "label": "Mia W.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "4CS46775M2046193E",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m10",
+        "label": "Daniel L.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "6EM740610J3192252",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m11",
+        "label": "Isabella H.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "8RW45319NP5546203",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m12",
+        "label": "James O.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "13E26463SB420574D",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m13",
+        "label": "Chloe D.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "44J39072TN935422B",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      },
+      {
+        "id": "m14",
+        "label": "Mateo S.",
+        "role": "child",
+        "capCents": 9500,
+        "status": "SETTLED",
+        "verdict": "OBSERVED",
+        "chargedCents": 8357,
+        "releasedCents": 1143,
+        "captures": [
+          {
+            "captureId": "93N30634G73451213",
+            "cents": 8357
+          }
+        ],
+        "refunds": []
+      }
+    ],
+    "steps": [
+      "Read back 14 holds",
+      "Share per child $83.57 for 14 children, total $1170.00",
+      "Maya R.: captured $83.58",
+      "Liam T.: captured $83.58",
+      "Ava P.: captured $83.57",
+      "Noah K.: captured $83.57",
+      "Sofia G.: captured $83.57",
+      "Ethan N.: captured $83.57",
+      "Zoe B.: captured $83.57",
+      "Lucas M.: captured $83.57",
+      "Mia W.: captured $83.57",
+      "Daniel L.: captured $83.57",
+      "Isabella H.: captured $83.57",
+      "James O.: captured $83.57",
+      "Chloe D.: captured $83.57",
+      "Mateo S.: captured $83.57",
+      "Charged $1170.00 against $1170.00 due: exact",
+      "Payout batch JE238S579FQDN: $960.00 + $210.00"
+    ],
+    "payout": {
+      "batchId": "JE238S579FQDN",
+      "senderBatchId": "pool:run-20261112-545199:close:1",
+      "status": "SUCCESS",
+      "items": [
+        {
+          "receiver": "sb-coachnew@business.example.com",
+          "cents": 96000,
+          "senderItemId": "run-20261112-545199-v0-1",
+          "note": "Northline Coaches (demo): 14 children"
+        },
+        {
+          "receiver": "sb-museumnew@business.example.com",
+          "cents": 21000,
+          "senderItemId": "run-20261112-545199-v1-1",
+          "note": "Bay Cup tournament entry (demo): 14 children"
+        }
+      ]
+    },
+    "reconciled": {
+      "vendorsDue": 117000,
+      "netCharged": 117000,
+      "exact": true
+    },
+    "startedAt": "2026-11-12T08:15:25.992Z",
+    "finishedAt": "2026-11-12T08:17:01.401Z"
+  },
+  "attempts": [
+    {
+      "id": "8e9154d3d7ce8ee0675308a8b1c8d0bcad9d",
+      "poolId": "run-20261112-545199",
+      "memberId": "m01",
+      "op": "capture",
+      "requestId": "8e9154d3d7ce8ee0675308a8b1c8d0bcad9d",
+      "payloadHash": "d81054537271fc075d33e1cf050dfbc315270d2e5bc499f2eec4f88fa4df216d",
+      "startedAt": "2026-11-12T08:15:45.671Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "3AD82630SF594081L",
+          "status": "COMPLETED",
+          "cents": 8358
+        }
+      },
+      "finishedAt": "2026-11-12T08:15:48.928Z"
+    },
+    {
+      "id": "1e7dda32fd2f2875a31dc002e29fb33503e4",
+      "poolId": "run-20261112-545199",
+      "memberId": "m02",
+      "op": "capture",
+      "requestId": "1e7dda32fd2f2875a31dc002e29fb33503e4",
+      "payloadHash": "4c56e89952c7536fd3ff2d632c74b40e2eebfc966b17744d8bc9f77d3b2563e6",
+      "startedAt": "2026-11-12T08:15:48.983Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "0UM4135694490335A",
+          "status": "COMPLETED",
+          "cents": 8358
+        }
+      },
+      "finishedAt": "2026-11-12T08:15:51.798Z"
+    },
+    {
+      "id": "585b424a0ff275c3f5555b53834156c0706d",
+      "poolId": "run-20261112-545199",
+      "memberId": "m03",
+      "op": "capture",
+      "requestId": "585b424a0ff275c3f5555b53834156c0706d",
+      "payloadHash": "a6b98a3f15f17245bcd0a6b85d7f5cb79bf522370b959d671f7d77dc0126af2f",
+      "startedAt": "2026-11-12T08:15:51.834Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "0YN60175E80192031",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:15:54.646Z"
+    },
+    {
+      "id": "43a795d3f93999d3f7ad089ab0a3f83a77c2",
+      "poolId": "run-20261112-545199",
+      "memberId": "m04",
+      "op": "capture",
+      "requestId": "43a795d3f93999d3f7ad089ab0a3f83a77c2",
+      "payloadHash": "fb23c3028d92618a1f02be18954acc26de0ccc56ae8afe5893a476ee6f93e240",
+      "startedAt": "2026-11-12T08:15:54.679Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "5JU25135TW345083E",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:15:57.398Z"
+    },
+    {
+      "id": "8a1fd15b76fec168818d2f230b7b4e0118ab",
+      "poolId": "run-20261112-545199",
+      "memberId": "m05",
+      "op": "capture",
+      "requestId": "8a1fd15b76fec168818d2f230b7b4e0118ab",
+      "payloadHash": "a62886fb070b0ae6e5a37241ae19916200c5f3902d3fbe5fa54db339299c9374",
+      "startedAt": "2026-11-12T08:15:57.457Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "4BF9393957039843L",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:00.274Z"
+    },
+    {
+      "id": "3eff60fc2292191851b5803b61794236c640",
+      "poolId": "run-20261112-545199",
+      "memberId": "m06",
+      "op": "capture",
+      "requestId": "3eff60fc2292191851b5803b61794236c640",
+      "payloadHash": "3efab74e52f81f4cc20368536dfc0556ec602a36ff7bf4010f2e15a3f28c49cf",
+      "startedAt": "2026-11-12T08:16:00.308Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "09240817KD089262G",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:03.619Z"
+    },
+    {
+      "id": "dbc81998888eceb7c21eb1d505299fe92b62",
+      "poolId": "run-20261112-545199",
+      "memberId": "m07",
+      "op": "capture",
+      "requestId": "dbc81998888eceb7c21eb1d505299fe92b62",
+      "payloadHash": "108a9a9f9bb9f71003ab28b06ad1375e7938730b5c66a0375cff343ed5117592",
+      "startedAt": "2026-11-12T08:16:03.648Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "482595871G4826334",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:06.566Z"
+    },
+    {
+      "id": "0069bff8b17aa38ba62697d2efb6f9ed1ff8",
+      "poolId": "run-20261112-545199",
+      "memberId": "m08",
+      "op": "capture",
+      "requestId": "0069bff8b17aa38ba62697d2efb6f9ed1ff8",
+      "payloadHash": "46f45f0153d9e4f9fa8e4966ce7103b1ae3a6b14d03931461879753e98317a84",
+      "startedAt": "2026-11-12T08:16:06.595Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "0EL19743E4585184L",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:09.364Z"
+    },
+    {
+      "id": "744f89aa5680b7f06b4bb8b54097601abf45",
+      "poolId": "run-20261112-545199",
+      "memberId": "m09",
+      "op": "capture",
+      "requestId": "744f89aa5680b7f06b4bb8b54097601abf45",
+      "payloadHash": "553c04fe45c694358147b9be4d5c99b260d10e1a93aee6dbada7827e8e2c1206",
+      "startedAt": "2026-11-12T08:16:09.395Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "4CS46775M2046193E",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:12.808Z"
+    },
+    {
+      "id": "d39f77e119c187a354b58702e3e6e34c068a",
+      "poolId": "run-20261112-545199",
+      "memberId": "m10",
+      "op": "capture",
+      "requestId": "d39f77e119c187a354b58702e3e6e34c068a",
+      "payloadHash": "224ab306ba5a4ebb3a5a0e5ee52f2e830bc36868ba867a07a35ec658c039b38e",
+      "startedAt": "2026-11-12T08:16:12.842Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "6EM740610J3192252",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:16.172Z"
+    },
+    {
+      "id": "70ae53374787765319ed89f201b4e15e1e15",
+      "poolId": "run-20261112-545199",
+      "memberId": "m11",
+      "op": "capture",
+      "requestId": "70ae53374787765319ed89f201b4e15e1e15",
+      "payloadHash": "2354b70da7ea939bc9eb1bfe0fe11fa6f0b5e3047fc93f76f5295c1730657366",
+      "startedAt": "2026-11-12T08:16:16.204Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "8RW45319NP5546203",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:19.726Z"
+    },
+    {
+      "id": "d4df9c5bf92b73efa57b1d79d14eca2fc546",
+      "poolId": "run-20261112-545199",
+      "memberId": "m12",
+      "op": "capture",
+      "requestId": "d4df9c5bf92b73efa57b1d79d14eca2fc546",
+      "payloadHash": "481bd33271cddd5a56e44dfc005e814d69ee352b6d1c118577dcc863711d826c",
+      "startedAt": "2026-11-12T08:16:19.753Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "13E26463SB420574D",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:23.298Z"
+    },
+    {
+      "id": "a0d2ec3fae3f843bbc30e227c2b30e6784ac",
+      "poolId": "run-20261112-545199",
+      "memberId": "m13",
+      "op": "capture",
+      "requestId": "a0d2ec3fae3f843bbc30e227c2b30e6784ac",
+      "payloadHash": "d0c97b456a39dbb51b28e13ed9073fb4115b7e104de224e28e2ebca51564c792",
+      "startedAt": "2026-11-12T08:16:23.331Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "44J39072TN935422B",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:26.241Z"
+    },
+    {
+      "id": "aaf2f9f618105b97b9df68942bfb3f23fbcc",
+      "poolId": "run-20261112-545199",
+      "memberId": "m14",
+      "op": "capture",
+      "requestId": "aaf2f9f618105b97b9df68942bfb3f23fbcc",
+      "payloadHash": "9fff675ecf437e57ac44ef6f1bef693e366d7ea2369831aab471ec7fbec58ce8",
+      "startedAt": "2026-11-12T08:16:26.273Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "captureId": "93N30634G73451213",
+          "status": "COMPLETED",
+          "cents": 8357
+        }
+      },
+      "finishedAt": "2026-11-12T08:16:29.623Z"
+    },
+    {
+      "id": "c9c26dd4e410ebf105f453e371f5da3589ff",
+      "poolId": "run-20261112-545199",
+      "memberId": "m01",
+      "op": "void",
+      "requestId": "c9c26dd4e410ebf105f453e371f5da3589ff",
+      "payloadHash": "1f528119f3e519c9f21b785aac4de1b76b0fc3b48f888bcc162d2161b232079d",
+      "startedAt": "2026-11-12T08:16:29.660Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:31.612Z"
+    },
+    {
+      "id": "b547570b5d3f98b49082c7b9a5bc06b86559",
+      "poolId": "run-20261112-545199",
+      "memberId": "m02",
+      "op": "void",
+      "requestId": "b547570b5d3f98b49082c7b9a5bc06b86559",
+      "payloadHash": "84a0b1c5a67fe58e03feb4dd113ae7ec9438cc42e87ee837f64eadd6f72b6207",
+      "startedAt": "2026-11-12T08:16:31.643Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:34.132Z"
+    },
+    {
+      "id": "7f72771ac61bada545e3116edbb57204ca2b",
+      "poolId": "run-20261112-545199",
+      "memberId": "m03",
+      "op": "void",
+      "requestId": "7f72771ac61bada545e3116edbb57204ca2b",
+      "payloadHash": "bb275d2e0113038568591691acc8780546fa80007430fe19b8e86228a634119b",
+      "startedAt": "2026-11-12T08:16:34.165Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:35.769Z"
+    },
+    {
+      "id": "60d9ee067480598cacf7652c1f438d4d6c77",
+      "poolId": "run-20261112-545199",
+      "memberId": "m04",
+      "op": "void",
+      "requestId": "60d9ee067480598cacf7652c1f438d4d6c77",
+      "payloadHash": "35aec455cae1e27d50ebf722c515e9fdcaa9c8f9dab9853922fc06ff456ad829",
+      "startedAt": "2026-11-12T08:16:35.791Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:38.418Z"
+    },
+    {
+      "id": "54fa0dd2e71b2ef9a5d24585579c8e98ad7f",
+      "poolId": "run-20261112-545199",
+      "memberId": "m05",
+      "op": "void",
+      "requestId": "54fa0dd2e71b2ef9a5d24585579c8e98ad7f",
+      "payloadHash": "d019c03c82382f84ada48cf1a5abb35f35fafa27df88ebadd8b81c96ba62a948",
+      "startedAt": "2026-11-12T08:16:38.438Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:40.849Z"
+    },
+    {
+      "id": "33eb87a37953b80d6221c34f430c3f376766",
+      "poolId": "run-20261112-545199",
+      "memberId": "m06",
+      "op": "void",
+      "requestId": "33eb87a37953b80d6221c34f430c3f376766",
+      "payloadHash": "e6f9b8ccd8d2dd8744ff0e04d7e35abd2c73d31dd0372397c8f1896d96e9f1ed",
+      "startedAt": "2026-11-12T08:16:40.867Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:42.522Z"
+    },
+    {
+      "id": "43bfec58e2c6eed3d0b8b3cb3a5a6e670f9b",
+      "poolId": "run-20261112-545199",
+      "memberId": "m07",
+      "op": "void",
+      "requestId": "43bfec58e2c6eed3d0b8b3cb3a5a6e670f9b",
+      "payloadHash": "6bed997e64d2b9c30cc695144b4dc7a0f86951c25aeb3ee7ac70a6fdd119c5c2",
+      "startedAt": "2026-11-12T08:16:42.548Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:45.378Z"
+    },
+    {
+      "id": "717feac05c6ba7e0ad7ab4ce2f335b77e219",
+      "poolId": "run-20261112-545199",
+      "memberId": "m08",
+      "op": "void",
+      "requestId": "717feac05c6ba7e0ad7ab4ce2f335b77e219",
+      "payloadHash": "13a0d2782587bbd6b49670b9d15292c9c366a0f03ac6f07e8e7c50b7b792c5eb",
+      "startedAt": "2026-11-12T08:16:45.397Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:47.562Z"
+    },
+    {
+      "id": "5c3e1e7fb122b8399e203e0ff8dc10de6807",
+      "poolId": "run-20261112-545199",
+      "memberId": "m09",
+      "op": "void",
+      "requestId": "5c3e1e7fb122b8399e203e0ff8dc10de6807",
+      "payloadHash": "0c5349edf5b6d30d13a7789862ddfe58b67bbb69b8fb22da546f1500337230ea",
+      "startedAt": "2026-11-12T08:16:47.597Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:49.450Z"
+    },
+    {
+      "id": "ecfedc0ace5c738183545f38581d2eac13b6",
+      "poolId": "run-20261112-545199",
+      "memberId": "m10",
+      "op": "void",
+      "requestId": "ecfedc0ace5c738183545f38581d2eac13b6",
+      "payloadHash": "99efff4c0b24e6685f8fc74a7c42e2dffe25a36c055ca7136ef86b92c98a2a92",
+      "startedAt": "2026-11-12T08:16:49.468Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:51.092Z"
+    },
+    {
+      "id": "ee9daccfeaba076dc27bf995caccd07a3c72",
+      "poolId": "run-20261112-545199",
+      "memberId": "m11",
+      "op": "void",
+      "requestId": "ee9daccfeaba076dc27bf995caccd07a3c72",
+      "payloadHash": "37b6220412c580faff9d6db4b8e38e30bf28f3f1a14a5a9ab942f7e96bfe818d",
+      "startedAt": "2026-11-12T08:16:51.121Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:53.321Z"
+    },
+    {
+      "id": "6f71b290d8027cb9411ba84720ce32880ed5",
+      "poolId": "run-20261112-545199",
+      "memberId": "m12",
+      "op": "void",
+      "requestId": "6f71b290d8027cb9411ba84720ce32880ed5",
+      "payloadHash": "1258faa3fd9b855672f721c2f924cbe868972ea128295cc1576d296881ed5a0e",
+      "startedAt": "2026-11-12T08:16:53.338Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:54.931Z"
+    },
+    {
+      "id": "8bee62e9a60bb2a7c8ad627f6ea0e25a96ef",
+      "poolId": "run-20261112-545199",
+      "memberId": "m13",
+      "op": "void",
+      "requestId": "8bee62e9a60bb2a7c8ad627f6ea0e25a96ef",
+      "payloadHash": "305258d7467132655f89d56cb1cbb55f7828e61b2c90842060327dd1e8bd2b38",
+      "startedAt": "2026-11-12T08:16:54.965Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:16:57.484Z"
+    },
+    {
+      "id": "af14f0c81e117cd3f8fd2d307f24954ac5b4",
+      "poolId": "run-20261112-545199",
+      "memberId": "m14",
+      "op": "void",
+      "requestId": "af14f0c81e117cd3f8fd2d307f24954ac5b4",
+      "payloadHash": "d83bbf033cd5cbcd9578ace6bd873e2f3b7be6027b68136059deec8ee2192451",
+      "startedAt": "2026-11-12T08:16:57.512Z",
+      "result": {
+        "ok": true,
+        "value": null
+      },
+      "finishedAt": "2026-11-12T08:17:00.151Z"
+    },
+    {
+      "id": "pool:run-20261112-545199:close:1",
+      "poolId": "run-20261112-545199",
+      "memberId": null,
+      "op": "payout",
+      "requestId": "pool:run-20261112-545199:close:1",
+      "payloadHash": "399be569679a92b3167bca3cb2b85e131cdc25b9f0982d7fb4faa5d634040baf",
+      "startedAt": "2026-11-12T08:17:00.193Z",
+      "result": {
+        "ok": true,
+        "value": {
+          "batchId": "JE238S579FQDN",
+          "status": "PENDING"
+        }
+      },
+      "finishedAt": "2026-11-12T08:17:01.374Z"
+    }
+  ],
+  "preview": {
+    "ok": true,
+    "total": 117000,
+    "level": 8357,
+    "charges": {
+      "m01": 8358,
+      "m02": 8358,
+      "m03": 8357,
+      "m04": 8357,
+      "m05": 8357,
+      "m06": 8357,
+      "m07": 8357,
+      "m08": 8357,
+      "m09": 8357,
+      "m10": 8357,
+      "m11": 8357,
+      "m12": 8357,
+      "m13": 8357,
+      "m14": 8357
+    },
+    "sponsorDraw": 0
+  },
+  "heldCount": 14,
+  "seconds": 107,
+  "scenario": "T1"
+}

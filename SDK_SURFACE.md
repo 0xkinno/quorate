@@ -22,6 +22,7 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 | Sandbox negative testing (`PayPal-Mock-Response`) | `src/paypal/types.ts:33`, `src/paypal/live.ts:41` | The judge's decline button: PayPal itself refuses family 7's capture with `PAYER_CANNOT_PAY` | Live (L3); probe P5 lists which codes each call honours |
 | JS SDK Buttons, `intent=authorize` | `app/slip/[token]/SlipActions.tsx:33` | The family slip: order created by our server, approved by the family on PayPal, authorized by our server | Live in code; v5 Buttons, see "not used" |
 | PayPal Server SDK (APIMatic) `@paypal/paypal-server-sdk` 2.5 | `src/paypal/live.ts:18` | OrdersController and PaymentsController, one client per call, 30 s timeout, SDK retries off (our attempt log owns retries) | Live |
+| Vault v3 merchant-initiated charge at the close | `src/paypal/cardhold.ts` (`chargeSavedWallet`), `scripts/vault-close.ts` | Trips more than 26 days out: the real share charged from a saved wallet, `stored_credential` MERCHANT/SUBSEQUENT | Live (L8) |
 | PayPal Agent Toolkit `@paypal/agent-toolkit` 1.11 | `src/crew/clerk.ts:13`, `:18` | The Clerk gets exactly `get_order`, `get_invoice`, `list_transactions`; construction throws on any money tool | Live (probe P10: `get_order` returns the AUTHORIZE order with its authorization) |
 
 ## Other sponsors
@@ -30,11 +31,17 @@ called against the PayPal sandbox on 12 Nov 2026 and the result is in `docs/live
 |---|---|---|
 | AG Grid Community 36, Theming API | `app/register/RegisterView.tsx` | Live: themed from Quorate's tokens, custom renderers (honor countdown, PayPal id chips, stamps), pinned totals row, cell flash, quick filter tabs, CSV export, row selection |
 | AG Charts Community 14 | `app/register/RegisterView.tsx` | Live: price per child against children going |
+| Bryntum Scheduler 7.3 (trial build) | `app/timeline/HonorTimeline.tsx` | Live: every hold's honor window and scheduled renewal against the close, read-only |
 | Render (web service, cron job, Postgres) | `render.yaml` | Live at https://quorate.onrender.com; measured health at `/api/status` |
 | Gemini (`gemini-3-flash-preview`, AI SDK 7) | `src/crew/model.ts` | Live: Reader, Scribe, Clerk (`docs/crew-run.json`) |
 
 ## Not used, so not claimed
 - JS SDK v6. The slip uses v5 Buttons with `intent=authorize`, which is documented for authorize-then-capture. v6 was not tried in the time available.
 - Transaction Search. The Clerk reads transactions through the Agent Toolkit's `list_transactions`; Quorate does not call Transaction Search itself.
-- Subscriptions, disputes, Bryntum. Not in this build.
+- Subscriptions and disputes. Not in this build.
 - The "Ask the register" box that turns a question into an AG Grid filter is not built.
+
+## Agent access
+| Feature | Where | Status |
+|---|---|---|
+| MCP door (JSON-RPC 2.0 over HTTP, read-only): `pool_status`, `slip_link` | `app/api/mcp/route.ts` | Live; tested in `tests/e2e/flows.spec.ts` |

@@ -55,7 +55,11 @@ for (const run of await s.list<{ poolId: string; port: string }>("run")) {
   if (!c?.payout?.batchId || ["SUCCESS", "DENIED", "CANCELED"].includes(c.payout.status) || c.payout.status.startsWith("REFUSED")) continue;
   try {
     const p = await port.getPayout(c.payout.batchId);
-    if (p.status !== c.payout.status) { c.payout.status = p.status; await s.put("close", run.poolId, run.poolId, c); log.push({ pool: run.poolId, payout: p.status }); }
+    if (p.status !== c.payout.status) {
+      c.payout.status = p.status; await s.put("close", run.poolId, run.poolId, c);
+      await s.put("run", run.poolId, run.poolId, { ...run, payout: c.payout });
+      log.push({ pool: run.poolId, payout: p.status });
+    }
   } catch (e) { log.push({ pool: run.poolId, payoutPollFailed: (e as Error).message }); }
 }
 
