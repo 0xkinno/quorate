@@ -1,0 +1,32 @@
+{
+  "label": "Model of outcomes over 1,000 generated trips (seeded), not a measurement",
+  "seed": 20261112,
+  "trips": 1000,
+  "ran": 518,
+  "cancelled": 482,
+  "invariantFailures": 0,
+  "teacherFronts": {
+    "teacherFronted": 128945877,
+    "teacherUnrecovered": 68228660,
+    "refundsIssued": 0,
+    "refundCents": 0,
+    "familiesAboveFinalShare": 0,
+    "familiesChargedForCancelledTrip": 0
+  },
+  "potUpFront": {
+    "teacherFronted": 0,
+    "teacherUnrecovered": 0,
+    "refundsIssued": 16194,
+    "refundCents": 68615806,
+    "familiesAboveFinalShare": 10062,
+    "familiesChargedForCancelledTrip": 6132
+  },
+  "quorate": {
+    "teacherFronted": 0,
+    "teacherUnrecovered": 0,
+    "refundsIssued": 0,
+    "refundCents": 0,
+    "familiesAboveFinalShare": 0,
+    "familiesChargedForCancelledTrip": 0
+  }
+}

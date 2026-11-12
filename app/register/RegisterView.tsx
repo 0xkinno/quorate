@@ -63,13 +63,18 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
 
   useEffect(() => {
     let alive = true;
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const FINAL = ["CLOSED", "NEEDS_TEACHER", "LAPSED", "FAILED"];
     const load = async () => {
       const r = await fetch(`/api/pools/${poolId}`, { cache: "no-store" });
-      if (r.ok && alive) setV(await r.json());
+      if (!r.ok || !alive) return;
+      const j: View = await r.json();
+      setV(j);
+      // Poll fast while a close runs, slowly while families approve slips, and stop once it is final.
+      if (!FINAL.includes(j.pool.state)) t = setTimeout(load, j.pool.kind === "class" ? 5000 : 1500);
     };
     load();
-    const t = setInterval(load, 1500);
-    return () => { alive = false; clearInterval(t); };
+    return () => { alive = false; if (t) clearTimeout(t); };
   }, [poolId]);
 
   const rows: Row[] = useMemo(() => {
@@ -125,7 +130,7 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <label className="text-sm" htmlFor="pool">Trip</label>
-          <select id="pool" className="rounded-lg border rule bg-white/80 px-2 py-2 text-sm" value={poolId} onChange={(e) => (window.location.href = `/register?pool=${e.target.value}`)}>
+          <select id="pool" className="w-full max-w-[16rem] truncate rounded-lg border rule bg-white/80 px-2 py-2 text-sm sm:w-auto sm:max-w-xs" value={poolId} onChange={(e) => (window.location.href = `/register?pool=${e.target.value}`)}>
             {pools.map((p) => <option key={p.id} value={p.id}>{p.kind === "class" ? "Class trip (slips)" : `${p.createdAt.slice(5, 16).replace("T", " ")} ${p.title}`}</option>)}
           </select>
           <span className="stamp stamp-held">{v.pool.state}</span>
@@ -142,10 +147,12 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
         ].map(([k, val]) => <div key={k} className="card p-4"><div className="caps">{k}</div><div className="mono mt-1 text-2xl font-semibold">{val}</div></div>)}
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-[1fr_340px]">
-        <div>
-          <div className="mb-3 flex flex-wrap items-center gap-2" role="tablist" aria-label="Filter rows">
-            {TABS.map((t) => <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 text-sm ${tab === t ? "bg-[var(--ink)] text-white" : "border rule bg-white/60"}`}>{t}</button>)}
+      <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="min-w-0">
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter rows">
+              {TABS.map((t) => <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 text-sm ${tab === t ? "bg-[var(--ink)] text-white" : "border rule bg-white/60"}`}>{t}</button>)}
+            </div>
             <button className="btn btn-ghost ml-auto !py-1.5 text-sm" onClick={() => grid.current?.api.exportDataAsCsv({ fileName: `register-${v.pool.id}.csv` })}>Export for the school office</button>
           </div>
           <div style={{ height: 560 }}>
@@ -157,7 +164,7 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
             />
           </div>
         </div>
-        <aside className="space-y-4">
+        <aside className="min-w-0 space-y-4">
           <div className="card p-4">
             <p className="caps">Price per child vs children going</p>
             <div style={{ height: 200 }}>
@@ -179,7 +186,7 @@ export function RegisterView({ poolId, slips, pools }: { poolId: string; slips: 
             )}
             {!v.close && v.preview.ok && <p className="mt-2 text-sm">If the trip closed now, {going} families pay {usd(v.preview.level)} or one cent more, and the vendors get {usd(v.preview.total)}.</p>}
             {!v.close && !v.preview.ok && <p className="mt-2 text-sm">Not enough held yet: {going} of {v.pool.minN} children.</p>}
-            <ol className="mono mt-3 max-h-72 space-y-1 overflow-auto text-[11px] leading-relaxed" aria-live="polite">
+            <ol tabIndex={0} aria-label="Steps of the close" className="mono mt-3 max-h-72 space-y-1 overflow-auto text-[11px] leading-relaxed" aria-live="polite">
               {(v.close?.steps ?? []).map((s, i) => <li key={i} className={s.includes("declined") ? "text-[#b42318]" : s.includes("exact") ? "text-[var(--settled)]" : ""}>{s}</li>)}
             </ol>
             {v.close?.payout && <p className="mt-3 text-xs">Payout batch <span className="mono">{v.close.payout.batchId}</span>: {v.close.payout.items.map((i) => `${i.note} ${usd(i.cents)}`).join(", ")}</p>}

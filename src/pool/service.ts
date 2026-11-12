@@ -6,6 +6,7 @@ import { planRenewal } from "../bursar/renewal";
 import { StandInPayPal } from "../paypal/standin";
 import { LivePayPal, hasPayPalKeys } from "../paypal/live";
 import { requestId, type PayPalPort } from "../paypal/types";
+import { ensureSeeded } from "./seed";
 
 export type Lang = "en" | "es" | "vi";
 export type PoolState = "OPEN" | "HOLDING" | "QUORATE" | "CLOSING" | "CLOSED" | "NEEDS_TEACHER" | "LAPSED" | "FAILED";
@@ -63,6 +64,7 @@ export async function savePool(s: Store, pool: Pool, members: PoolMember[]) {
 }
 
 export async function getPool(id: string, s = db()) {
+  await ensureSeeded(s);
   const pool = await s.get<Pool>("pool", id);
   if (!pool) return null;
   const members = (await s.list<PoolMember>("member", id)).sort((a, b) => a.seq - b.seq);
@@ -74,6 +76,7 @@ export async function getPool(id: string, s = db()) {
 }
 
 export async function listPools(kind?: Pool["kind"], s = db()) {
+  await ensureSeeded(s);
   const all = await s.list<Pool>("pool");
   return all.filter((p) => !kind || p.kind === kind).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }

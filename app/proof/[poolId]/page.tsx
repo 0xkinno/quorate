@@ -27,7 +27,7 @@ export default async function Proof({ params }: { params: Promise<{ poolId: stri
       {v.close?.payout && <p className="mt-4">Payout batch <span className="mono">{v.close.payout.batchId}</span> ({v.close.payout.senderBatchId}): {v.close.payout.items.map((i) => `${i.note} ${usd(i.cents)}`).join("; ")}</p>}
 
       <h2 className="caps mt-10">Every hold</h2>
-      <div className="mt-3 overflow-x-auto">
+      <div className="mt-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Every hold">
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead><tr className="border-b rule"><th className="py-2">Child</th><th>Approved</th><th>Charged</th><th>Released</th><th>Verdict</th><th>Authorization</th><th>Captures and refunds</th></tr></thead>
           <tbody>
@@ -47,7 +47,7 @@ export default async function Proof({ params }: { params: Promise<{ poolId: stri
       </div>
 
       <h2 className="caps mt-10">Attempt log ({v.attempts.length}), written before each PayPal call</h2>
-      <ol className="mono mt-3 max-h-96 space-y-1 overflow-auto text-xs">
+      <ol tabIndex={0} aria-label="Attempt log" className="mono mt-3 max-h-96 space-y-1 overflow-auto text-xs">
         {v.attempts.sort((a, b) => a.startedAt.localeCompare(b.startedAt)).map((a) => (
           <li key={a.requestId}>{a.startedAt.slice(11, 23)} {a.op} {a.memberId ?? "vendors"} id={a.requestId.slice(0, 12)} {a.result ? (a.result.ok ? "ok" : `failed: ${a.result.error.slice(0, 80)}`) : "no result yet"}</li>
         ))}

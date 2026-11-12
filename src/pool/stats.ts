@@ -1,4 +1,5 @@
 import { db } from "../db/store";
+import { ensureSeeded } from "./seed";
 
 export type RunRecord = {
   poolId: string; at: string; port: "sandbox" | "stand-in"; holdSource: string; state: string; decline: boolean; n: number;
@@ -7,6 +8,7 @@ export type RunRecord = {
 
 /** Headline numbers, recomputed from recorded runs on every request. Nothing typed by hand. */
 export async function stats() {
+  await ensureSeeded();
   const runs = await db().list<RunRecord>("run");
   const by = (port: string) => runs.filter((r) => r.port === port);
   const summarize = (rs: RunRecord[]) => ({

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { Mark } from "@/components/Mark";
+import { Tour } from "@/components/Tour";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="display text-lg">Quorate</span>
             </Link>
             <div className="flex items-center gap-1 text-sm sm:gap-2">
+              <Suspense fallback={null}><Tour /></Suspense>
               <Link href="/register" className="rounded-md px-2.5 py-1.5 hover:bg-white/70">The Register</Link>
               <Link href="/help" className="hidden rounded-md px-2.5 py-1.5 hover:bg-white/70 sm:inline">Help desk</Link>
               <Link href="/judge" className="rounded-md bg-[var(--held)] px-3 py-1.5 text-white shadow-[var(--glow)]">For judges</Link>
