@@ -23,5 +23,21 @@ period, multiple reauthorizations may be issued after the honor period expires, 
 payment has a new 3-day honor period. Some PayPal pages say one. Quorate renews at most once per hold
 by policy, whatever P4 shows.
 
-## Answers
-Not run yet. Each answer lands here with its date and debug id.
+## Answers (run 12 Nov 2026, 05:47 UTC, raw file `docs/probe/2026-11-12-probe.json`)
+
+| # | Answer | Debug id | Matched what we expected? |
+|---|---|---|---|
+| P1 | Yes. $60.00 then $5.00 captured from one $72.00 hold with `final_capture:false`; the hold reads PARTIALLY_CAPTURED | ca5933e03dfc5, ca5933e129a0d | Yes |
+| P2 | Yes. Void after a $60.00 partial capture returns 204 and the hold reads VOIDED; the $12.00 remainder is released | ca5933e411839 | Yes |
+| P3 | **PayPal accepted an $80.00 capture on a $72.00 hold.** Quorate's guard refuses it (`assertWithinCap`, tests/renewal-guards.test.ts) | ca5933e598b87 | Yes, and it is why the guard exists |
+| P4 | Reauthorize at once is refused: 422 `REAUTHORIZATION_TOO_SOON` | ca5933e7aec6b | Yes |
+| P5 | Not answered yet: the mock header returned 403 with an empty body, because negative testing was off on the merchant sandbox account. Re-run after switching it on | ca5933e8a9ed5 | Pending |
+| P6 | Same `PayPal-Request-Id` twice returns the same capture `3R920997RY101924L`; no second capture | ca5933f090bcf | Yes |
+| P7 | A repeated `sender_batch_id` is refused: 400 "Batch with given sender_batch_id already exists" | ca5933f14fbc8 | Yes |
+| P8 | Payout batch reached a final status in 25 seconds, but DENIED: `RECEIVER_COUNTRY_NOT_ALLOWED` (the receiving sandbox account was not in a payout country). Re-run with US receivers | batch 8CWT4BYTTGJ4G | Timing yes; receiver setup was ours |
+| P9 | A fresh authorization created 12 Nov 05:47 UTC expires 11 Dec 05:47 UTC: 29 days | order 3J6876502H653035S | Yes |
+| P10 | Not run yet | | Pending |
+
+### Two account findings on the way (recorded in FRICTION.md)
+- A sandbox business account whose holds come back `PAYEE_ACCOUNT_RESTRICTED` on saved-wallet orders, while plain order creation still succeeds. Moving the app to a US sandbox business account fixed it.
+- A Vault setup token without `usage_pattern`, `customer_type` and `vault_instruction` led the buyer to "Something went wrong" on approval. With them, approval succeeded.

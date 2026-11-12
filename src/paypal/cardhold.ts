@@ -24,7 +24,7 @@ export async function createCardHold(a: { memberId: string; poolId: string; capC
       reference_id: a.memberId, custom_id: a.termsHash.slice(0, 64), invoice_id: `${a.poolId}-${a.memberId}-${a.requestId.slice(0, 8)}`,
       description: "Class trip share (held, not charged)", amount: { currency_code: "USD", value: toAmount(a.capCents) },
     }],
-    payment_source: vault ? { paypal: { vault_id: vault } } : { card: SANDBOX_TEST_CARD },
+    payment_source: vault ? { paypal: { vault_id: vault, stored_credential: { payment_initiator: "MERCHANT", usage: "SUBSEQUENT", usage_pattern: "UNSCHEDULED_POSTPAID" } } } : { card: SANDBOX_TEST_CARD },
   }, { "PayPal-Request-Id": a.requestId, Prefer: "return=representation" });
   let auth = r.json.purchase_units?.[0]?.payments?.authorizations?.[0];
   if (!auth && r.json.status === "APPROVED") {

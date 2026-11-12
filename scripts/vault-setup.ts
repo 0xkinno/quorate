@@ -11,7 +11,7 @@ const [cmd, id] = process.argv.slice(2);
 if (cmd === "start") {
   const base = process.env.PUBLIC_BASE_URL || "http://localhost:3000";
   const r = await call<{ id: string; status: string; links: { rel: string; href: string }[] }>("setupToken", "POST", "/v3/vault/setup-tokens", {
-    payment_source: { paypal: { usage_type: "MERCHANT", experience_context: { brand_name: "Quorate", return_url: `${base}/judge`, cancel_url: `${base}/judge`, shipping_preference: "NO_SHIPPING" } } },
+    payment_source: { paypal: { description: "Quorate class trip holds", usage_pattern: "UNSCHEDULED_POSTPAID", usage_type: "MERCHANT", customer_type: "CONSUMER", permit_multiple_payment_tokens: true, experience_context: { brand_name: "Quorate", return_url: `${base}/judge`, cancel_url: `${base}/judge`, shipping_preference: "NO_SHIPPING", vault_instruction: "ON_PAYER_APPROVAL" } } },
   }, { "PayPal-Request-Id": crypto.randomUUID() });
   console.log(JSON.stringify({ setupTokenId: r.json.id, status: r.json.status, approve: r.json.links.find((l) => l.rel === "approve")?.href }));
 } else if (cmd === "status") {
